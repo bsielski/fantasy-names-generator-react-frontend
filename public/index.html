@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en" class="l-window-container">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#d9af8b">
+    <meta name="description" content="It takes real names analyse their patterns and mixes them up to create new fictional fantasy names that looks like they could be real."/>
+    <meta name="keywords" content="names ganerator, fantasy names generator, nickname generator"/>
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <link rel="icon" sizes="192x192" href="%PUBLIC_URL%/fng-logo-small.png">
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Fantasy Names Generator</title>
+  </head>
+
+  <body class="l-body-container">
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <!--
+    This HTML file is a template.
+    If you open it directly in the browser, you will see an empty page.
+
+    You can add webfonts, meta tags, or analytics to this file.
+    The build step will place the bundled scripts into the <body> tag.
+
+    To begin the development, run `npm start` or `yarn start`.
+    To create a production bundle, use `npm run build` or `yarn build`.
+  -->
+
+    <header class="l-header-container">
+      <img src="%PUBLIC_URL%/logo.png" class="logo-img"></img>
+      <div class="l-brand-container">
+      	<h1 class="brand-title">Fantasy Names Generator (alpha)</h1>
+        <p class="brand-description">It takes real names analyse their patterns and mixes them up to create new fictional fantasy names.</p>
+      </div>
+    </header>
+
+    <main class="l-main-container" id="root">
+
+      <section class="l-section-container l-section-container--input">
+      	<div id="input-section">
+
+      	  <h2 class="subsection-header">How many names do you want to generate?</h2>
+      	  <div class="how-many-names" id="how-many-names">
+            <div id="root-for-number-options" class="root"></div>
+            <div class="how-many-names" id="how-many-names">
+            <div class="">
+              <input type="radio" name="how-many" value="10" class="" id="feeling-very-lucky">
+              <label class="" for="feeling-very-lucky">10 (I'm feeling very lucky)</label>
+            </div>
+            <div class="">
+              <input type="radio" checked name="how-many" value="100" class="" id="want-a-couple">
+              <label class="" for="want-a-couple">100 (I want just a couple)</label>
+            </div>
+            <div class="">
+              <input type="radio" name="how-many" value="500" class="" id="want-more">
+              <label class="" for="want-more">500 (I want more)</label>
+            </div>
+            <div class="">
+              <input type="radio" name="how-many" value="10000" class="" id="want-to-freeze">
+              <label class="" for="want-to-freeze">10000 (I want to freeze my browser!)</label>
+            </div>
+          </div>
+<!--
+      	    <div class="">
+      	      <input type="radio" name="how-many" value="10" class="" id="feeling-very-lucky">
+      	      <label class="" for="feeling-very-lucky">10 (I'm feeling very lucky)</label>
+      	    </div>
+      	    <div class="">
+      	      <input type="radio" checked name="how-many" value="100" class="" id="want-a-couple">
+      	      <label class="" for="want-a-couple">100 (I want just a couple)</label>
+      	    </div>
+      	    <div class="">
+      	      <input type="radio" name="how-many" value="500" class="" id="want-more">
+      	      <label class="" for="want-more">500 (I want more)</label>
+      	    </div>
+      	    <div class="">
+      	      <input type="radio" name="how-many" value="10000" class="" id="want-to-freeze">
+      	      <label class="" for="want-to-freeze">10000 (I want to freeze my browser!)</label>
+      	    </div>
+      	  </div> -->
+
+      	  <h2 class="subsection-header">Pick a nameset or namestes</h2>
+          <div id="root-for-groupbox-container" class="root"></div>
+
+      	  <h2 class="subsection-header">Generate names</h2>
+          <div id="root-for-action-button" class="root"></div>
+
+      	</div>
+      </section>
+
+      <section class="l-section-container l-section-container--output">
+      	<div>
+          <div id="root-for-sorting-header" class="root"></div>
+      	  <!-- <h2 class="subsection-header">Sorting</h2> -->
+          <div id="root-for-sorting-button-container" class="root"></div>
+      	  <!-- <div class="sort-buttons">
+      	    <button type="button" id="unsort-button" class="sort-button">Unsort</button>
+      	    <button type="button" id="alphabetically-button" class="sort-button">Alphabetically</button>
+      	    <button type="button" id="length-button" class="sort-button">By length</button>
+      	  </div> -->
+          <div id="root-for-generated-header" class="root"></div>
+      	  <!-- <h2 class="subsection-header">Generated names</h2> -->
+          <div id="root-for-generated-list" class="root"></div>
+      	  <!-- <ol class="list-of-generated" id="list-of-generated"></ol> -->
+
+      	</div>
+      </section>
+
+    </main>
+
+    <footer class="l-footer-container">
+      Created in 2017 by Bartłomiej Sielski<br>
+      for education, worldbuilding and fun.
+    </footer>
+
+  </body>
+
+</html>
