@@ -12,7 +12,7 @@ export class Subgroup extends React.Component {
   render() {
     const buildNameset = (nameset, index) => {
       return (
-        <Nameset key={index} nameset={nameset} />
+        <Nameset key={index} nameset={nameset} handleCheckboxChange={this.props.handleCheckboxChange} />
       );
     }
 

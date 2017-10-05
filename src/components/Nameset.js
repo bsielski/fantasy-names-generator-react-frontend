@@ -5,7 +5,21 @@ import React from 'react';
 export class Nameset extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isChecked: false,
+    };
+    this.handleChange = this.handleChange.bind(this);
+
+  }
+
+  handleChange() {
+    this.setState(({ isChecked }) => (
+      {
+        isChecked: !isChecked,
+      }
+    ));
+
+    this.props.handleCheckboxChange(this.props.nameset.id);
   }
 
   render() {
@@ -20,7 +34,9 @@ export class Nameset extends React.Component {
     }
     return (
       <div className="group-box__item">
-        <input className="group-box__checkbox" id={namesetId} type="checkbox" />
+        <input className="group-box__checkbox" id={namesetId} type="checkbox"
+          onChange={this.handleChange} checked={this.state.isChecked}
+        />
         <label className="group-box__label" htmlFor={namesetId}>{this.props.nameset.attributes.label}
           <span className="group-box__names_number">
             {" (" + namesCount() + ")"}

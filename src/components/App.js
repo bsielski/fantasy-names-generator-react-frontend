@@ -13,13 +13,25 @@ export class App extends React.Component {
       subgroups: [],
       namesets: [],
       actionButtonText: 'placeholder',
-      selectedNamesets: [],
+      selectedNamesets: new Set(),
     };
-    this.handleSelection = this.handleSelection.bind(this);
+    this.toggleCheckbox = this.toggleCheckbox.bind(this);
+
   }
 
-  handleSelection(e) {
-    this.setState({selectedNamesets: parseInt(e.target.dataset.buttonNumber, 10)});
+  toggleCheckbox(id) {
+    console.log("WTF IS SELECTED NAMESET");
+    console.log(this.state.selectedNamesets);
+    if (this.state.selectedNamesets.has(id)) {
+      this.setState(previousState => {
+        previousState.selectedNamesets.delete(id);
+        return { selectedNamesets: previousState.selectedNamesets };
+      });
+    } else {
+      this.setState(previousState => {
+        return { selectedNamesets: previousState.selectedNamesets.add(id) };
+      });
+    }
   }
 
   componentDidMount() {
@@ -62,7 +74,8 @@ export class App extends React.Component {
                 {value: 10000, label: '10000', description: "",},
               ]
             }/>
-            <GroupboxContainer groups={this.state.groups} subgroups={this.state.subgroups} namesets={this.state.namesets} />
+            <GroupboxContainer groups={this.state.groups} subgroups={this.state.subgroups}
+              namesets={this.state.namesets} handleCheckboxChange={this.toggleCheckbox} />
             <ActionButton text={this.state.actionButtonText}/>
             <DebugInfo namesets={this.state.selectedNamesets} />
           </div>
@@ -84,20 +97,21 @@ export class App extends React.Component {
     );
   }
 
-  function DebugInfo(props) {
-    const buildNamesets = (nameset, index) => {
-      return (
-        <p key={index}>{nameset.label}</p>
-      );
-    }
+}
 
-    const namesets = props.namesets.map(buildNamesets)
-
+function DebugInfo(props) {
+  const buildNamesets = (id, index) => {
     return (
-      <div>
-        {namesets}
-      </div>
+      <p key={index}>{id}</p>
     );
   }
 
+  const namesets = Array.from(props.namesets).map(buildNamesets)
+
+  return (
+    <div>
+      debug<br />
+      {namesets}
+    </div>
+  );
 }
