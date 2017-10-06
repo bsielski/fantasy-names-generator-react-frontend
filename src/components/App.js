@@ -14,14 +14,26 @@ export class App extends React.Component {
       namesets: [],
       actionButtonText: 'placeholder',
       selectedNamesets: new Set(),
+      selectedNumberOption: 0,
     };
+    this.numberOptions = [
+      {value: 10, label: '10', description: "(I feel very lucky).",},
+      {value: 100, label: '100', description: "",},
+      {value: 500, label: '500', description: "",},
+      {value: 10000, label: '10000', description: "",},
+    ];
     this.toggleCheckbox = this.toggleCheckbox.bind(this);
+    this.setHowManyNames = this.setHowManyNames.bind(this);
 
   }
 
+  setHowManyNames(option) {
+    this.setState(
+      { selectedNumberOption: option }
+    );
+  }
+
   toggleCheckbox(id) {
-    console.log("WTF IS SELECTED NAMESET");
-    console.log(this.state.selectedNamesets);
     if (this.state.selectedNamesets.has(id)) {
       this.setState(previousState => {
         previousState.selectedNamesets.delete(id);
@@ -41,7 +53,7 @@ export class App extends React.Component {
       this.setState({
         groups: response.data,
       });
-      })
+    })
     .catch(error => console.log(error));
     fetch('http://localhost:3001/api/v1/subgroups')
     .then(response => response.json())
@@ -49,7 +61,7 @@ export class App extends React.Component {
       this.setState({
         subgroups: response.data,
       });
-      })
+    })
     .catch(error => console.log(error));
     fetch('http://localhost:3001/api/v1/namesets')
     .then(response => response.json())
@@ -57,7 +69,7 @@ export class App extends React.Component {
       this.setState({
         namesets: response.data,
       });
-      })
+    })
     .catch(error => console.log(error));
   }
 
@@ -66,18 +78,16 @@ export class App extends React.Component {
       <main className="l-main-container">
         <section className="l-section-container l-section-container--input">
           <div id="input-section">
-            <RadioGroup options={
-              [
-                {value: 10, label: '10', description: "(I feel very lucky).",},
-                {value: 100, label: '100', description: "",},
-                {value: 500, label: '500', description: "",},
-                {value: 10000, label: '10000', description: "",},
-              ]
-            }/>
+            <RadioGroup options={this.numberOptions}
+              selectedOption={this.state.selectedNumberOption}
+              setHowManyNames={this.setHowManyNames}
+            />
             <GroupboxContainer groups={this.state.groups} subgroups={this.state.subgroups}
               namesets={this.state.namesets} handleCheckboxChange={this.toggleCheckbox} />
-            <ActionButton text={this.state.actionButtonText}/>
-            <DebugInfo namesets={this.state.selectedNamesets} />
+            <ActionButton howManyNamesetsSelected={this.state.selectedNamesets.size}
+              howManyNames={this.numberOptions[this.state.selectedNumberOption].value}
+            />
+            {/* <DebugInfo namesets={this.state.selectedNamesets} /> */}
           </div>
         </section>
 
@@ -96,22 +106,23 @@ export class App extends React.Component {
       </main>
     );
   }
-
 }
 
-function DebugInfo(props) {
-  const buildNamesets = (id, index) => {
-    return (
-      <p key={index}>{id}</p>
-    );
-  }
-
-  const namesets = Array.from(props.namesets).map(buildNamesets)
-
-  return (
-    <div>
-      debug<br />
-      {namesets}
-    </div>
-  );
-}
+// function DebugInfo(props) {
+//   console.log("WTF IS SELECTED NAMESET");
+//   console.log(props.namesets);
+//   const buildNamesets = (id, index) => {
+//     return (
+//       <p key={index}>{id}</p>
+//     );
+//   }
+//
+//   const namesets = Array.from(props.namesets).map(buildNamesets)
+//
+//   return (
+//     <div>
+//       debug<br />
+//       {namesets}
+//     </div>
+//   );
+// }
