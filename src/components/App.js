@@ -2,6 +2,7 @@ import React from 'react';
 import {RadioGroup} from './RadioGroup';
 import {GroupboxContainer} from './GroupboxContainer';
 import {ActionButton} from './ActionButton';
+import {GeneratedContainer} from './GeneratedContainer';
 
 // import {ActionButton} from './ActionButton';
 
@@ -15,6 +16,8 @@ export class App extends React.Component {
       actionButtonText: 'placeholder',
       selectedNamesets: new Set(),
       selectedNumberOption: 0,
+      fetchedNames: [],
+      generated: [],
     };
     this.numberOptions = [
       {value: 10, label: '10', description: "(I feel very lucky).",},
@@ -24,8 +27,41 @@ export class App extends React.Component {
     ];
     this.toggleCheckbox = this.toggleCheckbox.bind(this);
     this.setHowManyNames = this.setHowManyNames.bind(this);
-
+    this.handleAction = this.handleAction.bind(this);
   }
+
+  handleAction(e) {
+    e.preventDefault();
+    console.log("CLICKED");
+    const fetched = [];
+    let counter = 0;
+    const fetchEverything = (ids) => {
+      fetch(`http://localhost:3001/api/v1/namesets/${ids[counter]}?include=names`)
+      .then(response => response.json())
+      .then(response => {
+        if (response.included) {
+          fetched.push([response.data, response.included]);
+        }
+        counter ++;
+        if (counter < ids.length) {
+          fetchEverything(ids);
+        } else {
+          this.setState(
+            { fetchedNames: fetched }
+          );
+        }
+      })
+      .catch(error => console.log(error));
+    };
+    fetchEverything(Array.from(this.state.selectedNamesets));
+  }
+
+  // generate() {
+  // 	// const generator = new Generator(Array.from(input.pickedNameSets))
+  //   const generator = new Generator(this.setupNamesets);
+  // 	listOfGenerated.names = generator.generate(radioGroup.getValue());
+  // 	displayNames(listOfGenerated.names);
+  // }
 
   setHowManyNames(option) {
     this.setState(
@@ -77,7 +113,7 @@ export class App extends React.Component {
     return (
       <main className="l-main-container">
         <section className="l-section-container l-section-container--input">
-          <div id="input-section">
+          <div>
             <RadioGroup options={this.numberOptions}
               selectedOption={this.state.selectedNumberOption}
               setHowManyNames={this.setHowManyNames}
@@ -86,6 +122,7 @@ export class App extends React.Component {
               namesets={this.state.namesets} handleCheckboxChange={this.toggleCheckbox} />
             <ActionButton howManyNamesetsSelected={this.state.selectedNamesets.size}
               howManyNames={this.numberOptions[this.state.selectedNumberOption].value}
+              onClick={this.handleAction}
             />
             {/* <DebugInfo namesets={this.state.selectedNamesets} /> */}
           </div>
@@ -99,8 +136,7 @@ export class App extends React.Component {
         	    <button type="button" id="alphabetically-button" className="sort-button">Alphabetically</button>
         	    <button type="button" id="length-button" className="sort-button">By length</button>
         	  </div>
-        	  <h2 className="subsection-header">Generated names</h2>
-        	  <ol className="list-of-generated" id="list-of-generated"></ol>
+            <GeneratedContainer fetched={this.state.fetchedNames}/>
         	</div>
         </section>
       </main>
