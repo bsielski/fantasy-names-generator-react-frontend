@@ -4,6 +4,17 @@ import {GroupboxContainer} from './GroupboxContainer';
 import {ActionButton} from './ActionButton';
 import {GeneratedContainer} from './GeneratedContainer';
 
+import {Generator} from '../generator';
+import {Splitter} from '../splitter';
+import {VOWELS} from '../helpers';
+// import {CONSONANTS} from '../helpers';
+import {RepeatedLettersFilter} from '../filter';
+import {ConsonantsPatternsFilter} from '../filter';
+import {VowelsPatternsFilter} from '../filter';
+import {UniquenessFilter} from '../filter';
+import {NameLengthFilter} from '../filter';
+import {CapitalizeFilter} from '../filter';
+
 // import {ActionButton} from './ActionButton';
 
 export class App extends React.Component {
@@ -18,6 +29,7 @@ export class App extends React.Component {
       selectedNumberOption: 0,
       fetchedNames: [],
       generated: [],
+      isGenerating: false,
     };
     this.numberOptions = [
       {value: 10, label: '10', description: "(I feel very lucky).",},
@@ -32,6 +44,9 @@ export class App extends React.Component {
 
   handleAction(e) {
     e.preventDefault();
+    this.setState(
+      { isGenerating: true },
+    );
     console.log("CLICKED");
     const fetched = [];
     let counter = 0;
@@ -47,7 +62,8 @@ export class App extends React.Component {
           fetchEverything(ids);
         } else {
           this.setState(
-            { fetchedNames: fetched }
+            { fetchedNames: fetched },
+            this.generate
           );
         }
       })
@@ -56,12 +72,42 @@ export class App extends React.Component {
     fetchEverything(Array.from(this.state.selectedNamesets));
   }
 
-  // generate() {
-  // 	// const generator = new Generator(Array.from(input.pickedNameSets))
-  //   const generator = new Generator(this.setupNamesets);
-  // 	listOfGenerated.names = generator.generate(radioGroup.getValue());
-  // 	displayNames(listOfGenerated.names);
-  // }
+  generate() {
+
+    const namesetsForGenerator = [];
+    const splitterAfter = new Splitter(VOWELS, true, "after")
+    const splitterBefore = new Splitter(VOWELS, true, "before")
+    const standardFilters = [
+      RepeatedLettersFilter,
+      ConsonantsPatternsFilter,
+      VowelsPatternsFilter,
+      UniquenessFilter,
+      NameLengthFilter,
+      CapitalizeFilter,
+    ]
+
+    this.state.fetchedNames.forEach(nameset => {
+        const namesetForGenerator = {
+          label: nameset[0].attributes.label,
+          names: [],
+          splitters: [splitterAfter, splitterBefore],
+          filters: standardFilters,
+        }
+        nameset[1].forEach(name => {
+            namesetForGenerator.names.push(name.attributes.variants);
+        });
+        namesetsForGenerator.push(namesetForGenerator);
+    });
+
+    if (namesetsForGenerator.length > 0) {
+      const generator = new Generator(namesetsForGenerator)
+      this.setState(
+        {generated: generator.generate(this.numberOptions[this.state.selectedNumberOption].value)},
+        () => {this.setState( { isGenerating: false } );}
+      );
+    }
+
+  }
 
   setHowManyNames(option) {
     this.setState(
@@ -114,13 +160,20 @@ export class App extends React.Component {
       <main className="l-main-container">
         <section className="l-section-container l-section-container--input">
           <div>
-            <RadioGroup options={this.numberOptions}
+            <RadioGroup
+              options={this.numberOptions}
               selectedOption={this.state.selectedNumberOption}
               setHowManyNames={this.setHowManyNames}
             />
-            <GroupboxContainer groups={this.state.groups} subgroups={this.state.subgroups}
-              namesets={this.state.namesets} handleCheckboxChange={this.toggleCheckbox} />
-            <ActionButton howManyNamesetsSelected={this.state.selectedNamesets.size}
+            <GroupboxContainer
+              groups={this.state.groups}
+              subgroups={this.state.subgroups}
+              namesets={this.state.namesets}
+              handleCheckboxChange={this.toggleCheckbox}
+            />
+            <ActionButton
+              isGenerating={this.state.isGenerating}
+              howManyNamesetsSelected={this.state.selectedNamesets.size}
               howManyNames={this.numberOptions[this.state.selectedNumberOption].value}
               onClick={this.handleAction}
             />
@@ -136,7 +189,7 @@ export class App extends React.Component {
         	    <button type="button" id="alphabetically-button" className="sort-button">Alphabetically</button>
         	    <button type="button" id="length-button" className="sort-button">By length</button>
         	  </div>
-            <GeneratedContainer fetched={this.state.fetchedNames}/>
+            <GeneratedContainer fetched={this.state.fetchedNames} generated={this.state.generated} />
         	</div>
         </section>
       </main>
