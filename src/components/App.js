@@ -2,6 +2,7 @@ import React from 'react';
 import {RadioGroup} from './RadioGroup';
 import {GroupboxContainer} from './GroupboxContainer';
 import {ActionButton} from './ActionButton';
+import {SortButtons} from './SortButtons';
 import {GeneratedContainer} from './GeneratedContainer';
 
 import {Generator} from '../generator';
@@ -30,6 +31,7 @@ export class App extends React.Component {
       fetchedNames: [],
       generated: [],
       isGenerating: false,
+      wayOfSorting: "unsorted",
     };
     this.numberOptions = [
       {value: 10, label: '10', description: "(I feel very lucky).",},
@@ -40,6 +42,13 @@ export class App extends React.Component {
     this.toggleCheckbox = this.toggleCheckbox.bind(this);
     this.setHowManyNames = this.setHowManyNames.bind(this);
     this.handleAction = this.handleAction.bind(this);
+    this.setSortMethod = this.setSortMethod.bind(this);
+  }
+
+  setSortMethod(method) {
+    this.setState(
+      { wayOfSorting: method },
+    );
   }
 
   handleAction(e) {
@@ -183,13 +192,8 @@ export class App extends React.Component {
 
         <section className="l-section-container l-section-container--output">
         	<div>
-        	  <h2 className="subsection-header">Sorting</h2>
-        	  <div className="sort-buttons">
-        	    <button type="button" id="unsort-button" className="sort-button">Unsort</button>
-        	    <button type="button" id="alphabetically-button" className="sort-button">Alphabetically</button>
-        	    <button type="button" id="length-button" className="sort-button">By length</button>
-        	  </div>
-            <GeneratedContainer fetched={this.state.fetchedNames} generated={this.state.generated} />
+            <SortButtons setSortMethod={this.setSortMethod} wayOfSorting={this.state.wayOfSorting} />
+            <GeneratedContainer fetched={this.state.fetchedNames} generated={this.state.generated} wayOfSorting={this.state.wayOfSorting} />
         	</div>
         </section>
       </main>

@@ -21,7 +21,33 @@ export class GeneratedContainer extends React.Component {
         });
     });
 
-    const generatedList = this.props.generated.map( (name, index) => {
+    const sortedGenerated = this.props.generated.slice();
+
+    if (this.props.wayOfSorting === "unsorted-reversed") {
+      sortedGenerated.reverse();
+    }
+    else if (this.props.wayOfSorting === "alphabetically") {
+      sortedGenerated.sort((a,b) => {
+        if (a < b) return -1; else return 1
+      })
+    }
+    else if (this.props.wayOfSorting === "alphabetically-reversed") {
+      sortedGenerated.sort((a,b) => {
+        if (a > b) return -1; else return 1
+      })
+    }
+    else if (this.props.wayOfSorting === "length") {
+      sortedGenerated.sort((a,b) => {
+        if (a.length < b.length) return -1; else return 1
+      })
+    }
+    else if (this.props.wayOfSorting === "length-reversed") {
+      sortedGenerated.sort((a,b) => {
+        if (a.length > b.length) return -1; else return 1
+      })
+    }
+
+    const generatedList = sortedGenerated.map( (name, index) => {
       return (
         <li key={index}>{name}</li>
       );
@@ -29,9 +55,13 @@ export class GeneratedContainer extends React.Component {
 
     return (
       <div>
+        <br />
+        <h2 className="subsection-header">Names from namestes (debugging)</h2>
+        <ol className="list-of-generated">
+          {fetchedList}
+        </ol>
         <h2 className="subsection-header">Generated names</h2>
         <ol className="list-of-generated" id="list-of-generated">
-          {fetchedList}
           {generatedList}
         </ol>
       </div>
