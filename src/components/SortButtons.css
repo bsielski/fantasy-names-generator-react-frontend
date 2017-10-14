@@ -7,12 +7,20 @@
 
 .sort-button {
     height: 32px;
-    width: 82px;
+    width: 112px;
     background-color: #d9cca7; /* grey         */
     font-family: 'SeshatRegular', serif;
     /* border: 1px solid #a67d65; /\* brown        *\/ */
     margin: 0 2px 2px 0;
-    padding: 0;
+    padding: 2px 0 0 0;
     font-size: 14px;
     border-width: 1px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.sort_icon {
+    pointer-events: none;
 }

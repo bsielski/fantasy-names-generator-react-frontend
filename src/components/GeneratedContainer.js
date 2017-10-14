@@ -56,10 +56,10 @@ export class GeneratedContainer extends React.Component {
     return (
       <div>
         <br />
-        <h2 className="subsection-header">Names from namestes (debugging)</h2>
+        {/* <h2 className="subsection-header">Names from namestes (debugging)</h2>
         <ol className="list-of-generated">
           {fetchedList}
-        </ol>
+        </ol> */}
         <h2 className="subsection-header">Generated names</h2>
         <ol className="list-of-generated" id="list-of-generated">
           {generatedList}
