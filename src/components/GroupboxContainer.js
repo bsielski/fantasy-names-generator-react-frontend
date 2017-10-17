@@ -1,5 +1,6 @@
 import React from 'react';
 import {Groupbox} from './Groupbox';
+import {CustomGroupbox} from './CustomGroupbox';
 
 import './GroupboxContainer.css';
 
@@ -16,7 +17,7 @@ export class GroupboxContainer extends React.Component {
       return (
         <Groupbox key={index} group={group}
           subgroups={this.props.subgroups.filter(subgroup => subgroup.attributes["group-id"].toString() === group.id)}
-          namesets={this.props.namesets} handleCheckboxChange={this.props.handleCheckboxChange} 
+          namesets={this.props.namesets} handleCheckboxChange={this.props.handleCheckboxChange}
         />
       );
     }
@@ -28,6 +29,8 @@ export class GroupboxContainer extends React.Component {
         <h2 className="subsection-header">Pick a nameset or namestes</h2>
         <section className="group-container">
           {groupboxes}
+          <CustomGroupbox label="Custom group 1"/>
+          <CustomGroupbox label="Custom group 2"/>
         </section>
       </div>
     )
