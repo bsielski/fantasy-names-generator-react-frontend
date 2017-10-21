@@ -32,6 +32,7 @@ export class App extends React.Component {
       generated: [],
       isGenerating: false,
       wayOfSorting: "unsorted",
+      customNames: {},
     };
     this.numberOptions = [
       {value: 10, label: '10', description: "(I feel very lucky).",},
@@ -72,6 +73,7 @@ export class App extends React.Component {
         } else {
           this.setState(
             { fetchedNames: fetched },
+            // her handle custom names
             this.generate
           );
         }

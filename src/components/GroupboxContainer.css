@@ -56,22 +56,3 @@
     margin: 2px;
     flex: 1 0 140px;
 }
-
-.group-box__item {
-    display: flex;
-    flex-flow: row;
-    align-items: flex-start;
-}
-
-.group-box__checkbox {
-    flex: 0 0 15px;
-}
-
-.group-box__label {
-
-}
-
-.group-box__names_number {
-    font-family: 'SeshatRegular', serif;
-    font-size: 11px;
-}
