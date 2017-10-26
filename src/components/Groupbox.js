@@ -18,6 +18,7 @@ export class Groupbox extends React.Component {
           namesets={this.props.namesets.filter(nameset => nameset.attributes["subgroup-id"].toString() === subgroup.id)}
           handleCheckboxChange={this.props.handleCheckboxChange}
           custom={this.props.group.attributes.custom}
+          defaultCustomNames={this.props.defaultCustomNames}
         />
       );
     }

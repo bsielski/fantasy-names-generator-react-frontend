@@ -32,7 +32,7 @@ export class App extends React.Component {
       generated: [],
       isGenerating: false,
       wayOfSorting: "unsorted",
-      customNames: {},
+      defaultCustomNames: {},
     };
     this.numberOptions = [
       {value: 10, label: '10', description: "(I feel very lucky).",},
@@ -140,30 +140,90 @@ export class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/api/v1/groups')
+    const filterCustomGroupsID = (groups) => {
+      const ids = [];
+      groups.forEach(group => {
+        if (group.attributes.custom == true) {
+          ids.push(group.id);
+        }
+      });
+      return ids;
+    }
+
+    const filterCustomSubgroupsID = (subgroups, groupIds) => {
+      const ids = [];
+      subgroups.forEach(subgroup => {
+        if (groupIds.includes(subgroup.attributes["group-id"].toString()) == true) {
+          ids.push(subgroup.id);
+        }
+      });
+      return ids;
+    }
+
+    const filterCustomNamesetsID = (namesets, subgroupIds) => {
+      const ids = [];
+      namesets.forEach(nameset => {
+        if (subgroupIds.includes(nameset.attributes["subgroup-id"].toString()) == true) {
+          ids.push(nameset.id);
+        }
+      });
+      return ids;
+    }
+
+    fetch('http://localhost:3001/api/v1/groups?include=subgroups')
     .then(response => response.json())
     .then(response => {
-      this.setState({
-        groups: response.data,
-      });
+      this.setState(
+        {groups: response.data, subgroups: response.included},
+        () => {
+          fetch('http://localhost:3001/api/v1/namesets')
+          .then(response => response.json())
+          .then(response => {
+            this.setState(
+              {namesets: response.data},
+              () => {
+                const customGroupIds = filterCustomGroupsID(this.state.groups);
+                const customSubgroupIds = filterCustomSubgroupsID(this.state.subgroups, customGroupIds);
+                const customNamesetIds = filterCustomNamesetsID(this.state.namesets, customSubgroupIds);
+                // console.log("CUSTOM NAMESET IDS: ", customNamesetIds);
+
+                const customNames = {};
+                customNamesetIds.forEach(id => {
+                  customNames[id.toString()] = [];
+                });
+                // console.log("CUSTOM NAMES OBJECT: ", customNames);
+
+                // console.log("GET REQUEST FUUUUCKKK: ", 'http://localhost:3001/api/v1/names?filter' + "[nameset-id]=" + customNamesetIds.toString());
+                fetch('http://localhost:3001/api/v1/names?filter' + "[nameset-id]=" + customNamesetIds.toString())
+                .then(response => {console.log("RESPONSE: ", response); return response.json();})
+                .then(response => {
+                  console.log("RESPONSEEEEEE: ", response.data);
+
+                  response.data.forEach(name => {
+                    // console.log("CUSTOM NAMESSS: ", customNames);
+                    // console.log("FUCKING TYPEEEE: ", name.attributes["nameset-id"], "is fucking", typeof name.attributes["nameset-id"]);
+                    // console.log("FUCKING TYPEEE of FUCK: ", typeof customNames[name.attributes["nameset-id"].toString()]);
+                    // console.log("IS FUCK AN ARRAY? ", Array.isArray(customNames[name.attributes["nameset-id"]]));
+                    customNames[name.attributes["nameset-id"]].push(name);
+                  });
+                  console.log("CUSTOM NAMESSS: ", customNames);
+                  this.setState(
+                    {defaultCustomNames: customNames},
+                  );
+                })
+                .catch(error => console.log(error));
+
+              }
+            );
+          })
+          .catch(error => console.log(error));
+
+        }
+      );
+
     })
     .catch(error => console.log(error));
-    fetch('http://localhost:3001/api/v1/subgroups')
-    .then(response => response.json())
-    .then(response => {
-      this.setState({
-        subgroups: response.data,
-      });
-    })
-    .catch(error => console.log(error));
-    fetch('http://localhost:3001/api/v1/namesets')
-    .then(response => response.json())
-    .then(response => {
-      this.setState({
-        namesets: response.data,
-      });
-    })
-    .catch(error => console.log(error));
+
   }
 
   render() {
@@ -181,6 +241,7 @@ export class App extends React.Component {
               subgroups={this.state.subgroups}
               namesets={this.state.namesets}
               handleCheckboxChange={this.toggleCheckbox}
+              defaultCustomNames={this.state.defaultCustomNames}
             />
             <ActionButton
               isGenerating={this.state.isGenerating}

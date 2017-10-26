@@ -1,4 +1,5 @@
 import React from 'react';
+import {Textarea} from './Textarea';
 
 import './Nameset.css';
 
@@ -25,19 +26,17 @@ export class Nameset extends React.Component {
   render() {
     const namesetId = "nameset-" + this.props.nameset.id.toString()
 
+
     let textArea = null;
     let newRow = null;
 
     if (this.props.custom) {
-      textArea = <textarea
-        name="textarea"
-        className="custom_names__text_area"
-        rows="10"
-        defaultalue="Write something here">
-      </textarea>;
+      textArea = <Textarea
+        namesetId={this.props.nameset.id.toString()}
+        customNames={this.props.defaultCustomNames}
+      />;
       newRow = <br />;
     }
-
 
     const namesCount = () => {
       if (this.props.nameset.attributes["names-count"]) {
@@ -47,6 +46,7 @@ export class Nameset extends React.Component {
         return "0";
       }
     }
+
     return (
       <div>
         <div className="group-box__item">

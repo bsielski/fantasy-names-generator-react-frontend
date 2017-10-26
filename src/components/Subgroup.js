@@ -17,6 +17,7 @@ export class Subgroup extends React.Component {
           nameset={nameset}
           handleCheckboxChange={this.props.handleCheckboxChange}
           custom={this.props.custom}
+          defaultCustomNames={this.props.defaultCustomNames}
         />
       );
     }
