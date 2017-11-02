@@ -6,23 +6,42 @@ import './GroupboxContainer.css';
 export class GroupboxContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      groups: [],
+    };
   }
+
+
+  componentDidMount() {
+
+    fetch('http://localhost:3001/api/v1/groups')
+    .then(response => {
+      // console.log("RESPONSE for groups: ", response);
+      return response.json();
+    })
+    .then(response => {
+      // console.log("RESPONSEEEEEE: ", response.data);
+      this.setState(
+        {groups: response.data},
+      );
+    })
+    .catch(error => console.log(error));
+  }
+
 
   render() {
 
-    const buildGroupbox = (group, index) => {
+    const buildGroupbox = (group) => {
       return (
-        <Groupbox key={index}
+        <Groupbox
+          key={group.id}
           group={group}
-          subgroups={this.props.subgroups.filter(subgroup => subgroup.attributes["group-id"].toString() === group.id)}
-          namesets={this.props.namesets} handleCheckboxChange={this.props.handleCheckboxChange}
-          defaultCustomNames={this.props.defaultCustomNames}
+          handleCheckboxChange={this.props.handleCheckboxChange}
         />
       );
     }
 
-    const groupboxes = this.props.groups.map(buildGroupbox)
+    const groupboxes = this.state.groups.map(buildGroupbox)
 
     return (
       <div>
