@@ -2,8 +2,7 @@ import React from 'react';
 import {RadioGroup} from './RadioGroup';
 import {GroupboxContainer} from './GroupboxContainer';
 import {ActionButton} from './ActionButton';
-import {SortButtons} from './SortButtons';
-import {GeneratedContainer} from './GeneratedContainer';
+import {GeneratedList} from './GeneratedList';
 
 import {Generator} from '../generator';
 import {Splitter} from '../splitter';
@@ -22,17 +21,12 @@ export class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      groups: [],
-      subgroups: [],
-      namesets: [],
       actionButtonText: 'placeholder',
       selectedNamesets: new Set(),
       selectedNumberOption: 0,
-      fetchedNames: [],
       generated: [],
       isGenerating: false,
-      wayOfSorting: "unsorted",
-      defaultCustomNames: {},
+      fetchedNames: [],
     };
     this.numberOptions = [
       {value: 10, label: '10', description: "(I feel very lucky).",},
@@ -43,13 +37,6 @@ export class App extends React.Component {
     this.toggleCheckbox = this.toggleCheckbox.bind(this);
     this.setHowManyNames = this.setHowManyNames.bind(this);
     this.handleAction = this.handleAction.bind(this);
-    this.setSortMethod = this.setSortMethod.bind(this);
-  }
-
-  setSortMethod(method) {
-    this.setState(
-      { wayOfSorting: method },
-    );
   }
 
   handleAction(e) {
@@ -57,7 +44,7 @@ export class App extends React.Component {
     this.setState(
       { isGenerating: true },
     );
-    console.log("CLICKED");
+    // console.log("CLICKED");
     const fetched = [];
     let counter = 0;
     const fetchEverything = (ids) => {
@@ -140,89 +127,7 @@ export class App extends React.Component {
   }
 
   componentDidMount() {
-    const filterCustomGroupsID = (groups) => {
-      const ids = [];
-      groups.forEach(group => {
-        if (group.attributes.custom == true) {
-          ids.push(group.id);
-        }
-      });
-      return ids;
-    }
 
-    const filterCustomSubgroupsID = (subgroups, groupIds) => {
-      const ids = [];
-      subgroups.forEach(subgroup => {
-        if (groupIds.includes(subgroup.attributes["group-id"].toString()) == true) {
-          ids.push(subgroup.id);
-        }
-      });
-      return ids;
-    }
-
-    const filterCustomNamesetsID = (namesets, subgroupIds) => {
-      const ids = [];
-      namesets.forEach(nameset => {
-        if (subgroupIds.includes(nameset.attributes["subgroup-id"].toString()) == true) {
-          ids.push(nameset.id);
-        }
-      });
-      return ids;
-    }
-
-    fetch('http://localhost:3001/api/v1/groups?include=subgroups')
-    .then(response => response.json())
-    .then(response => {
-      this.setState(
-        {groups: response.data, subgroups: response.included},
-        () => {
-          fetch('http://localhost:3001/api/v1/namesets')
-          .then(response => response.json())
-          .then(response => {
-            this.setState(
-              {namesets: response.data},
-              () => {
-                const customGroupIds = filterCustomGroupsID(this.state.groups);
-                const customSubgroupIds = filterCustomSubgroupsID(this.state.subgroups, customGroupIds);
-                const customNamesetIds = filterCustomNamesetsID(this.state.namesets, customSubgroupIds);
-                // console.log("CUSTOM NAMESET IDS: ", customNamesetIds);
-
-                const customNames = {};
-                customNamesetIds.forEach(id => {
-                  customNames[id.toString()] = [];
-                });
-                // console.log("CUSTOM NAMES OBJECT: ", customNames);
-
-                // console.log("GET REQUEST FUUUUCKKK: ", 'http://localhost:3001/api/v1/names?filter' + "[nameset-id]=" + customNamesetIds.toString());
-                fetch('http://localhost:3001/api/v1/names?filter' + "[nameset-id]=" + customNamesetIds.toString())
-                .then(response => {console.log("RESPONSE: ", response); return response.json();})
-                .then(response => {
-                  console.log("RESPONSEEEEEE: ", response.data);
-
-                  response.data.forEach(name => {
-                    // console.log("CUSTOM NAMESSS: ", customNames);
-                    // console.log("FUCKING TYPEEEE: ", name.attributes["nameset-id"], "is fucking", typeof name.attributes["nameset-id"]);
-                    // console.log("FUCKING TYPEEE of FUCK: ", typeof customNames[name.attributes["nameset-id"].toString()]);
-                    // console.log("IS FUCK AN ARRAY? ", Array.isArray(customNames[name.attributes["nameset-id"]]));
-                    customNames[name.attributes["nameset-id"]].push(name);
-                  });
-                  console.log("CUSTOM NAMESSS: ", customNames);
-                  this.setState(
-                    {defaultCustomNames: customNames},
-                  );
-                })
-                .catch(error => console.log(error));
-
-              }
-            );
-          })
-          .catch(error => console.log(error));
-
-        }
-      );
-
-    })
-    .catch(error => console.log(error));
 
   }
 
@@ -249,36 +154,15 @@ export class App extends React.Component {
               howManyNames={this.numberOptions[this.state.selectedNumberOption].value}
               onClick={this.handleAction}
             />
-            {/* <DebugInfo namesets={this.state.selectedNamesets} /> */}
           </div>
         </section>
 
         <section className="l-section-container l-section-container--output">
         	<div>
-            <SortButtons setSortMethod={this.setSortMethod} wayOfSorting={this.state.wayOfSorting} />
-            <GeneratedContainer fetched={this.state.fetchedNames} generated={this.state.generated} wayOfSorting={this.state.wayOfSorting} />
+            <GeneratedList generated={this.state.generated} />
         	</div>
         </section>
       </main>
     );
   }
 }
-
-// function DebugInfo(props) {
-//   console.log("WTF IS SELECTED NAMESET");
-//   console.log(props.namesets);
-//   const buildNamesets = (id, index) => {
-//     return (
-//       <p key={index}>{id}</p>
-//     );
-//   }
-//
-//   const namesets = Array.from(props.namesets).map(buildNamesets)
-//
-//   return (
-//     <div>
-//       debug<br />
-//       {namesets}
-//     </div>
-//   );
-// }

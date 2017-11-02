@@ -7,27 +7,46 @@ export class Groupbox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      namesets: [],
+      label: this.props.group.attributes.label,
+      id: this.props.group.id,
+      custom: this.props.group.attributes.custom,
+      subgroups: [],
     };
   }
 
+  componentDidMount() {
+    fetch('http://localhost:3001/api/v1/subgroups?filter[group-id]=' + this.state.id)
+    .then(response => {
+      // console.log("RESPONSE for subgroups?filter[group-id]=': ", response);
+      return response.json();
+    })
+    .then(response => {
+      // console.log("RESPONSEEEEEE: ", response.data);
+      this.setState(
+        {subgroups: response.data},
+      );
+      // console.log("IDS: ", ids);
+    })
+    .catch(error => console.log(error));
+  }
+
   render() {
-    const buildSubgroup = (subgroup, index) => {
+    const buildSubgroup = (subgroup) => {
       return (
-        <Subgroup key={index} subgroup={subgroup}
-          namesets={this.props.namesets.filter(nameset => nameset.attributes["subgroup-id"].toString() === subgroup.id)}
+        <Subgroup
+          key={subgroup.id}
+          subgroup={subgroup}
+          custom={this.state.custom}
           handleCheckboxChange={this.props.handleCheckboxChange}
-          custom={this.props.group.attributes.custom}
-          defaultCustomNames={this.props.defaultCustomNames}
         />
       );
     }
 
-    const subgroups = this.props.subgroups.map(buildSubgroup)
+    const subgroups = this.state.subgroups.map(buildSubgroup)
 
     return (
       <section className="group-box">
-        <div className="group-box__header">{this.props.group.attributes.label}</div>
+        <div className="group-box__header">{this.state.label}</div>
         <div className="group-box__body">
           {subgroups}
         </div>
