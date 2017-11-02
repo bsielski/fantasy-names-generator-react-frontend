@@ -2,8 +2,7 @@ import React from 'react';
 import {RadioGroup} from './RadioGroup';
 import {GroupboxContainer} from './GroupboxContainer';
 import {ActionButton} from './ActionButton';
-import {SortButtons} from './SortButtons';
-import {GeneratedContainer} from './GeneratedContainer';
+import {GeneratedList} from './GeneratedList';
 
 import {Generator} from '../generator';
 import {Splitter} from '../splitter';
@@ -27,7 +26,6 @@ export class App extends React.Component {
       selectedNumberOption: 0,
       generated: [],
       isGenerating: false,
-      wayOfSorting: "unsorted",
       fetchedNames: [],
     };
     this.numberOptions = [
@@ -39,13 +37,6 @@ export class App extends React.Component {
     this.toggleCheckbox = this.toggleCheckbox.bind(this);
     this.setHowManyNames = this.setHowManyNames.bind(this);
     this.handleAction = this.handleAction.bind(this);
-    this.setSortMethod = this.setSortMethod.bind(this);
-  }
-
-  setSortMethod(method) {
-    this.setState(
-      { wayOfSorting: method },
-    );
   }
 
   handleAction(e) {
@@ -163,36 +154,15 @@ export class App extends React.Component {
               howManyNames={this.numberOptions[this.state.selectedNumberOption].value}
               onClick={this.handleAction}
             />
-            {/* <DebugInfo namesets={this.state.selectedNamesets} /> */}
           </div>
         </section>
 
         <section className="l-section-container l-section-container--output">
         	<div>
-            <SortButtons setSortMethod={this.setSortMethod} wayOfSorting={this.state.wayOfSorting} />
-            <GeneratedContainer fetched={this.state.fetchedNames} generated={this.state.generated} wayOfSorting={this.state.wayOfSorting} />
+            <GeneratedList generated={this.state.generated} />
         	</div>
         </section>
       </main>
     );
   }
 }
-
-// function DebugInfo(props) {
-//   console.log("WTF IS SELECTED NAMESET");
-//   console.log(props.namesets);
-//   const buildNamesets = (id, index) => {
-//     return (
-//       <p key={index}>{id}</p>
-//     );
-//   }
-//
-//   const namesets = Array.from(props.namesets).map(buildNamesets)
-//
-//   return (
-//     <div>
-//       debug<br />
-//       {namesets}
-//     </div>
-//   );
-// }
