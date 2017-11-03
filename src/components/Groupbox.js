@@ -38,6 +38,7 @@ export class Groupbox extends React.Component {
           subgroup={subgroup}
           custom={this.state.custom}
           handleCheckboxChange={this.props.handleCheckboxChange}
+          registerNameset={this.props.registerNameset}
         />
       );
     }

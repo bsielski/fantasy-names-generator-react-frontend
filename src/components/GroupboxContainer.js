@@ -37,6 +37,7 @@ export class GroupboxContainer extends React.Component {
           key={group.id}
           group={group}
           handleCheckboxChange={this.props.handleCheckboxChange}
+          registerNameset={this.props.registerNameset}
         />
       );
     }

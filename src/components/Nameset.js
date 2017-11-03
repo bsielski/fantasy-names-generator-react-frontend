@@ -75,6 +75,8 @@ export class Nameset extends React.Component {
           // customNames={this.state.names}
           namesetId={this.state.nameset.id}
           custom={this.props.custom}
+          separator={this.state.nameset.attributes.variant_separator}
+          registerNameset={this.props.registerNameset}
         />
       </div>
     )

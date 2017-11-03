@@ -38,6 +38,7 @@ export class Subgroup extends React.Component {
           nameset={nameset}
           handleCheckboxChange={this.props.handleCheckboxChange}
           custom={this.props.custom}
+          registerNameset={this.props.registerNameset}
         />
       );
     }

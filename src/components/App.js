@@ -28,6 +28,7 @@ export class App extends React.Component {
       isGenerating: false,
       fetchedNames: [],
     };
+    this.namesets = {};
     this.numberOptions = [
       {value: 10, label: '10', description: "(I feel very lucky).",},
       {value: 100, label: '100', description: "",},
@@ -37,14 +38,21 @@ export class App extends React.Component {
     this.toggleCheckbox = this.toggleCheckbox.bind(this);
     this.setHowManyNames = this.setHowManyNames.bind(this);
     this.handleAction = this.handleAction.bind(this);
+    this.registerNameset = this.registerNameset.bind(this);
   }
+
+  registerNameset(id, nameset) {
+    this.namesets[id] = nameset;
+  }
+
 
   handleAction(e) {
     e.preventDefault();
     this.setState(
       { isGenerating: true },
     );
-    // console.log("CLICKED");
+
+    console.log("CLICKED, NAMESETS: ", this.namesets);
     const fetched = [];
     let counter = 0;
     const fetchEverything = (ids) => {
@@ -83,7 +91,7 @@ export class App extends React.Component {
       NameLengthFilter,
       CapitalizeFilter,
     ]
-
+    console.log("WTF IS THIS:", this.state.fetchedNames)
     this.state.fetchedNames.forEach(nameset => {
         const namesetForGenerator = {
           label: nameset[0].attributes.label,
@@ -92,7 +100,12 @@ export class App extends React.Component {
           filters: standardFilters,
         }
         nameset[1].forEach(name => {
+          if (this.namesets[nameset[0].id]) {
+            namesetForGenerator.names.push(this.namesets[nameset[0].id]);
+          }
+          else {
             namesetForGenerator.names.push(name.attributes.variants);
+          }
         });
         namesetsForGenerator.push(namesetForGenerator);
     });
@@ -127,8 +140,6 @@ export class App extends React.Component {
   }
 
   componentDidMount() {
-
-
   }
 
   render() {
@@ -147,6 +158,7 @@ export class App extends React.Component {
               namesets={this.state.namesets}
               handleCheckboxChange={this.toggleCheckbox}
               defaultCustomNames={this.state.defaultCustomNames}
+              registerNameset={this.registerNameset}
             />
             <ActionButton
               isGenerating={this.state.isGenerating}
