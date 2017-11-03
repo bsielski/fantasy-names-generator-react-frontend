@@ -12,7 +12,7 @@ export class CustomNamesArea extends React.Component {
 
 
   componentDidMount() {
-    if (this.props.custom == true) {
+    if (this.props.custom === true) {
       fetch('http://localhost:3001/api/v1/names?filter[nameset-id]=' + this.props.namesetId)
       .then(response => {
         // console.log("RESPONSE for names?filter[nameset-id]=': ", response);
@@ -34,7 +34,7 @@ export class CustomNamesArea extends React.Component {
   }
 
   render() {
-    if (this.props.custom == true) {
+    if (this.props.custom === true) {
       return (
         <textarea
           name="textarea"

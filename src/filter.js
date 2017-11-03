@@ -32,13 +32,13 @@ export class Filter {
   }
 
   onFilter(name) {
-	  if (name == false) {
+	  if (name === false) {
 	    return false
 	  }
   }
 
   afterFilter(name) {
-	  if (name != this._oldName) {
+	  if (name !== this._oldName) {
 	    this._changed = true
 	  }
 	  // console.log(this._filterName + ": " + " " + this._oldName + " --> " + name )
@@ -84,7 +84,7 @@ export class ConsonantsPatternsFilter extends Filter {
   }
 
   onFilter(name) {
-	  if (super.onFilter(name) == false) {
+	  if (super.onFilter(name) === false) {
 	    return this._veto()
 	  }
 	  let groups = name.match(this._regex)
@@ -148,7 +148,7 @@ export class VowelsPatternsFilter extends Filter {
   }
 
   onFilter(name) {
-  	if (super.onFilter(name) == false) {
+  	if (super.onFilter(name) === false) {
 	    return this._veto()
   	}
   	let groups = name.match(this._regex)
@@ -190,7 +190,7 @@ export class RepeatedLettersFilter extends Filter {
   }
 
   onFilter(name) {
-  	if (super.onFilter(name) == false) {
+  	if (super.onFilter(name) === false) {
 	    return this._veto()
   	}
   	let parts = name.match(this._repeatsPattern)
@@ -222,7 +222,7 @@ export class UniquenessFilter extends Filter {
   }
 
   onFilter(name) {
-  	if (super.onFilter(name) == false) {
+  	if (super.onFilter(name) === false) {
       return this._veto()
   	}
   	if (this._toAvoid.includes(name)) {
@@ -262,7 +262,7 @@ export class NameLengthFilter extends Filter {
   }
 
   onFilter(name) {
-  	if (super.onFilter(name) == false) {
+  	if (super.onFilter(name) === false) {
   	  return this._veto()
   	}
   	if (name.length >= this._min && name.length <= this._max) {
@@ -283,7 +283,7 @@ export class CapitalizeFilter extends Filter {
   }
 
   onFilter(name) {
-	  if (super.onFilter(name) == false) {
+	  if (super.onFilter(name) === false) {
 	    return this._veto()
 	  }
 	  return name.charAt(0).toUpperCase() + name.slice(1);

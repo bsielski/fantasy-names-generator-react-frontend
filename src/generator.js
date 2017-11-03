@@ -1,10 +1,10 @@
 // import {Splitter} from './splitter';
-import {ConsonantsPatternsFilter} from './filter';
-import {VowelsPatternsFilter} from './filter';
-import {RepeatedLettersFilter} from './filter';
-import {UniquenessFilter} from './filter';
-import {NameLengthFilter} from './filter';
-import {CapitalizeFilter} from './filter';
+// import {ConsonantsPatternsFilter} from './filter';
+// import {VowelsPatternsFilter} from './filter';
+// import {RepeatedLettersFilter} from './filter';
+// import {UniquenessFilter} from './filter';
+// import {NameLengthFilter} from './filter';
+// import {CapitalizeFilter} from './filter';
 import {removeFromArray} from './helpers';
 import {randomElement} from './helpers';
 
@@ -95,7 +95,7 @@ export class Generator {
 
   _getRandomName() {
     const pickedSomething = randomElement(this._names)
-    if (typeof pickedSomething == "string") {
+    if (typeof pickedSomething === "string") {
         // console.log(pickedSomething)
         return pickedSomething
     }
@@ -104,7 +104,7 @@ export class Generator {
         return randomElement(pickedSomething)
     }
     else {
-        throw "the random name not string and not Array"
+        throw new Error("the random name not string and not Array");
     }
   }
 
@@ -116,7 +116,7 @@ export class Generator {
     result.push(pickedNameSet)
     const pickedSomething = randomElement(pickedNameSet.names)
 
-    if (typeof pickedSomething == "string") {
+    if (typeof pickedSomething === "string") {
       // console.log(pickedSomething)
       result.push(pickedSomething)
     }
@@ -125,7 +125,7 @@ export class Generator {
       result.push(randomElement(pickedSomething))
     }
     else {
-      throw "the random name not string and not Array"
+      throw new Error("the random name not string and not Array");
     }
     return result
   }
@@ -137,8 +137,8 @@ export class Generator {
     let currentMiddlePart
     let currentLastPart
     let generatedName
-    let vetos
-    let changes
+    // let vetos
+    // let changes
     let allTriesCountDown = amount * 4 + 50
     const filtersTriesLimit = 3
     let nameSetsToPick
@@ -152,7 +152,7 @@ export class Generator {
       resultOfRandomPick = this._getRandomNameWithEqualChancesToAnyNameSet(nameSetsToPick)
       removeFromArray(nameSetsToPick, resultOfRandomPick[0])
       currentFirstPart = currentSplitter.getFirstPart(resultOfRandomPick[1])
-      if (nameSetsToPick.length == 0) {
+      if (nameSetsToPick.length === 0) {
         nameSetsToPick = this._nameSets.slice()
       }
 
@@ -160,8 +160,8 @@ export class Generator {
       resultOfRandomPick = this._getRandomNameWithEqualChancesToAnyNameSet(nameSetsToPick)
       removeFromArray(nameSetsToPick, resultOfRandomPick[0])
       currentMiddlePart = currentSplitter.getMiddlePart(resultOfRandomPick[1])
-      if (nameSetsToPick.length == 0) {
-        if (currentMiddlePart == "") {
+      if (nameSetsToPick.length === 0) {
+        if (currentMiddlePart === "") {
           nameSetsToPick = [resultOfRandomPick[0]]
         }
         else {
@@ -173,7 +173,7 @@ export class Generator {
       resultOfRandomPick = this._getRandomNameWithEqualChancesToAnyNameSet(nameSetsToPick)
       removeFromArray(nameSetsToPick, resultOfRandomPick[0])
       currentLastPart = currentSplitter.getLastPart(resultOfRandomPick[1])
-      if (nameSetsToPick.length == 0) {
+      if (nameSetsToPick.length === 0) {
         nameSetsToPick = this._nameSets.slice()
       }
 
@@ -181,7 +181,7 @@ export class Generator {
 
       generatedName = this._filtered(generatedName, filtersTriesLimit)
 
-      if (generatedName != false) {
+      if (generatedName !== false) {
         generated.push(generatedName)
       }
 

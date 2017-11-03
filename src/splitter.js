@@ -63,7 +63,7 @@ export class Splitter {
   	let lastPartIndex = getMedian(a, b, c, d, e)
   	let start = Math.min(firstPartIndex, lastPartIndex)
   	let end = Math.max(firstPartIndex, lastPartIndex)
-  	if (start == end) {
+  	if (start === end) {
 	    return ""
   	}
   	else {

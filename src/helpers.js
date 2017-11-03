@@ -4,7 +4,7 @@
 //
 export function uniqueArray(array) {
   function isItFirstOccurrence(element, index, array) {
-    return index == array.indexOf(element)
+    return index === array.indexOf(element)
   }
   return array.slice().filter(isItFirstOccurrence)
 }
@@ -97,7 +97,7 @@ export function buildRegexToSplit(separators, caseless=true, where="after") {
   	  if (!oneChar) {
   		  oneChar = true
   		  orPart += "[" + separator
-  		  norPart += "[" + "^" + separator
+  		  norPart += "[^" + separator
   	  }
   	  else {
   		  orPart += separator
@@ -115,17 +115,17 @@ export function buildRegexToSplit(separators, caseless=true, where="after") {
   	norPart = norPart.slice(0, -1)
   	norPart += ")"
   }
-  if (where == "after") {
+  if (where === "after") {
 	  return new RegExp(norPart + "{0,}" + orPart + "{0,}", modPart)
   }
-  else if (where == "before") {
+  else if (where === "before") {
 	  return new RegExp(orPart + "{0,}" + norPart + "{0,}", modPart)
   }
-  else if (where == "instead") {
+  else if (where === "instead") {
 	  return new RegExp(norPart, modPart)
   }
   else {
-	  throw "unknown split method as an argument!"
+	  throw new Error("unknown split method as an argument!");
   }
 }
 
@@ -142,7 +142,7 @@ export function flatten(ary) {
 }
 
 function fairRound(number) {
-  if (number - Math.floor(number) == 0.5) {
+  if (number - Math.floor(number) === 0.5) {
     return parseInt(number, 10) + Math.round(Math.random())
   }
   else {
