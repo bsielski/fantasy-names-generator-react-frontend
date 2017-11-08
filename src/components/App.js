@@ -33,7 +33,7 @@ export class App extends React.Component {
       {value: 10, label: '10', description: "(I feel very lucky).",},
       {value: 100, label: '100', description: "",},
       {value: 500, label: '500', description: "",},
-      {value: 10000, label: '10000', description: "",},
+      {value: 5000, label: '5000', description: "",},
     ];
     this.toggleCheckbox = this.toggleCheckbox.bind(this);
     this.setHowManyNames = this.setHowManyNames.bind(this);
