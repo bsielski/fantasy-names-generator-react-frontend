@@ -57,7 +57,7 @@ export class App extends React.Component {
     const fetched = [];
     let counter = 0;
     const fetchEverything = (ids) => {
-      fetch(`http://' + API_SERVER + ':3001/api/v1/namesets/${ids[counter]}?include=names`)
+      fetch(`http://` + API_SERVER + `:3001/api/v1/namesets/${ids[counter]}?include=names`)
       .then(response => response.json())
       .then(response => {
         if (response.included) {
