@@ -14,7 +14,7 @@ export class GroupboxContainer extends React.Component {
 
   componentDidMount() {
 
-    fetch('http://localhost:3001/api/v1/groups')
+    fetch('http://127.0.0.1:3001/api/v1/groups')
     .then(response => {
       // console.log("RESPONSE for groups: ", response);
       return response.json();

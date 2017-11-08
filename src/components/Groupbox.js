@@ -15,7 +15,7 @@ export class Groupbox extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/api/v1/subgroups?filter[group-id]=' + this.state.id)
+    fetch('http://127.0.0.1:3001/api/v1/subgroups?filter[group-id]=' + this.state.id)
     .then(response => {
       // console.log("RESPONSE for subgroups?filter[group-id]=': ", response);
       return response.json();

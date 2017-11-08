@@ -33,7 +33,7 @@ export class CustomNamesArea extends React.Component {
 
   componentDidMount() {
     if (this.props.custom === true) {
-      fetch('http://localhost:3001/api/v1/names?filter[nameset-id]=' + this.props.namesetId)
+      fetch('http://127.0.0.1:3001/api/v1/names?filter[nameset-id]=' + this.props.namesetId)
       .then(response => {
         // console.log("RESPONSE for names?filter[nameset-id]=': ", response);
         return response.json();
