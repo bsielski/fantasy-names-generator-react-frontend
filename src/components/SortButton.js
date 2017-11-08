@@ -7,9 +7,18 @@ export class SortButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isReverse: false,
+      isReverse: this._isReversedAtStart(),
     };
     this.handleClick = this.handleClick.bind(this);
+  }
+
+  _isReversedAtStart() {
+    if (this.props.startReversed) {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
   handleClick(e) {

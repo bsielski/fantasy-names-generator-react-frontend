@@ -108,6 +108,7 @@ export class GeneratedList extends React.Component {
             icon="002-sort-by-numeric-order.svg"
             iconReversed="001-sort-by-order.svg"
             sort={this.unsort}
+            startReversed={true}
           />
           <SortButton label="Alphabetically"
             alt="from A to Z"
