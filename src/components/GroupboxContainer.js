@@ -1,5 +1,6 @@
 import React from 'react';
 import {Groupbox} from './Groupbox';
+import {API_SERVER} from '../paths';
 
 import './GroupboxContainer.css';
 
@@ -14,7 +15,7 @@ export class GroupboxContainer extends React.Component {
 
   componentDidMount() {
 
-    fetch('http://127.0.0.1:3001/api/v1/groups')
+    fetch('http://' + API_SERVER + ':3001/api/v1/groups')
     .then(response => {
       // console.log("RESPONSE for groups: ", response);
       return response.json();

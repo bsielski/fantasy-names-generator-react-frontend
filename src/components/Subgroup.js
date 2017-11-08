@@ -1,5 +1,6 @@
 import React from 'react';
 import {Nameset} from './Nameset';
+import {API_SERVER} from '../paths';
 
 // import './Groupbox.css';
 
@@ -14,7 +15,7 @@ export class Subgroup extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://127.0.0.1:3001/api/v1/namesets?filter[subgroup-id]=' + this.state.id)
+    fetch('http://' + API_SERVER + ':3001/api/v1/namesets?filter[subgroup-id]=' + this.state.id)
     .then(response => {
       // console.log("RESPONSE for subgroups?filter[group-id]=': ", response);
       return response.json();

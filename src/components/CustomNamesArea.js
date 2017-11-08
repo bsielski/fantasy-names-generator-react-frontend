@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './Nameset.css';
+import {API_SERVER} from '../paths';
 
 export class CustomNamesArea extends React.Component {
   constructor(props) {
@@ -33,7 +34,7 @@ export class CustomNamesArea extends React.Component {
 
   componentDidMount() {
     if (this.props.custom === true) {
-      fetch('http://127.0.0.1:3001/api/v1/names?filter[nameset-id]=' + this.props.namesetId)
+      fetch('http://' + API_SERVER + ':3001/api/v1/names?filter[nameset-id]=' + this.props.namesetId)
       .then(response => {
         // console.log("RESPONSE for names?filter[nameset-id]=': ", response);
         return response.json();
