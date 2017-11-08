@@ -1,0 +1,8 @@
+.current_sort_method {
+  font-family: sans-serif;
+  font-size: 13px;
+}
+
+.sort_icon {
+    pointer-events: none;
+}
