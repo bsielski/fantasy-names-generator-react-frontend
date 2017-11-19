@@ -2,12 +2,7 @@ import React from 'react';
 import {RadioButton} from './RadioButton';
 
 export class RadioGroup extends React.Component {
-  // this.props.options = [
-  //   {value: 10, label: '10', description: "(I feel very lucky).",},
-  //   {value: 100, label: '100', description: "",},
-  //   {value: 500, label: '500', description: "",},
-  //   {value: 10000, label: '10000', description: "",},
-  // ];
+
   constructor(props) {
     super(props);
     this.handleRadio = this.handleRadio.bind(this);
@@ -32,7 +27,6 @@ export class RadioGroup extends React.Component {
       <div>
         <h2 className="subsection-header">How many names do you want to generate?</h2>
         <div className="how-many-names">
-          {/* <DebugLabel picked={this.props.options[this.state.checkedOption].label} /> */}
           {options}
         </div>
       </div>
@@ -40,12 +34,3 @@ export class RadioGroup extends React.Component {
   }
 
 }
-
-// function DebugLabel(props) {
-//   return (
-//     <p className="lead">
-//       <strong>{props.picked}</strong>
-//       {props.picked ? ', nice pick!' : 'Tap away, friend.'}
-//     </p>
-//   );
-// }
