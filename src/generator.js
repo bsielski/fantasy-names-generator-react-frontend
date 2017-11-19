@@ -14,7 +14,7 @@ export class Generator {
     this._splitters = new Set()
     this._filters = new Set()
     this._names = []
-    console.log("NAMESETS:", nameSets)
+    // console.log("NAMESETS:", nameSets)
     this._nameSets.forEach(nameSet => {
       // console.log("SPLITTES:", nameSet.splitters)
       // console.log("NAMESET:", nameSet)
