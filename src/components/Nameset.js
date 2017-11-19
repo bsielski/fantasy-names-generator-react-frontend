@@ -17,20 +17,7 @@ export class Nameset extends React.Component {
   }
 
   componentDidMount() {
-    // fetch('http://127.0.0.1:3001/api/v1/names?filter[nameset-id]=' + this.state.nameset.id)
-    // .then(response => {
-    //   // console.log("RESPONSE for names?filter[nameset-id]=': ", response);
-    //   return response.json();
-    // })
-    // .then(response => {
-    //   console.log("RESPONSE.DATA NAMES: ", response.data);
-    //
-    //   this.setState(
-    //     {names: response.data},
-    //   );
-    //   // console.log("IDS: ", ids);
-    // })
-    // .catch(error => console.log(error));
+
   }
 
   componentDidUpdate() {

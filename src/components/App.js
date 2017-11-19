@@ -53,7 +53,7 @@ export class App extends React.Component {
       { isGenerating: true },
     );
 
-    console.log("CLICKED, NAMESETS: ", this.namesets);
+    // console.log("CLICKED, NAMESETS: ", this.namesets);
     const fetched = [];
     let counter = 0;
     const fetchEverything = (ids) => {
@@ -92,7 +92,7 @@ export class App extends React.Component {
       NameLengthFilter,
       CapitalizeFilter,
     ]
-    console.log("WTF IS THIS:", this.state.fetchedNames)
+    // console.log("WTF IS THIS:", this.state.fetchedNames)
     this.state.fetchedNames.forEach(nameset => {
         const namesetForGenerator = {
           label: nameset[0].attributes.label,

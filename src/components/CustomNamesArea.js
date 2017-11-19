@@ -18,7 +18,7 @@ export class CustomNamesArea extends React.Component {
     array.forEach(variant => {
       result += variant + "\n"
     });
-    console.log("RESULT:", result);
+    // console.log("RESULT:", result);
     return result;
   }
 
@@ -41,8 +41,8 @@ export class CustomNamesArea extends React.Component {
         return response.json();
       })
       .then(response => {
-        console.log("RESPONSE.DATA NAMES: ", response.data);
-        console.log("RESPONSE.DATA NAMES: ", response.data.map(name => name.attributes.variants).toString());
+        // console.log("RESPONSE.DATA NAMES: ", response.data);
+        // console.log("RESPONSE.DATA NAMES: ", response.data.map(name => name.attributes.variants).toString());
 
         this.setState(
           {names:  this.arrayToText(response.data.map(name => name.attributes.variants))},
