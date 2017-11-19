@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-// import './GeneratedContainer.css';
+import './GeneratedItems.css';
 
 export class GeneratedItems extends React.Component {
 

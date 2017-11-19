@@ -2,7 +2,7 @@ import React from 'react';
 import {Subgroup} from './Subgroup';
 import {API_SERVER} from '../paths';
 
-// import './Groupbox.css';
+import './Groupbox.css';
 
 export class Groupbox extends React.Component {
   constructor(props) {

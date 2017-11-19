@@ -1,0 +1,26 @@
+.l-section-container {
+    border: 1px solid #a67d65; /* brown        */
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    padding: 10px;
+    margin: 10px;
+    background-color: #f2e4bb; /* yellow       */
+}
+
+.l-section-container--input {
+    flex: 1 1 650px;
+}
+
+.l-section-container--output {
+    flex: 1 1 250px;
+}
+
+.subsection-header {
+    /* border: 1px solid #a67d65; /\* brown        *\/ */
+    margin: 0 0 4px 0;
+    font-family: sans-serif;
+    font-size: 15px;
+}

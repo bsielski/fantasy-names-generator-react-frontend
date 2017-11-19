@@ -16,7 +16,7 @@ import {NameLengthFilter} from '../filter';
 import {CapitalizeFilter} from '../filter';
 import {API_SERVER} from '../paths';
 
-// import {ActionButton} from './ActionButton';
+import './App.css';
 
 export class App extends React.Component {
   constructor(props) {

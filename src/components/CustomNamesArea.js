@@ -1,6 +1,7 @@
 import React from 'react';
 
-import './Nameset.css';
+import './CustomNamesArea.css';
+
 import {API_SERVER} from '../paths';
 
 export class CustomNamesArea extends React.Component {

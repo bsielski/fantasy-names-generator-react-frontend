@@ -4,7 +4,7 @@ import {GeneratedHeader} from './GeneratedHeader';
 import {SortButton} from './SortButton';
 import {GeneratedItems} from './GeneratedItems';
 
-// import './GeneratedContainer.css';
+import './GeneratedList.css';
 
 export class GeneratedList extends React.Component {
 
@@ -90,14 +90,6 @@ export class GeneratedList extends React.Component {
   }
 
   render() {
-    // let names
-    // if (this.state.namesToDisplay === []) {
-    //   names = <GeneratedItems items={this.props.generated}/>;
-    // }
-    // else {
-    //   names = <GeneratedItems items={this.state.namesToDisplay}/>;
-    // }
-
     return (
       <div>
         <GeneratedHeader method={this.state.lastSortMethodUsed}/>

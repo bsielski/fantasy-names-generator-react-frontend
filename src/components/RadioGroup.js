@@ -1,6 +1,8 @@
 import React from 'react';
 import {RadioButton} from './RadioButton';
 
+import './RadioGroup.css';
+
 export class RadioGroup extends React.Component {
 
   constructor(props) {

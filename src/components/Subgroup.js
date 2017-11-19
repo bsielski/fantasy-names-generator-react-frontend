@@ -2,7 +2,7 @@ import React from 'react';
 import {Nameset} from './Nameset';
 import {API_SERVER} from '../paths';
 
-// import './Groupbox.css';
+import './Subgroup.css';
 
 export class Subgroup extends React.Component {
   constructor(props) {

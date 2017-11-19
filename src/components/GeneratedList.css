@@ -1,0 +1,6 @@
+.sort-buttons {
+    /* border: 1px solid #a67d65; /\* brown        *\/ */
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0 0 8px 0;
+}

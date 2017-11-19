@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './SortButtons.css';
+import './SortButton.css';
 
 export class SortButton extends React.Component {
 
