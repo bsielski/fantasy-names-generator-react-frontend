@@ -1,5 +1,6 @@
 import React from 'react';
 import {CustomNamesArea} from './CustomNamesArea';
+import {Namelist} from './Namelist';
 
 import './Nameset.css';
 
@@ -11,9 +12,12 @@ export class Nameset extends React.Component {
       custom: this.props.custom,
       isChecked: false,
       isDisable: true,
+      isNamelistOpen: false
       // names: [],
     };
     this.handleChange = this.handleChange.bind(this);
+    this.openNamelist = this.openNamelist.bind(this);
+    this.closeNamelist = this.closeNamelist.bind(this);
   }
 
   componentDidMount() {
@@ -24,6 +28,13 @@ export class Nameset extends React.Component {
     // console.log("STATE NAMES: ", this.state.names);
   }
 
+  openNamelist() {
+    this.setState({ isNamelistOpen: true });
+  }
+
+  closeNamelist() {
+    this.setState({ isNamelistOpen: false });
+  }
 
   handleChange() {
     this.setState(({ isChecked }) => (
@@ -43,6 +54,7 @@ export class Nameset extends React.Component {
       }
       else {
         return "0";
+
       }
     }
 
@@ -53,9 +65,16 @@ export class Nameset extends React.Component {
             onChange={this.handleChange} checked={this.state.isChecked}
           />
           <label className="group-box__label" htmlFor={namesetId}>{this.props.nameset.attributes.label}
-            <span className="group-box__names_number">
+            <span
+              className="group-box__names_number"
+              onClick={this.openNamelist}
+            >
               {" (" + namesCount() + ")"}
             </span>
+            <Namelist isOpen={this.state.isNamelistOpen}
+              onClose={this.closeNamelist}
+              nameset={this.props.nameset}
+            />
           </label>
         </div>
         <CustomNamesArea
