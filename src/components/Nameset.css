@@ -13,6 +13,12 @@
 }
 
 .group-box__names_number {
+    border-width: 0;
+    background-color: inherit;
     font-family: 'SeshatRegular', serif;
     font-size: 11px;
+    text-decoration: underline;
+}
+.group-box__names_number:hover {
+    cursor: pointer;
 }

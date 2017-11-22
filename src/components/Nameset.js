@@ -65,12 +65,12 @@ export class Nameset extends React.Component {
             onChange={this.handleChange} checked={this.state.isChecked}
           />
           <label className="group-box__label" htmlFor={namesetId}>{this.props.nameset.attributes.label}
-            <span
+            <button
               className="group-box__names_number"
               onClick={this.openNamelist}
             >
               {" (" + namesCount() + ")"}
-            </span>
+            </button>
             <Namelist isOpen={this.state.isNamelistOpen}
               onClose={this.closeNamelist}
               nameset={this.props.nameset}
@@ -78,7 +78,6 @@ export class Nameset extends React.Component {
           </label>
         </div>
         <CustomNamesArea
-          // customNames={this.state.names}
           namesetId={this.state.nameset.id}
           custom={this.props.custom}
           separator={this.state.nameset.attributes.variant_separator}
