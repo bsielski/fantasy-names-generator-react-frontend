@@ -6,14 +6,16 @@
   height: 90%;
   transform: translate(-50%, -50%);
   z-index: 9999;
-  background: #fff;
+  background: #f2e4bb;
   display:flex;
   flex-direction: column;
 }
 
 .modal_window__header {
-  margin: 5px 10px;
+  margin: 0;
+  padding: 5px 10px;
   text-align: center;
+  background-color: #d9af8b;
 }
 
 .modal_window__close_button {
