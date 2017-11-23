@@ -92,7 +92,7 @@ export class GeneratedList extends React.Component {
   render() {
     return (
       <div>
-        <GeneratedHeader method={this.state.lastSortMethodUsed}/>
+        <h2 className="subsection-header">Sorting methods</h2>
         <div className="sort-buttons">
           <SortButton label="Unsorted"
             alt="from first to last generated"
@@ -117,6 +117,9 @@ export class GeneratedList extends React.Component {
             sort={this.sortByLength}
           />
         </div>
+        <br />
+        <h2 className="subsection-header">Generated names</h2>
+        <GeneratedHeader method={this.state.lastSortMethodUsed}/>
         <GeneratedItems items={this.state.namesToDisplay}/>
       </div>
     );
