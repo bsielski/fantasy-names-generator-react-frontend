@@ -45,7 +45,7 @@ export class Namelist extends React.Component {
       <div>
         <div className="modal_window">
           <h1 className="modal_window__header">
-            Namelist title {this.props.nameset.attributes.label}
+            {this.props.nameset.attributes.label}
           </h1>
           <div className="modal_window__body">
             <ol className="modal_window__list">
