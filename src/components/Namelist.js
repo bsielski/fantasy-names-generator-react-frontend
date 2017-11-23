@@ -1,45 +1,51 @@
 import React from 'react';
 
-import {API_SERVER} from '../paths';
-
 import './Namelist.css';
 
 export class Namelist extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      names: [],
+      nameList: [],
     };
     this.close = this.close.bind(this);
   }
 
   componentDidMount() {
 
-    fetch('http://' + API_SERVER + ':3001/api/v1/namesets/' + this.props.nameset.id + '/names')
-    .then(response => {
-      // console.log("RESPONSE for groups: ", response);
-      return response.json();
-    })
-    .then(response => {
-      // console.log("RESPONSEEEEEE: ", response.data);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.namesLoading === false) {
       this.setState(
-        {names: response.data},
+        {
+          nameList: nextProps.names.map(name => {
+            return (
+              <li key={name.id}>
+                {name.attributes.variants}
+              </li>
+            );
+          }),
+        }
       );
-    })
-    .catch(error => console.log(error));
+    }
+    else {
+      console.log("LOAADING");
+      this.setState(
+        {
+          nameList: [
+            <p key="1">
+              {"Loading..."}
+            </p>
+          ],
+        }
+      );
+    }
   }
 
   render() {
     if (this.props.isOpen === false)
       return null
-
-    const names = this.state.names.map(name => {
-      return (
-        <li key={name.id}>
-          {name.attributes.variants}
-        </li>
-      );
-    });
 
     return (
       <div>
@@ -49,7 +55,7 @@ export class Namelist extends React.Component {
           </h1>
           <div className="modal_window__body">
             <ol className="modal_window__list">
-              {names}
+              {this.state.nameList}
             </ol>
           </div>
           <p className="modal_window__close_button">

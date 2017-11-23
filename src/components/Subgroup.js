@@ -1,6 +1,5 @@
 import React from 'react';
 import {Nameset} from './Nameset';
-import {API_SERVER} from '../paths';
 
 import './Subgroup.css';
 
@@ -10,24 +9,10 @@ export class Subgroup extends React.Component {
     this.state = {
       id: this.props.subgroup.id,
       custom: this.props.custom,
-      namesets: [],
     };
   }
 
   componentDidMount() {
-    fetch('http://' + API_SERVER + ':3001/api/v1/namesets?filter[subgroup-id]=' + this.state.id)
-    .then(response => {
-      // console.log("RESPONSE for subgroups?filter[group-id]=': ", response);
-      return response.json();
-    })
-    .then(response => {
-      // console.log("RESPONSEEEEEE: ", response.data);
-      this.setState(
-        {namesets: response.data},
-      );
-      // console.log("IDS: ", ids);
-    })
-    .catch(error => console.log(error));
   }
 
 
@@ -44,7 +29,7 @@ export class Subgroup extends React.Component {
       );
     }
 
-    const namesets = this.state.namesets.map(buildNameset)
+    const namesets = this.props.namesets.map(buildNameset)
 
     return (
       <div className="group-box__column">

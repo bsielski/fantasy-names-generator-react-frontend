@@ -1,6 +1,5 @@
 import React from 'react';
 import {Subgroup} from './Subgroup';
-import {API_SERVER} from '../paths';
 
 import './Groupbox.css';
 
@@ -11,24 +10,11 @@ export class Groupbox extends React.Component {
       label: this.props.group.attributes.label,
       id: this.props.group.id,
       custom: this.props.group.attributes.custom,
-      subgroups: [],
     };
   }
 
   componentDidMount() {
-    fetch('http://' + API_SERVER + ':3001/api/v1/subgroups?filter[group-id]=' + this.state.id)
-    .then(response => {
-      // console.log("RESPONSE for subgroups?filter[group-id]=': ", response);
-      return response.json();
-    })
-    .then(response => {
-      // console.log("RESPONSEEEEEE: ", response.data);
-      this.setState(
-        {subgroups: response.data},
-      );
-      // console.log("IDS: ", ids);
-    })
-    .catch(error => console.log(error));
+
   }
 
   render() {
@@ -37,6 +23,7 @@ export class Groupbox extends React.Component {
         <Subgroup
           key={subgroup.id}
           subgroup={subgroup}
+          namesets={this.props.namesets.filter(e => {return (e["attributes"]["subgroup-id"].toString() === subgroup["id"])})}
           custom={this.state.custom}
           handleCheckboxChange={this.props.handleCheckboxChange}
           registerNameset={this.props.registerNameset}
@@ -44,7 +31,7 @@ export class Groupbox extends React.Component {
       );
     }
 
-    const subgroups = this.state.subgroups.map(buildSubgroup)
+    const subgroups = this.props.subgroups.map(buildSubgroup)
 
     return (
       <section className="group-box">

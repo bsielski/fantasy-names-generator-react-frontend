@@ -9,13 +9,15 @@ export class GroupboxContainer extends React.Component {
     super(props);
     this.state = {
       groups: [],
+      subgroups: [],
+      namesets: [],
     };
   }
 
 
   componentDidMount() {
 
-    fetch('http://' + API_SERVER + ':3001/api/v1/groups')
+    fetch('http://' + API_SERVER + ':3001/api/v1/groups?include=subgroups.namesets')
     .then(response => {
       // console.log("RESPONSE for groups: ", response);
       return response.json();
@@ -23,7 +25,11 @@ export class GroupboxContainer extends React.Component {
     .then(response => {
       // console.log("RESPONSEEEEEE: ", response.data);
       this.setState(
-        {groups: response.data},
+        {
+          groups: response.data,
+          subgroups: response.included.filter(e => {return (e["type"] === "subgroups")}),
+          namesets: response.included.filter(e => {return (e["type"] === "namesets")}),
+        },
       );
     })
     .catch(error => console.log(error));
@@ -37,6 +43,8 @@ export class GroupboxContainer extends React.Component {
         <Groupbox
           key={group.id}
           group={group}
+          subgroups={this.state.subgroups.filter(e => {return (e["attributes"]["group-id"].toString() === group["id"])})}
+          namesets={this.state.namesets}
           handleCheckboxChange={this.props.handleCheckboxChange}
           registerNameset={this.props.registerNameset}
         />

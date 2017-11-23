@@ -2,6 +2,8 @@ import React from 'react';
 import {CustomNamesArea} from './CustomNamesArea';
 import {Namelist} from './Namelist';
 
+import {API_SERVER} from '../paths';
+
 import './Nameset.css';
 
 export class Nameset extends React.Component {
@@ -12,8 +14,10 @@ export class Nameset extends React.Component {
       custom: this.props.custom,
       isChecked: false,
       isDisable: true,
-      isNamelistOpen: false
-      // names: [],
+      isNamelistOpen: false,
+      names: [],
+      namesLoaded: false,
+      namesLoading: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.openNamelist = this.openNamelist.bind(this);
@@ -29,7 +33,36 @@ export class Nameset extends React.Component {
   }
 
   openNamelist() {
-    this.setState({ isNamelistOpen: true });
+    if (this.state.namesLoaded === false) {
+      this.setState({namesLoading: true});
+      fetch('http://' + API_SERVER + ':3001/api/v1/namesets/' + this.props.nameset.id + '/names')
+      .then(response => {
+        // console.log("RESPONSE for groups: ", response);
+        return response.json();
+      })
+      .then(response => {
+        this.setState(
+          {
+            names: response.data,
+            namesLoaded: true,
+            namesLoading: false,
+          }
+        );
+      })
+      .catch(error => {
+        console.log(error);
+        this.setState(
+          {
+            namesLoading: false,
+          }
+        );
+      });
+    }
+    this.setState(
+      {
+        isNamelistOpen: true,
+      }
+    );
   }
 
   closeNamelist() {
@@ -73,7 +106,9 @@ export class Nameset extends React.Component {
             </button>
             <Namelist isOpen={this.state.isNamelistOpen}
               onClose={this.closeNamelist}
+              namesLoading={this.state.namesLoading}
               nameset={this.props.nameset}
+              names={this.state.names}
             />
           </label>
         </div>
