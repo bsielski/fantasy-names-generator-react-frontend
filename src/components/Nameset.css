@@ -14,6 +14,7 @@
 
 .group-box__names_number {
     border-width: 0;
+    padding: 0 5px;
     background-color: inherit;
     font-family: 'SeshatRegular', serif;
     font-size: 11px;
