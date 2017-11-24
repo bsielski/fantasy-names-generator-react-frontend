@@ -13,17 +13,13 @@ export class Groupbox extends React.Component {
     };
   }
 
-  componentDidMount() {
-
-  }
-
   render() {
     const buildSubgroup = (subgroup) => {
       return (
         <Subgroup
           key={subgroup.id}
           subgroup={subgroup}
-          namesets={this.props.namesets.filter(e => {return (e["attributes"]["subgroup-id"].toString() === subgroup["id"])})}
+          namesets={this.props.namesets[subgroup.id]}
           custom={this.state.custom}
           handleCheckboxChange={this.props.handleCheckboxChange}
           registerNameset={this.props.registerNameset}
