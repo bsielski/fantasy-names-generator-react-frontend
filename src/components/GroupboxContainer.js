@@ -27,7 +27,7 @@ export class GroupboxContainer extends React.Component {
       return sorted;
     };
 
-    fetch('http://' + API_SERVER + ':3001/api/v1/groups?include=subgroups.namesets')
+    fetch('http://' + API_SERVER + '/api/v1/groups?include=subgroups.namesets')
     .then(response => {
       // console.log("RESPONSE for groups: ", response);
       return response.json();

@@ -35,7 +35,7 @@ export class Nameset extends React.Component {
   openNamelist() {
     if (this.state.namesLoaded === false) {
       this.setState({namesLoading: true});
-      fetch('http://' + API_SERVER + ':3001/api/v1/namesets/' + this.props.nameset.id + '/names')
+      fetch('http://' + API_SERVER + '/api/v1/namesets/' + this.props.nameset.id + '/names')
       .then(response => {
         // console.log("RESPONSE for groups: ", response);
         return response.json();
