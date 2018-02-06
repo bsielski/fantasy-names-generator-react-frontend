@@ -26,10 +26,13 @@ export class GroupboxContainer extends React.Component {
       });
       return sorted;
     };
+    console.log("BEFORE");
 
-    fetch('http://' + API_SERVER + '/api/v1/groups?include=subgroups.namesets')
+    fetch(`http://` + API_SERVER + `/api/v1/groups?include=subgroups.namesets`)
+
     .then(response => {
-      // console.log("RESPONSE for groups: ", response);
+      console.log("TYPE OF RESPONSE: ", typeof response);
+      console.log("RESPONSE for groups: ", response.toString());
       return response.json();
     })
     .then(response => {
