@@ -1,5 +1,6 @@
 FROM node:9.5.0
-COPY package.json /usr/src/app/
+RUN ["mkdir", "-p", "/usr/src/app"]
 WORKDIR /usr/src/app
-RUN yarn
-CMD ["yarn", "start"]
+COPY package.json /usr/src/app/
+RUN ["npm", "install"]
+CMD ["npm", "start"]
