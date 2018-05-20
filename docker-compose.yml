@@ -1,10 +1,21 @@
-version: "2"
+version: "3"
 services:
-  react:
-    build: .
-    ports:
-    - "3002:3000"
+  build:
+    build:
+      context: .
+      dockerfile: docker/build/Dockerfile
+    env_file: ./docker/build/.env
     volumes:
-      - .:/usr/src/app
-    stdin_open: true
-    tty: true
+      - ./build:/home/node/build
+  web:
+    image: nginx
+    expose:
+      - 80
+    environment:
+      - VIRTUAL_HOST=fng.testingmagic.ovh
+    volumes:
+      - ./build:/usr/share/nginx/html
+networks:
+  default:
+    external:
+      name: nginx-proxy
