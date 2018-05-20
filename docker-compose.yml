@@ -11,8 +11,7 @@ services:
     image: nginx
     expose:
       - 80
-    environment:
-      - VIRTUAL_HOST=fng.testingmagic.ovh
+    env_file: ./.env
     volumes:
       - ./build:/usr/share/nginx/html
 networks:
