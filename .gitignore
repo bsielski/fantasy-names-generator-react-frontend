@@ -3,6 +3,14 @@
 # dependencies
 /node_modules
 
+# .env
+/docker/build/.env
+
+### Emacs ###
+*~
+\#*\#
+.\#*
+
 # testing
 /coverage
 
