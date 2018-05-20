@@ -5,6 +5,7 @@
 
 # .env
 /docker/build/.env
+.env
 
 ### Emacs ###
 *~
