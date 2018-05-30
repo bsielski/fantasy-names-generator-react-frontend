@@ -4,9 +4,6 @@ services:
 
   build:
     image: bsielski/fantasy-names-generator-front:1.0.0
-    #build:
-      #context: .
-      #dockerfile: docker-production/Dockerfile
     env_file: ./.env-app
     volumes:
       - ../build:/home/node/build
