@@ -6,9 +6,13 @@
 # .env
 /docker/build/.env
 .env
+.env-app
+.env-webserver
+nginx.config
 
 ### Emacs ###
 *~
+.*~
 \#*\#
 .\#*
 
