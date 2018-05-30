@@ -16,8 +16,7 @@ services:
     volumes:
       - ../build:/usr/share/nginx/html
       - ./nginx.conf:/etc/nginx/conf.d/default.conf      
-    expose:
-      - 8001
+    env_file: ./.env-webserver
     networks:
       - rev-proxy
 
