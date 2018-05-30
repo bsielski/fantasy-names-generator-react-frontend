@@ -148,11 +148,6 @@ export class App extends React.Component {
       <main className="l-main-container">
         <section className="l-section-container l-section-container--input">
           <div>
-            <RadioGroup
-              options={this.numberOptions}
-              selectedOption={this.state.selectedNumberOption}
-              setHowManyNames={this.setHowManyNames}
-            />
             <GroupboxContainer
               groups={this.state.groups}
               subgroups={this.state.subgroups}
@@ -167,6 +162,12 @@ export class App extends React.Component {
               howManyNames={this.numberOptions[this.state.selectedNumberOption].value}
               onClick={this.handleAction}
             />
+	    <RadioGroup
+              options={this.numberOptions}
+              selectedOption={this.state.selectedNumberOption}
+              setHowManyNames={this.setHowManyNames}
+            />
+
           </div>
         </section>
 
