@@ -16,6 +16,9 @@ nginx.config
 \#*\#
 .\#*
 
+### KDE garbage
+.directory
+
 # testing
 /coverage
 
