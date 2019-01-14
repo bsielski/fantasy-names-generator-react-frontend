@@ -1,6 +1,6 @@
 import {flatten} from './helpers';
 import {CONSONANTS} from './helpers';
-import {uniqueArray} from './helpers';
+import {uniq} from 'ramda';
 import {sortByLengthDown} from './helpers';
 
 
@@ -79,7 +79,7 @@ export class ConsonantsPatternsFilter extends Filter {
   		  this._allowedGroups = this._allowedGroups.concat([""])
   	  }
   	})
-  	this._allowedGroups = uniqueArray(this._allowedGroups).map(group => group.toLowerCase())
+  	this._allowedGroups = uniq(this._allowedGroups).map(group => group.toLowerCase())
   	// console.log("ALLOWED GROUPS: ", this._allowedGroups.sort())
   }
 
@@ -143,7 +143,7 @@ export class VowelsPatternsFilter extends Filter {
   		  this._allowedGroups = this._allowedGroups.concat([""])
   	  }
   	})
-  	this._allowedGroups = uniqueArray(this._allowedGroups).map(group => group.toLowerCase())
+  	this._allowedGroups = uniq(this._allowedGroups).map(group => group.toLowerCase())
   	// console.log("ALLOWED GROUPS: ", this._allowedGroups.sort())
   }
 
@@ -186,7 +186,7 @@ export class RepeatedLettersFilter extends Filter {
   		  this._allowedRepeats = this._allowedRepeats.concat(repeats)
   	  }
   	})
-  	this._allowedRepeats = uniqueArray(this._allowedRepeats)
+  	this._allowedRepeats = uniq(this._allowedRepeats)
   }
 
   onFilter(name) {
