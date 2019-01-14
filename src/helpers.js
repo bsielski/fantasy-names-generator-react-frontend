@@ -123,18 +123,6 @@ export function buildRegexToSplit(separators, caseless=true, where="after") {
   }
 }
 
-export function flatten(ary) {
-  var ret = [];
-  for(var i = 0; i < ary.length; i++) {
-    if(Array.isArray(ary[i])) {
-      ret = ret.concat(flatten(ary[i]));
-    } else {
-      ret.push(ary[i]);
-    }
-  }
-  return ret;
-}
-
 function fairRound(number) {
   if (number - Math.floor(number) === 0.5) {
     return parseInt(number, 10) + Math.round(Math.random())

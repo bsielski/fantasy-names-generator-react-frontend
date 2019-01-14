@@ -1,4 +1,4 @@
-import {flatten} from './helpers';
+import {flatten} from 'ramda';
 import {CONSONANTS} from './helpers';
 import {uniq} from 'ramda';
 import {sortByLengthDown} from './helpers';
