@@ -22,7 +22,7 @@ export class SortButton extends React.Component {
   }
 
   handleClick(e) {
-    this.props.sort(this.state.isReverse);
+      this.props.sort(this.props.names, this.state.isReverse);
     this.setState(prevState => {
       return { isReverse: !prevState.isReverse };
     });

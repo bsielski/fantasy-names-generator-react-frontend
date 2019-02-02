@@ -5,6 +5,7 @@ import {Footer} from './Footer';
 import {GroupboxContainer} from './GroupboxContainer';
 import {ActionButton} from './ActionButton';
 import {GeneratedList} from './GeneratedList';
+import {Sorting} from './Sorting';
 
 import {Generator} from '../generator';
 import {Splitter} from '../splitter';
@@ -29,8 +30,10 @@ export class App extends React.Component {
 	    selectedNamesets: new Set(),
 	    selectedNumberOption: 0,
 	    generated: [],
+	    sorted: [],
 	    isGenerating: false,
 	    fetchedNames: [],
+            lastSortMethodUsed: "unsorted"
 	};
 	this.namesets = {};
 	this.numberOptions = [
@@ -43,10 +46,78 @@ export class App extends React.Component {
 	this.setHowManyNames = this.setHowManyNames.bind(this);
 	this.handleAction = this.handleAction.bind(this);
 	this.registerNameset = this.registerNameset.bind(this);
+        this.sortAlphabetically = this.sortAlphabetically.bind(this);
+        this.sortByLength = this.sortByLength.bind(this);
+        this.unsort = this.unsort.bind(this);
+
     }
 
     registerNameset(id, nameset) {
 	this.namesets[id] = nameset;
+    }
+
+    sortAlphabetically(list, isReversed) {
+	const sorted = list.slice();
+	if (isReversed === false) {
+	    sorted.sort((a,b) => {
+		if (a < b) return -1; else return 1
+	    });
+	    this.setState({
+		lastSortMethodUsed: "alphabetically"
+	    });
+	}
+	else {
+	    sorted.sort((a,b) => {
+		if (a > b) return -1; else return 1
+	    });
+	    this.setState({
+		lastSortMethodUsed: "alphabetically-reversed"
+	    });
+	}
+	this.setState({
+	    sorted: sorted
+	});
+    }
+
+    sortByLength(list, isReversed) {
+	const sorted = list.slice();
+	if (isReversed === false) {
+	    sorted.sort((a,b) => {
+		if (a.length < b.length) return -1; else return 1
+	    });
+	    this.setState({
+		lastSortMethodUsed: "length"
+	    });
+	}
+	else {
+	    sorted.sort((a,b) => {
+		if (a.length > b.length) return -1; else return 1
+	    });
+	    this.setState({
+		lastSortMethodUsed: "length-reversed"
+	    });
+	}
+	this.setState({
+	    sorted: sorted
+	});
+    }
+
+    unsort(list, isReversed) {
+	const sorted = list.slice();
+	if (isReversed === true) {
+	    sorted.reverse();
+	    this.setState({
+		lastSortMethodUsed: "unsorted-reversed"
+	    });
+	}
+	else {
+	    this.setState({
+		lastSortMethodUsed: "unsorted"
+	    });
+	}
+	this.setState({
+	    sorted: sorted
+	});
     }
 
 
@@ -115,9 +186,13 @@ export class App extends React.Component {
 	});
 
 	if (namesetsForGenerator.length > 0) {
-	    const generator = new Generator(namesetsForGenerator)
+	    const generator = new Generator(namesetsForGenerator);
+	    const generated = generator.generate(this.numberOptions[this.state.selectedNumberOption].value);
 	    this.setState(
-		{generated: generator.generate(this.numberOptions[this.state.selectedNumberOption].value)},
+		{
+		    generated: generated,
+                    sorted: generated
+		},
 		() => {this.setState( { isGenerating: false } );}
 	    );
 	}
@@ -154,31 +229,38 @@ export class App extends React.Component {
 		/>
               <main className="l-main-container">
 		<section className="l-section-container l-section-container--input">
-		    <GroupboxContainer
-                      groups={this.state.groups}
-                      subgroups={this.state.subgroups}
-                      namesets={this.state.namesets}
-                      handleCheckboxChange={this.toggleCheckbox}
-                      defaultCustomNames={this.state.defaultCustomNames}
-                      registerNameset={this.registerNameset}
-		      />
+		  <GroupboxContainer
+                    groups={this.state.groups}
+                    subgroups={this.state.subgroups}
+                    namesets={this.state.namesets}
+                    handleCheckboxChange={this.toggleCheckbox}
+                    defaultCustomNames={this.state.defaultCustomNames}
+                    registerNameset={this.registerNameset}
+		    />
 		</section>
 
 		<section className="l-section-container l-section-container--output">
-		    <RadioGroup
-		      options={this.numberOptions}
-		      selectedOption={this.state.selectedNumberOption}
-		      setHowManyNames={this.setHowManyNames}
-		      />
-		    <ActionButton
-                      isGenerating={this.state.isGenerating}
-                      howManyNamesetsSelected={this.state.selectedNamesets.size}
-                      howManyNames={this.numberOptions[this.state.selectedNumberOption].value}
-                      onClick={this.handleAction}
-		      />
-        	    <GeneratedList
-	              generated={this.state.generated}
-		      />
+		  <RadioGroup
+		    options={this.numberOptions}
+		    selectedOption={this.state.selectedNumberOption}
+		    setHowManyNames={this.setHowManyNames}
+		    />
+		  <ActionButton
+                    isGenerating={this.state.isGenerating}
+                    howManyNamesetsSelected={this.state.selectedNamesets.size}
+                    howManyNames={this.numberOptions[this.state.selectedNumberOption].value}
+                    onClick={this.handleAction}
+		    />
+                  <Sorting
+		    generated={this.state.generated}
+                    sortAlphabetically={this.sortAlphabetically}
+                    sortByLength={this.sortByLength}
+                    unsort={this.unsort}
+                    />
+        	  <GeneratedList
+		    sorted={this.state.sorted}
+                    lastSortMethodUsed={this.state.lastSortMethodUsed}
+                    />
    		</section>
 	      </main>
 	      <Footer />
