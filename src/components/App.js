@@ -1,6 +1,7 @@
 import React from 'react';
 import {RadioGroup} from './RadioGroup';
 import {Header} from './Header';
+import {Footer} from './Footer';
 import {GroupboxContainer} from './GroupboxContainer';
 import {ActionButton} from './ActionButton';
 import {GeneratedList} from './GeneratedList';
@@ -183,6 +184,7 @@ export class App extends React.Component {
         	  </div>
 		</section>
 	      </main>
+	      <Footer />
 	    </div>
 	);
     }

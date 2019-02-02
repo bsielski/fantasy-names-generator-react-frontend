@@ -3,10 +3,6 @@
     src: url('Seshat.otf');
 }
 
-.credit_link {
-  color: black;
-}
-
 .l-window-container {
     background-color: #402a22;
     display: flex;
@@ -28,10 +24,4 @@
     flex-flow: row-reverse wrap;
     margin: 0;
     padding: 2px;
-}
-
-.l-footer-container {
-    background-color: #d9af8b;
-    padding: 10px;
-    text-align: right;
 }
