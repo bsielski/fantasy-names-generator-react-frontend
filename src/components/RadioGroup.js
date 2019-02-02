@@ -26,12 +26,12 @@ export class RadioGroup extends React.Component {
 
     const options = this.props.options.map(buildOption);
     return (
-      <div>
-        <h2 className="subsection-header">How many names do you want to generate?</h2>
-        <div className="how-many-names">
+      <section className="how_many_names">
+        <h2 className="how_many_names__header">How many names do you want to generate?</h2>
+        <div className="how_many_names__options">
           {options}
         </div>
-      </div>
+      </section>
     )
   }
 

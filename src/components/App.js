@@ -154,7 +154,6 @@ export class App extends React.Component {
 		/>
               <main className="l-main-container">
 		<section className="l-section-container l-section-container--input">
-		  <div>
 		    <GroupboxContainer
                       groups={this.state.groups}
                       subgroups={this.state.subgroups}
@@ -163,26 +162,24 @@ export class App extends React.Component {
                       defaultCustomNames={this.state.defaultCustomNames}
                       registerNameset={this.registerNameset}
 		      />
+		</section>
+
+		<section className="l-section-container l-section-container--output">
+		    <RadioGroup
+		      options={this.numberOptions}
+		      selectedOption={this.state.selectedNumberOption}
+		      setHowManyNames={this.setHowManyNames}
+		      />
 		    <ActionButton
                       isGenerating={this.state.isGenerating}
                       howManyNamesetsSelected={this.state.selectedNamesets.size}
                       howManyNames={this.numberOptions[this.state.selectedNumberOption].value}
                       onClick={this.handleAction}
 		      />
-		    <RadioGroup
-		      options={this.numberOptions}
-		      selectedOption={this.state.selectedNumberOption}
-		      setHowManyNames={this.setHowManyNames}
+        	    <GeneratedList
+	              generated={this.state.generated}
 		      />
-
-		  </div>
-		</section>
-
-		<section className="l-section-container l-section-container--output">
-        	  <div>
-		    <GeneratedList generated={this.state.generated} />
-        	  </div>
-		</section>
+   		</section>
 	      </main>
 	      <Footer />
 	    </div>

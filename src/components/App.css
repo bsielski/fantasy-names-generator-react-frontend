@@ -1,7 +1,7 @@
 .l-section-container {
     border: 1px solid #a67d65; /* brown        */
     display: flex;
-    flex-flow: row;
+    flex-flow: column;
     justify-content: flex-start;
     align-items: flex-start;
     align-content: flex-start;

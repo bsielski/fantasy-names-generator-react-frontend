@@ -29,17 +29,17 @@ export function ActionButton(props) {
   }
 
   return (
-    <div>
-      <h2 className="subsection-header">Generate names</h2>
+    <section className="action_button">
+      <h2 className="action_button__header">Generate names</h2>
   	  <button
-        type="button"
-        id="generate-button"
-        className="generate-button"
-        disabled={ isDisabled() }
-        onClick={props.onClick}
-      >
+            type="button"
+            id="generate-button"
+            className="action_button__button"
+            disabled={ isDisabled() }
+            onClick={props.onClick}
+          >
         {generateButtonText()}
       </button>
-    </div>
+    </section>
   );
 }
