@@ -121,9 +121,9 @@ export class App extends React.Component {
     }
 
     buildUrls(begin, ids, end) {
-      return ids.map(function(id){
-        return begin + id + end;
-      });
+	return ids.map(function(id){
+            return begin + id + end;
+	});
     }
 
     handleAction(e) {
@@ -132,26 +132,28 @@ export class App extends React.Component {
 	    { isGenerating: true },
 	);
 	const fetched = [];
-	let counter = 0;
+	const promises = [];
 	const fetchEverything = (ids) => {
-	    fetch(`http://` + API_SERVER + `/api/v1/namesets/${ids[counter]}?include=names`)
-		.then(response => response.json())
-		.then(response => {
-		    if (response.included) {
-			fetched.push([response.data, response.included]);
-		    }
-		    counter ++;
-		    if (counter < ids.length) {
-			fetchEverything(ids);
-		    } else {
-			this.setState(
-			    { fetchedNames: fetched },
-			    // her handle custom names
-			    this.generate
-			);
-		    }
-		})
-		.catch(error => console.log(error));
+	    const urlPart1 = "http://" + API_SERVER + "/api/v1/namesets/";
+	    const urls = this.buildUrls(urlPart1, ids, "?include=names");
+	    for (let i = 0; i < urls.length; i++) {
+		promises.push(
+		    fetch(urls[i])
+			.then(response => response.json())
+			.then(response => {
+			    if (response.included) {
+				fetched.push([response.data, response.included]);
+			    }
+			})
+			.catch(error => console.log(error))
+		)
+	    }
+	    Promise.all(promises).then(() => {
+		this.setState(
+		    { fetchedNames: fetched },
+		    this.generate
+		);
+	    })
 	};
 	fetchEverything(Array.from(this.state.selectedNamesets));
     }
@@ -223,48 +225,48 @@ export class App extends React.Component {
 
     render() {
 	return (
-            <div>
-              <Header
-		version={APP_VERSION}
+		<div>
+		<Header
+	    version={APP_VERSION}
 		/>
-              <main className="l-main-container">
+		<main className="l-main-container">
 		<section className="l-section-container l-section-container--input">
-		  <GroupboxContainer
-                    groups={this.state.groups}
-                    subgroups={this.state.subgroups}
-                    namesets={this.state.namesets}
-                    handleCheckboxChange={this.toggleCheckbox}
-                    defaultCustomNames={this.state.defaultCustomNames}
-                    registerNameset={this.registerNameset}
-		    />
+		<GroupboxContainer
+            groups={this.state.groups}
+            subgroups={this.state.subgroups}
+            namesets={this.state.namesets}
+            handleCheckboxChange={this.toggleCheckbox}
+            defaultCustomNames={this.state.defaultCustomNames}
+            registerNameset={this.registerNameset}
+		/>
 		</section>
 
 		<section className="l-section-container l-section-container--output">
-		  <HowManyNames
-		    options={this.numberOptions}
-		    selectedOption={this.state.selectedNumberOption}
-		    setHowManyNames={this.setHowManyNames}
-		    />
-		  <ActionButton
-                    isGenerating={this.state.isGenerating}
-                    howManyNamesetsSelected={this.state.selectedNamesets.size}
-                    howManyNames={this.numberOptions[this.state.selectedNumberOption].value}
-                    onClick={this.handleAction}
-		    />
-                  <Sorting
-		    generated={this.state.generated}
-                    sortAlphabetically={this.sortAlphabetically}
-                    sortByLength={this.sortByLength}
-                    unsort={this.unsort}
-                    />
-        	  <GeneratedList
-		    sorted={this.state.sorted}
-                    lastSortMethodUsed={this.state.lastSortMethodUsed}
-                    />
+		<HowManyNames
+	    options={this.numberOptions}
+	    selectedOption={this.state.selectedNumberOption}
+	    setHowManyNames={this.setHowManyNames}
+		/>
+		<ActionButton
+            isGenerating={this.state.isGenerating}
+            howManyNamesetsSelected={this.state.selectedNamesets.size}
+            howManyNames={this.numberOptions[this.state.selectedNumberOption].value}
+            onClick={this.handleAction}
+		/>
+                <Sorting
+	    generated={this.state.generated}
+            sortAlphabetically={this.sortAlphabetically}
+            sortByLength={this.sortByLength}
+            unsort={this.unsort}
+                />
+        	<GeneratedList
+	    sorted={this.state.sorted}
+            lastSortMethodUsed={this.state.lastSortMethodUsed}
+                />
    		</section>
-	      </main>
-	      <Footer />
-	    </div>
+		</main>
+		<Footer />
+		</div>
 	);
     }
 }
