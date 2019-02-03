@@ -44,6 +44,7 @@ export class App extends React.Component {
 	this.toggleCheckbox = this.toggleCheckbox.bind(this);
 	this.setHowManyNames = this.setHowManyNames.bind(this);
 	this.buildUrls = this.buildUrls.bind(this);
+	this.fetchEverything = this.fetchEverything.bind(this);
 	this.handleAction = this.handleAction.bind(this);
 	this.registerNameset = this.registerNameset.bind(this);
         this.sortAlphabetically = this.sortAlphabetically.bind(this);
@@ -126,36 +127,37 @@ export class App extends React.Component {
 	});
     }
 
+    fetchEverything(ids) {
+	const fetched = [];
+	const promises = [];
+	const urlPart1 = "http://" + API_SERVER + "/api/v1/namesets/";
+	const urls = this.buildUrls(urlPart1, ids, "?include=names");
+	for (let i = 0; i < urls.length; i++) {
+	    promises.push(
+		fetch(urls[i])
+		    .then(response => response.json())
+		    .then(response => {
+			if (response.included) {
+			    fetched.push([response.data, response.included]);
+			}
+		    })
+		    .catch(error => console.log(error))
+	    )
+	}
+	Promise.all(promises).then(() => {
+	    this.setState(
+		{ fetchedNames: fetched },
+		this.generate
+	    );
+	})
+    }
+
     handleAction(e) {
 	e.preventDefault();
 	this.setState(
 	    { isGenerating: true },
 	);
-	const fetched = [];
-	const promises = [];
-	const fetchEverything = (ids) => {
-	    const urlPart1 = "http://" + API_SERVER + "/api/v1/namesets/";
-	    const urls = this.buildUrls(urlPart1, ids, "?include=names");
-	    for (let i = 0; i < urls.length; i++) {
-		promises.push(
-		    fetch(urls[i])
-			.then(response => response.json())
-			.then(response => {
-			    if (response.included) {
-				fetched.push([response.data, response.included]);
-			    }
-			})
-			.catch(error => console.log(error))
-		)
-	    }
-	    Promise.all(promises).then(() => {
-		this.setState(
-		    { fetchedNames: fetched },
-		    this.generate
-		);
-	    })
-	};
-	fetchEverything(Array.from(this.state.selectedNamesets));
+	this.fetchEverything(Array.from(this.state.selectedNamesets));
     }
 
     generate() {
