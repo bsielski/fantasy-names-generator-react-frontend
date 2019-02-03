@@ -156,43 +156,41 @@ export class App extends React.Component {
 	const splitterAfter = new Splitter(VOWELS, true, "after")
 	const splitterBefore = new Splitter(VOWELS, true, "before")
 	const standardFilters = [
-	    RepeatedLettersFilter,
-	    ConsonantsPatternsFilter,
-	    VowelsPatternsFilter,
-	    UniquenessFilter,
-	    NameLengthFilter,
-	    CapitalizeFilter,
+            RepeatedLettersFilter,
+            ConsonantsPatternsFilter,
+            VowelsPatternsFilter,
+            UniquenessFilter,
+            NameLengthFilter,
+            CapitalizeFilter,
 	]
 	this.state.fetchedNames.forEach(nameset => {
             const namesetForGenerator = {
-		label: nameset[0].attributes.label,
-		names: [],
-		splitters: [splitterAfter, splitterBefore],
-		filters: standardFilters,
+    		label: nameset[0].attributes.label,
+    		names: [],
+    		splitters: [splitterAfter, splitterBefore],
+    		filters: standardFilters,
             }
             nameset[1].forEach(name => {
-		if (this.namesets[nameset[0].id]) {
-		    namesetForGenerator.names.push(this.namesets[nameset[0].id]);
-		}
-		else {
-		    namesetForGenerator.names.push(name.attributes.variants);
-		}
+    		if (this.namesets[nameset[0].id]) {
+    		    namesetForGenerator.names.push(this.namesets[nameset[0].id]);
+    		}
+    		else {
+    		    namesetForGenerator.names.push(name.attributes.variants);
+    		}
             });
             namesetsForGenerator.push(namesetForGenerator);
 	});
-
-	if (namesetsForGenerator.length > 0) {
+    	if (namesetsForGenerator.length > 0) {
 	    const generator = new Generator(namesetsForGenerator);
 	    const generated = generator.generate(this.numberOptions[this.state.selectedNumberOption].value);
 	    this.setState(
-		{
-		    generated: generated,
+   		{
+   		    generated: generated,
                     sorted: generated
-		},
-		() => {this.setState( { isGenerating: false } );}
+   		},
+   		() => {this.setState( { isGenerating: false } );}
 	    );
 	}
-
     }
 
     setHowManyNames(option) {
