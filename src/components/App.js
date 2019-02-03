@@ -43,6 +43,7 @@ export class App extends React.Component {
 	];
 	this.toggleCheckbox = this.toggleCheckbox.bind(this);
 	this.setHowManyNames = this.setHowManyNames.bind(this);
+	this.buildUrls = this.buildUrls.bind(this);
 	this.handleAction = this.handleAction.bind(this);
 	this.registerNameset = this.registerNameset.bind(this);
         this.sortAlphabetically = this.sortAlphabetically.bind(this);
@@ -119,6 +120,11 @@ export class App extends React.Component {
 	});
     }
 
+    buildUrls(begin, ids, end) {
+      return ids.map(function(id){
+        return begin + id + end;
+      });
+    }
 
     handleAction(e) {
 	e.preventDefault();
