@@ -10,7 +10,6 @@ import {Sorting} from './Sorting';
 import {Generator} from '../generator';
 import {Splitter} from '../splitter';
 import {VOWELS} from '../helpers';
-// import {CONSONANTS} from '../helpers';
 import {RepeatedLettersFilter} from '../filter';
 import {ConsonantsPatternsFilter} from '../filter';
 import {VowelsPatternsFilter} from '../filter';
@@ -126,8 +125,6 @@ export class App extends React.Component {
 	this.setState(
 	    { isGenerating: true },
 	);
-
-	// console.log("CLICKED, NAMESETS: ", this.namesets);
 	const fetched = [];
 	let counter = 0;
 	const fetchEverything = (ids) => {
@@ -166,7 +163,6 @@ export class App extends React.Component {
 	    NameLengthFilter,
 	    CapitalizeFilter,
 	]
-	// console.log("WTF IS THIS:", this.state.fetchedNames)
 	this.state.fetchedNames.forEach(nameset => {
             const namesetForGenerator = {
 		label: nameset[0].attributes.label,
