@@ -5,10 +5,6 @@ import './Sorting.css';
 
 export class Sorting extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <section className="sorting">

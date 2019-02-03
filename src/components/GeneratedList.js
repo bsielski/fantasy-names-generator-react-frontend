@@ -7,10 +7,6 @@ import './GeneratedList.css';
 
 export class GeneratedList extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div>
