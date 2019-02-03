@@ -135,7 +135,6 @@ export class App extends React.Component {
 		} else {
 		    this.setState(
 			{ fetchedNames: fetched },
-			// her handle custom names
 			this.generate
 		    );
 		}
