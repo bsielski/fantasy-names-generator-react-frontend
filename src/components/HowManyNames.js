@@ -1,9 +1,9 @@
 import React from 'react';
 import {RadioButton} from './RadioButton';
 
-import './RadioGroup.css';
+import './HowManyNames.css';
 
-export class RadioGroup extends React.Component {
+export class HowManyNames extends React.Component {
 
   constructor(props) {
     super(props);

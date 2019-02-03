@@ -1,5 +1,5 @@
 import React from 'react';
-import {RadioGroup} from './RadioGroup';
+import {HowManyNames} from './HowManyNames';
 import {Header} from './Header';
 import {Footer} from './Footer';
 import {GroupboxContainer} from './GroupboxContainer';
@@ -240,7 +240,7 @@ export class App extends React.Component {
 		</section>
 
 		<section className="l-section-container l-section-container--output">
-		  <RadioGroup
+		  <HowManyNames
 		    options={this.numberOptions}
 		    selectedOption={this.state.selectedNumberOption}
 		    setHowManyNames={this.setHowManyNames}
