@@ -43,7 +43,6 @@ export class App extends React.Component {
 	];
 	this.toggleCheckbox = this.toggleCheckbox.bind(this);
 	this.setHowManyNames = this.setHowManyNames.bind(this);
-	this.fetchEverything = this.fetchEverything.bind(this);
 	this.handleAction = this.handleAction.bind(this);
 	this.registerNameset = this.registerNameset.bind(this);
         this.sortAlphabetically = this.sortAlphabetically.bind(this);
@@ -120,34 +119,35 @@ export class App extends React.Component {
 	});
     }
 
-    fetchEverything(ids) {
-	const fetched = [];
-	let counter = 0;
-	fetch(`http://` + API_SERVER + `/api/v1/namesets/${ids[counter]}?include=names`)
-	    .then(response => response.json())
-	    .then(response => {
-		if (response.included) {
-		    fetched.push([response.data, response.included]);
-		}
-		counter ++;
-		if (counter < ids.length) {
-		    this.fetchEverything(ids);
-		} else {
-		    this.setState(
-			{ fetchedNames: fetched },
-			this.generate
-		    );
-		}
-	    })
-	    .catch(error => console.log(error));
-    };
 
     handleAction(e) {
 	e.preventDefault();
 	this.setState(
 	    { isGenerating: true },
 	);
-	this.fetchEverything(Array.from(this.state.selectedNamesets));
+	const fetched = [];
+	let counter = 0;
+	const fetchEverything = (ids) => {
+	    fetch(`http://` + API_SERVER + `/api/v1/namesets/${ids[counter]}?include=names`)
+		.then(response => response.json())
+		.then(response => {
+		    if (response.included) {
+			fetched.push([response.data, response.included]);
+		    }
+		    counter ++;
+		    if (counter < ids.length) {
+			fetchEverything(ids);
+		    } else {
+			this.setState(
+			    { fetchedNames: fetched },
+			    // her handle custom names
+			    this.generate
+			);
+		    }
+		})
+		.catch(error => console.log(error));
+	};
+	fetchEverything(Array.from(this.state.selectedNamesets));
     }
 
     generate() {
