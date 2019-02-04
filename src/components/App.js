@@ -6,6 +6,12 @@ import {GroupboxContainer} from './GroupboxContainer';
 import {ActionButton} from './ActionButton';
 import {GeneratedList} from './GeneratedList';
 import {Sorting} from './Sorting';
+import {sortAlphabeticallyAsc} from '../sorting';
+import {sortAlphabeticallyDesc} from '../sorting';
+import {sortByLengthAsc} from '../sorting';
+import {sortByLengthDesc} from '../sorting';
+import {unsortAsc} from '../sorting';
+import {unsortDesc} from '../sorting';
 
 import {Generator} from '../generator';
 import {Splitter} from '../splitter';
@@ -58,67 +64,48 @@ export class App extends React.Component {
     }
 
     sortAlphabetically(list, isReversed) {
-	const sorted = list.slice();
 	if (isReversed === false) {
-	    sorted.sort((a,b) => {
-		if (a < b) return -1; else return 1
-	    });
 	    this.setState({
+		sorted: sortAlphabeticallyAsc(list),
 		lastSortMethodUsed: "alphabetically"
 	    });
 	}
 	else {
-	    sorted.sort((a,b) => {
-		if (a > b) return -1; else return 1
-	    });
 	    this.setState({
+		sorted: sortAlphabeticallyDesc(list),
 		lastSortMethodUsed: "alphabetically-reversed"
 	    });
 	}
-	this.setState({
-	    sorted: sorted
-	});
     }
 
     sortByLength(list, isReversed) {
-	const sorted = list.slice();
 	if (isReversed === false) {
-	    sorted.sort((a,b) => {
-		if (a.length < b.length) return -1; else return 1
-	    });
 	    this.setState({
+		sorted: sortByLengthAsc(list),
 		lastSortMethodUsed: "length"
 	    });
 	}
 	else {
-	    sorted.sort((a,b) => {
-		if (a.length > b.length) return -1; else return 1
-	    });
 	    this.setState({
+		sorted: sortByLengthDesc(list),
 		lastSortMethodUsed: "length-reversed"
 	    });
 	}
-	this.setState({
-	    sorted: sorted
-	});
     }
 
     unsort(list, isReversed) {
-	const sorted = list.slice();
 	if (isReversed === true) {
-	    sorted.reverse();
 	    this.setState({
+		sorted: unsortAsc(list),
 		lastSortMethodUsed: "unsorted-reversed"
 	    });
 	}
 	else {
 	    this.setState({
+		sorted: unsortDesc(list),
 		lastSortMethodUsed: "unsorted"
 	    });
 	}
-	this.setState({
-	    sorted: sorted
-	});
     }
 
     buildUrls(begin, ids, end) {
