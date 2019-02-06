@@ -4,9 +4,12 @@ import {App} from './components/App';
 
 import './index.css';
 
+import {sortingButtons} from './sorting-buttons';
 
 
 ReactDOM.render(
-  <App />,
-  document.getElementById('root')
+    <App
+      sortingButtons={sortingButtons}
+      />,
+    document.getElementById('root')
 )
