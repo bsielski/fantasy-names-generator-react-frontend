@@ -4,43 +4,42 @@ import './SortButton.css';
 
 export class SortButton extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      isReverse: this._isReversedAtStart(),
+    constructor(props) {
+	super(props);
+	this.state = {
+	    subbutton: this.props.sortingButton.defaultSubbutton,
+	};
+	this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick (e) {
+	const sort = this.props.sortingButton[this.state.subbutton].sort;
+	this.props.afterSorting(
+	    sort(this.props.names),
+	    [this.props.sortingButton.id, this.state.subbutton]
+	);
+	this.setState(prevState => {
+	    return { subbutton: this._toggleSubbutton() };
+	});
     };
-    this.handleClick = this.handleClick.bind(this);
-  }
 
-  _isReversedAtStart() {
-    if (this.props.startReversed) {
-      return true;
+    _toggleSubbutton() {
+	if (this.state.subbutton === "ascending") {
+	    return "descending";
+	}
+	else {
+	    return "ascending";
+	}
     }
-    else {
-      return false;
-    }
-  }
 
-  handleClick(e) {
-      this.props.sort(this.props.names, this.state.isReverse);
-    this.setState(prevState => {
-      return { isReverse: !prevState.isReverse };
-    });
-  }
-
-  render() {
-    let alt = this.props.alt;
-    if (this.state.isReverse === true) {
-      alt = this.props.altReversed;
+    render() {
+	const alt = this.props.sortingButton[this.state.subbutton].alt;
+	const icon = this.props.sortingButton[this.state.subbutton].icon;
+	const label = this.props.sortingButton.label;
+	return (
+	    <button onClick={this.handleClick} type="button" className="sort-button">
+              {label}<img className="sort_icon" alt={alt} src={icon} width="15" height="15"/>
+	    </button>
+	);
     }
-    let icon = this.props.icon;
-    if (this.state.isReverse === true) {
-      icon = this.props.iconReversed;
-    }
-    return (
-      <button onClick={this.handleClick} type="button" className="sort-button">
-        {this.props.label}<img className="sort_icon" alt={alt} src={icon} width="15" height="15"/>
-      </button>
-    );
-  }
 }
