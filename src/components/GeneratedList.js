@@ -11,7 +11,10 @@ export class GeneratedList extends React.Component {
     return (
       <div>
         <h2 className="subsection-header">Generated names</h2>
-        <GeneratedHeader method={this.props.lastSortMethodUsed}/>
+        <GeneratedHeader
+	  sortingButtons={this.props.sortingButtons}
+	  pathToLastSortMethod={this.props.pathToLastSortMethod}
+	  />
         <GeneratedItems items={this.props.sorted}/>
       </div>
     );

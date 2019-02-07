@@ -32,7 +32,6 @@ export class App extends React.Component {
 	    sorted: [],
 	    isGenerating: false,
 	    fetchedNames: [],
-            lastSortMethodUsed: "unsorted",
             pathToLastSortMethod: [0, "ascending"]	    
 	};
 	this.namesets = {};
@@ -209,7 +208,8 @@ export class App extends React.Component {
 		    />
         	  <GeneratedList
 		    sorted={this.state.sorted}
-		    lastSortMethodUsed={this.state.lastSortMethodUsed}
+		    sortingButtons={this.sortingButtons}
+		    pathToLastSortMethod={this.state.pathToLastSortMethod}
                     />
    		</section>
 	      </main>
