@@ -47,14 +47,8 @@ export class App extends React.Component {
 	this.fetchEverything = this.fetchEverything.bind(this);
 	this.handleAction = this.handleAction.bind(this);
 	this.registerNameset = this.registerNameset.bind(this);
-
 	this.sortingButtons = this.props.sortingButtons;
-
-        this.sortAlphabetically = this.sortAlphabetically.bind(this);
-        this.sortByLength = this.sortByLength.bind(this);
-        this.unsort = this.unsort.bind(this);
         this.afterSorting = this.afterSorting.bind(this);
-
     }
 
     registerNameset(id, nameset) {
