@@ -4,11 +4,6 @@ import './GeneratedHeader.css';
 
 export class GeneratedHeader extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   currentSorting() {
     if (this.props.method === "unsorted") {
       return <span className="current_sort_method">Unsorted <img className="sort_icon" alt="from first to last generated" src="002-sort-by-numeric-order.svg" width="18" height="18"/></span>;
