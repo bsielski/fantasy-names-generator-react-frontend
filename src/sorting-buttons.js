@@ -9,7 +9,7 @@ export const sortingButtons = [
     {
 	id: 0,
 	label: "Unsorted",
-	defaultReversed: true,
+	defaultSubbutton: "descending",
 	ascending: {
 	    alt: "from first to last generated",
     	    icon: "002-sort-by-numeric-order.svg",
@@ -24,7 +24,7 @@ export const sortingButtons = [
     {
 	id: 1,
 	label: "Alphabetically",
-	defaultReversed: false,
+	defaultSubbutton: "ascending",
 	ascending: {
 	    alt: "from A to Z",
     	    icon: "006-sort-by-alphabet.svg",
@@ -39,7 +39,7 @@ export const sortingButtons = [
     {
 	id: 2,
 	label: "By name length",
-	defaultReversed: false,
+	defaultSubbutton: "ascending",
 	ascending: {
 	    alt: "from shortest to longest",
     	    icon: "005-sort-by-attributes-interface-button-option.svg",
