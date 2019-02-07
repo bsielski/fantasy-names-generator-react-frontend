@@ -7,13 +7,6 @@ import {ActionButton} from './ActionButton';
 import {GeneratedList} from './GeneratedList';
 import {Sorting} from './Sorting';
 
-import {sortAlphabeticallyAsc} from '../sorting';
-import {sortAlphabeticallyDesc} from '../sorting';
-import {sortByLengthAsc} from '../sorting';
-import {sortByLengthDesc} from '../sorting';
-import {unsortAsc} from '../sorting';
-import {unsortDesc} from '../sorting';
-
 import {Generator} from '../generator';
 import {Splitter} from '../splitter';
 import {VOWELS} from '../helpers';
@@ -39,7 +32,8 @@ export class App extends React.Component {
 	    sorted: [],
 	    isGenerating: false,
 	    fetchedNames: [],
-            lastSortMethodUsed: "unsorted"
+            lastSortMethodUsed: "unsorted",
+            pathToLastSortMethod: [0, "ascending"]	    
 	};
 	this.namesets = {};
 	this.numberOptions = [
@@ -60,6 +54,7 @@ export class App extends React.Component {
         this.sortAlphabetically = this.sortAlphabetically.bind(this);
         this.sortByLength = this.sortByLength.bind(this);
         this.unsort = this.unsort.bind(this);
+        this.afterSorting = this.afterSorting.bind(this);
 
     }
 
@@ -67,49 +62,11 @@ export class App extends React.Component {
 	this.namesets[id] = nameset;
     }
 
-    sortAlphabetically(list, isReversed) {
-	if (isReversed === false) {
-	    this.setState({
-		sorted: sortAlphabeticallyAsc(list),
-		lastSortMethodUsed: "alphabetically"
-	    });
-	}
-	else {
-	    this.setState({
-		sorted: sortAlphabeticallyDesc(list),
-		lastSortMethodUsed: "alphabetically-reversed"
-	    });
-	}
-    }
-
-    sortByLength(list, isReversed) {
-	if (isReversed === false) {
-	    this.setState({
-		sorted: sortByLengthAsc(list),
-		lastSortMethodUsed: "length"
-	    });
-	}
-	else {
-	    this.setState({
-		sorted: sortByLengthDesc(list),
-		lastSortMethodUsed: "length-reversed"
-	    });
-	}
-    }
-
-    unsort(list, isReversed) {
-	if (isReversed === true) {
-	    this.setState({
-		sorted: unsortAsc(list),
-		lastSortMethodUsed: "unsorted-reversed"
-	    });
-	}
-	else {
-	    this.setState({
-		sorted: unsortDesc(list),
-		lastSortMethodUsed: "unsorted"
-	    });
-	}
+    afterSorting(sorted, pathToLastSortMethod) {
+	this.setState({
+	    sorted: sorted,
+	    pathToLastSortMethod: pathToLastSortMethod
+	});
     }
 
     buildUrls(begin, ids, end) {
@@ -247,10 +204,8 @@ export class App extends React.Component {
 		    />
                   <Sorting
 		    generated={this.state.generated}
-		    sortAlphabetically={this.sortAlphabetically}
-		    sortByLength={this.sortByLength}
-		    unsort={this.unsort}
-                    sortingButtons={this.sortingButtons}
+		    sortingButtons={this.sortingButtons}
+		    afterSorting={this.afterSorting}
 		    />
         	  <GeneratedList
 		    sorted={this.state.sorted}
