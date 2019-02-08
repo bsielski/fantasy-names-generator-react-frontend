@@ -47,7 +47,6 @@ export class App extends React.Component {
 	this.fetchEverything = this.fetchEverything.bind(this);
 	this.handleAction = this.handleAction.bind(this);
 	this.registerNameset = this.registerNameset.bind(this);
-	this.sortingButtons = this.props.sortingButtons;
         this.afterSorting = this.afterSorting.bind(this);
     }
 
@@ -197,12 +196,12 @@ export class App extends React.Component {
 		    />
                   <Sorting
 		    generated={this.state.generated}
-		    sortingButtons={this.sortingButtons}
+		    sortingButtons={this.props.sortingButtons}
 		    afterSorting={this.afterSorting}
 		    />
         	  <GeneratedList
 		    sorted={this.state.sorted}
-		    sortingButtons={this.sortingButtons}
+		    sortingButtons={this.props.sortingButtons}
 		    pathToLastSortMethod={this.state.pathToLastSortMethod}
                     />
    		</section>
