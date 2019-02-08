@@ -76,19 +76,16 @@ export class App extends React.Component {
     }
 
     fetchEverything(ids) {
-	const promises = [];
 	const urlPart1 = "http://" + this.props.API_SERVER + "/api/v1/namesets/";
 	const urls = this.buildUrls(urlPart1, ids, "?include=names");
-	for (let i = 0; i < urls.length; i++) {
-	    promises.push(
-		fetch(urls[i])
-		    .then(response => response.json())
-		    .then(response => {
+	const promises = urls.map(url => {
+	    return fetch(url)
+		.then(response => response.json())
+		.then(response => {
 			return [response.data, response.included];
-		    })
-		    .catch(error => console.log(error))
-	    )
-	}
+		})
+		.catch(error => console.log(error))	    
+	});
 	Promise.all(promises).then((fetched) => {this.afterFetchingNamesets(fetched, this.generate)})
     }
 
