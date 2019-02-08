@@ -100,7 +100,6 @@ export class App extends React.Component {
     }
 
     generate() {
-	const namesetsForGenerator = [];
 	const splitterAfter = new Splitter(VOWELS, true, "after")
 	const splitterBefore = new Splitter(VOWELS, true, "before")
 	const standardFilters = [
@@ -111,7 +110,7 @@ export class App extends React.Component {
             NameLengthFilter,
             CapitalizeFilter,
 	]
-	this.state.fetchedNames.forEach(nameset => {
+	const namesetsForGenerator = this.state.fetchedNames.map(nameset => {
             const namesetForGenerator = {
     		label: nameset[0].attributes.label,
     		names: [],
@@ -126,7 +125,7 @@ export class App extends React.Component {
     		    namesetForGenerator.names.push(name.attributes.variants);
     		}
             });
-            namesetsForGenerator.push(namesetForGenerator);
+            return namesetForGenerator;
 	});
     	if (namesetsForGenerator.length > 0) {
 	    const generator = new Generator(namesetsForGenerator);
