@@ -41,6 +41,7 @@ export class App extends React.Component {
 	this.registerNameset = this.registerNameset.bind(this);
         this.afterSorting = this.afterSorting.bind(this);
         this.afterChoosingHowManyNames = this.afterChoosingHowManyNames.bind(this);
+        this.afterGeneratingNames = this.afterGeneratingNames.bind(this);
     }
 
     registerNameset(id, nameset) {
@@ -125,13 +126,7 @@ export class App extends React.Component {
     	if (namesetsForGenerator.length > 0) {
 	    const generator = new Generator(namesetsForGenerator);
 	    const generated = generator.generate(this.state.howManyNames);
-	    this.setState(
-   		{
-   		    generated: generated,
-                    sorted: generated
-   		},
-   		() => {this.setState( { isGenerating: false } );}
-	    );
+	    this.afterGeneratingNames(generated);
 	}
     }
 
@@ -141,6 +136,16 @@ export class App extends React.Component {
 		howManyNames: howManyNames,
 		selectedNumberOption: selectedOption
 	    }
+	);
+    }
+
+    afterGeneratingNames(generated) {
+	this.setState(
+   	    {
+   		generated: generated,
+                sorted: generated
+   	    },
+   	    () => {this.setState( { isGenerating: false } );}
 	);
     }
 
