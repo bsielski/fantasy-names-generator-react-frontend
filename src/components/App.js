@@ -26,7 +26,7 @@ export class App extends React.Component {
 	    actionButtonText: 'placeholder',
 	    selectedNamesets: new Set(),
 	    selectedNumberOption: 0,
-	    howManyNames: 0,
+	    howManyNames: this.props.numberOptions[0].value,
 	    generated: [],
 	    sorted: [],
 	    isGenerating: false,
