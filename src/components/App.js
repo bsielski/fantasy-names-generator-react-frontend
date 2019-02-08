@@ -16,8 +16,6 @@ import {VowelsPatternsFilter} from '../filter';
 import {UniquenessFilter} from '../filter';
 import {NameLengthFilter} from '../filter';
 import {CapitalizeFilter} from '../filter';
-import {API_SERVER} from '../paths';
-import {APP_VERSION} from '../version';
 
 import './App.css';
 
@@ -65,7 +63,7 @@ export class App extends React.Component {
     fetchEverything(ids) {
 	const fetched = [];
 	const promises = [];
-	const urlPart1 = "http://" + API_SERVER + "/api/v1/namesets/";
+	const urlPart1 = "http://" + this.props.API_SERVER + "/api/v1/namesets/";
 	const urls = this.buildUrls(urlPart1, ids, "?include=names");
 	for (let i = 0; i < urls.length; i++) {
 	    promises.push(
@@ -166,7 +164,7 @@ export class App extends React.Component {
 	return (
 	    <div>
 	      <Header
-		version={APP_VERSION}
+		version={this.props.APP_VERSION}
 		/>
 	      <main className="l-main-container">
 		<section className="l-section-container l-section-container--input">
