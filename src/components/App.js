@@ -39,6 +39,7 @@ export class App extends React.Component {
 	this.handleAction = this.handleAction.bind(this);
 	this.registerNameset = this.registerNameset.bind(this);
 	this.aftertToggleNamesetCheckbox = this.aftertToggleNamesetCheckbox.bind(this);
+        this.beforeFetchingNamesets = this.beforeFetchingNamesets.bind(this);
         this.afterSorting = this.afterSorting.bind(this);
         this.afterChoosingHowManyNames = this.afterChoosingHowManyNames.bind(this);
         this.afterGeneratingNames = this.afterGeneratingNames.bind(this);
@@ -59,6 +60,12 @@ export class App extends React.Component {
 	return ids.map(function(id){
             return begin + id + end;
 	});
+    }
+
+    beforeFetchingNamesets() {
+	this.setState(
+	    { isGenerating: true },
+	);
     }
 
     fetchEverything(ids) {
@@ -88,9 +95,7 @@ export class App extends React.Component {
 
     handleAction(e) {
 	e.preventDefault();
-	this.setState(
-	    { isGenerating: true },
-	);
+	this.beforeFetchingNamesets();
 	this.fetchEverything(Array.from(this.state.selectedNamesets));
     }
 
