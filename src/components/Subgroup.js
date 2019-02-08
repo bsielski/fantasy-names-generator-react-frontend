@@ -22,7 +22,7 @@ export class Subgroup extends React.Component {
         <Nameset
           key={index}
           nameset={nameset}
-          handleCheckboxChange={this.props.handleCheckboxChange}
+          aftertToggleNamesetCheckbox={this.props.aftertToggleNamesetCheckbox}
           custom={this.props.custom}
           registerNameset={this.props.registerNameset}
         />

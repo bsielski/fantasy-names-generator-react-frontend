@@ -34,11 +34,11 @@ export class App extends React.Component {
             pathToLastSortMethod: [0, "ascending"]	    
 	};
 	this.namesets = {};
-	this.toggleCheckbox = this.toggleCheckbox.bind(this);
 	this.buildUrls = this.buildUrls.bind(this);
 	this.fetchEverything = this.fetchEverything.bind(this);
 	this.handleAction = this.handleAction.bind(this);
 	this.registerNameset = this.registerNameset.bind(this);
+	this.aftertToggleNamesetCheckbox = this.aftertToggleNamesetCheckbox.bind(this);
         this.afterSorting = this.afterSorting.bind(this);
         this.afterChoosingHowManyNames = this.afterChoosingHowManyNames.bind(this);
         this.afterGeneratingNames = this.afterGeneratingNames.bind(this);
@@ -149,7 +149,7 @@ export class App extends React.Component {
 	);
     }
 
-    toggleCheckbox(id) {
+    aftertToggleNamesetCheckbox(id) {
 	if (this.state.selectedNamesets.has(id)) {
 	    this.setState(previousState => {
 		previousState.selectedNamesets.delete(id);
@@ -174,7 +174,7 @@ export class App extends React.Component {
 		    groups={this.state.groups}
 		    subgroups={this.state.subgroups}
 		    namesets={this.state.namesets}
-		    handleCheckboxChange={this.toggleCheckbox}
+		    aftertToggleNamesetCheckbox={this.aftertToggleNamesetCheckbox}
 		    defaultCustomNames={this.state.defaultCustomNames}
 		    registerNameset={this.registerNameset}
 		    />

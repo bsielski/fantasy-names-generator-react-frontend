@@ -54,7 +54,7 @@ export class GroupboxContainer extends React.Component {
           group={group}
           subgroups={this.state.subgroups[group.id]}
           namesets={this.state.namesets}
-          handleCheckboxChange={this.props.handleCheckboxChange}
+          aftertToggleNamesetCheckbox={this.props.aftertToggleNamesetCheckbox}
           registerNameset={this.props.registerNameset}
         />
       );
