@@ -28,6 +28,7 @@ export class App extends React.Component {
 	    actionButtonText: 'placeholder',
 	    selectedNamesets: new Set(),
 	    selectedNumberOption: 0,
+	    howManyNames: 0,
 	    generated: [],
 	    sorted: [],
 	    isGenerating: false,
@@ -35,19 +36,13 @@ export class App extends React.Component {
             pathToLastSortMethod: [0, "ascending"]	    
 	};
 	this.namesets = {};
-	this.numberOptions = [
-	    {value: 10, label: '10', description: "(I feel very lucky).",},
-	    {value: 100, label: '100', description: "",},
-	    {value: 500, label: '500', description: "",},
-	    {value: 5000, label: '5000', description: "",},
-	];
 	this.toggleCheckbox = this.toggleCheckbox.bind(this);
-	this.setHowManyNames = this.setHowManyNames.bind(this);
 	this.buildUrls = this.buildUrls.bind(this);
 	this.fetchEverything = this.fetchEverything.bind(this);
 	this.handleAction = this.handleAction.bind(this);
 	this.registerNameset = this.registerNameset.bind(this);
         this.afterSorting = this.afterSorting.bind(this);
+        this.afterChoosingHowManyNames = this.afterChoosingHowManyNames.bind(this);
     }
 
     registerNameset(id, nameset) {
@@ -131,7 +126,7 @@ export class App extends React.Component {
 	});
     	if (namesetsForGenerator.length > 0) {
 	    const generator = new Generator(namesetsForGenerator);
-	    const generated = generator.generate(this.numberOptions[this.state.selectedNumberOption].value);
+	    const generated = generator.generate(this.state.howManyNames);
 	    this.setState(
    		{
    		    generated: generated,
@@ -142,9 +137,12 @@ export class App extends React.Component {
 	}
     }
 
-    setHowManyNames(option) {
+    afterChoosingHowManyNames(howManyNames, selectedOption) {
 	this.setState(
-	    { selectedNumberOption: option }
+	    {
+		howManyNames: howManyNames,
+		selectedNumberOption: selectedOption
+	    }
 	);
     }
 
@@ -184,22 +182,22 @@ export class App extends React.Component {
 
 		<section className="l-section-container l-section-container--output">
 		  <HowManyNames
-		    options={this.numberOptions}
+		    options={this.props.numberOptions}
 		    selectedOption={this.state.selectedNumberOption}
-		    setHowManyNames={this.setHowManyNames}
+		    afterChoosingHowManyNames={this.afterChoosingHowManyNames}
 		    />
 		  <ActionButton
 		    isGenerating={this.state.isGenerating}
 		    howManyNamesetsSelected={this.state.selectedNamesets.size}
-		    howManyNames={this.numberOptions[this.state.selectedNumberOption].value}
+		    howManyNames={this.state.howManyNames}
 		    onClick={this.handleAction}
 		    />
-                  <Sorting
+		  <Sorting
 		    generated={this.state.generated}
 		    sortingButtons={this.props.sortingButtons}
 		    afterSorting={this.afterSorting}
 		    />
-        	  <GeneratedList
+		  <GeneratedList
 		    sorted={this.state.sorted}
 		    sortingButtons={this.props.sortingButtons}
 		    pathToLastSortMethod={this.state.pathToLastSortMethod}
