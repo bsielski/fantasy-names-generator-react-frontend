@@ -68,8 +68,14 @@ export class App extends React.Component {
 	);
     }
 
+    afterFetchingNamesets(fetched, callback) {
+	this.setState(
+	    { fetchedNames: fetched },
+	    callback
+	);
+    }
+
     fetchEverything(ids) {
-	const fetched = [];
 	const promises = [];
 	const urlPart1 = "http://" + this.props.API_SERVER + "/api/v1/namesets/";
 	const urls = this.buildUrls(urlPart1, ids, "?include=names");
@@ -78,19 +84,12 @@ export class App extends React.Component {
 		fetch(urls[i])
 		    .then(response => response.json())
 		    .then(response => {
-			if (response.included) {
-			    fetched.push([response.data, response.included]);
-			}
+			return [response.data, response.included];
 		    })
 		    .catch(error => console.log(error))
 	    )
 	}
-	Promise.all(promises).then(() => {
-	    this.setState(
-		{ fetchedNames: fetched },
-		this.generate
-	    );
-	})
+	Promise.all(promises).then((fetched) => {this.afterFetchingNamesets(fetched, this.generate)})
     }
 
     handleAction(e) {
