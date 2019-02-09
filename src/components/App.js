@@ -35,7 +35,7 @@ export class App extends React.Component {
 	};
 	this.namesets = {};
 	this.buildUrls = this.buildUrls.bind(this);
-	this.fetchEverything = this.fetchEverything.bind(this);
+	this.fetchNamesets = this.fetchNamesets.bind(this);
 	this.handleAction = this.handleAction.bind(this);
 	this.registerNameset = this.registerNameset.bind(this);
 	this.aftertToggleNamesetCheckbox = this.aftertToggleNamesetCheckbox.bind(this);
@@ -74,7 +74,7 @@ export class App extends React.Component {
 	);
     }
 
-    fetchEverything(urls) {
+    fetchNamesets(urls) {
 	return urls.map(url => {
 	    return fetch(url)
 		.then(response => response.json())
@@ -91,7 +91,7 @@ export class App extends React.Component {
 	const namesetIds = Array.from(this.state.selectedNamesets);
 	const urlPart1 = "http://" + this.props.API_SERVER + "/api/v1/namesets/";
 	const urls = this.buildUrls(urlPart1, namesetIds, "?include=names");
-	const promisedFetched = this.fetchEverything(urls);
+	const promisedFetched = this.fetchNamesets(urls);
 	const fetched = await Promise.all(promisedFetched);
 	this.afterFetchingNamesets(fetched);
 	const namesetsForGenerator = this.buildNamesetsForGenerator();
