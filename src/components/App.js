@@ -66,11 +66,9 @@ export class App extends React.Component {
 	this.setState(
    	    {
    		generated: generated,
-                sorted: generated
-   	    },
-   	    () => {
-		this.setState({isGenerating: false})
-	    }
+                sorted: generated,
+		isGenerating: false
+   	    }
 	);
     }
 
