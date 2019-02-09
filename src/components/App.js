@@ -67,7 +67,8 @@ export class App extends React.Component {
    	    {
    		generated: generated,
                 sorted: generated,
-		isGenerating: false
+		isGenerating: false,
+		pathToLastSortMethod: [0, "ascending"]
    	    }
 	);
     }
