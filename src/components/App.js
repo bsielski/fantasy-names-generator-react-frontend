@@ -68,15 +68,18 @@ export class App extends React.Component {
 	);
     }
 
-    afterFetchingNamesets(fetched, callback) {
-	this.setState(
-	    { fetchedNames: fetched },
-	    callback
-	);
+    afterFetchingNamesets(promises, callback) {
+	Promise.all(promises)
+	    .then((fetched) => {
+		this.setState(
+		    { fetchedNames: fetched },
+		    callback
+		);
+	    })
     }
 
     fetchEverything(urls) {
-	const promises = urls.map(url => {
+	return urls.map(url => {
 	    return fetch(url)
 		.then(response => response.json())
 		.then(response => {
@@ -84,7 +87,6 @@ export class App extends React.Component {
 		})
 		.catch(error => console.log(error))	    
 	});
-	Promise.all(promises).then((fetched) => {this.afterFetchingNamesets(fetched, this.generate)})
     }
 
     handleAction(e) {
@@ -93,7 +95,8 @@ export class App extends React.Component {
 	const namesetIds = Array.from(this.state.selectedNamesets);
 	const urlPart1 = "http://" + this.props.API_SERVER + "/api/v1/namesets/";
 	const urls = this.buildUrls(urlPart1, namesetIds, "?include=names");
-	this.fetchEverything(urls);
+	const promisedFetched = this.fetchEverything(urls);
+	this.afterFetchingNamesets(promisedFetched, this.generate);
     }
 
     generate() {
