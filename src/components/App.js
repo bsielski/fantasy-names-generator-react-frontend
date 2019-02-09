@@ -19,6 +19,7 @@ export class App extends React.Component {
 	    howManyNames: this.props.numberOptions[0].value,
 	    generated: [],
 	    sorted: [],
+	    isLoading: false,
 	    isGenerating: false,
             pathToLastSortMethod: [0, "ascending"]	    
 	};
@@ -46,11 +47,17 @@ export class App extends React.Component {
 
     beforeFetchingNamesets() {
 	this.setState(
-	    { isGenerating: true }
+	    { isLoading: true }
 	);
     }
 
     afterFetchingNamesets(fetched) {
+	this.setState(
+	    {
+		isLoading: false,
+		isGenerating: true
+	    }
+	);
     }
 
     afterChoosingHowManyNames(howManyNames, selectedOption) {
@@ -112,6 +119,7 @@ export class App extends React.Component {
 		    />
 		  <ActionButton
 		    isGenerating={this.state.isGenerating}
+		    isLoading={this.state.isLoading}
 		    API_SERVER={this.props.API_SERVER}
 		    namesets={this.namesets}
 		    howManyNamesetsSelected={this.state.selectedNamesets.size}

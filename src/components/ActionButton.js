@@ -15,7 +15,10 @@ import './ActionButton.css';
 export function ActionButton(props) {
 
     const isDisabled = () => {
-	if (props.isGenerating) {
+	if (props.isLoading) {
+	    return true;
+	}
+	else if (props.isGenerating) {
 	    return true;
 	}
 	else if (props.howManyNamesetsSelected === 0) {
@@ -27,7 +30,10 @@ export function ActionButton(props) {
     };
 
     const generateButtonText = () => {
-	if (props.isGenerating) {
+	if (props.isLoading) {
+	    return "Loading, please wait"
+	}
+	else if (props.isGenerating) {
 	    return "Generating, please wait"
 	}
 	else if (props.howManyNamesetsSelected === 0) {
