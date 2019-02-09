@@ -7,16 +7,6 @@ import {ActionButton} from './ActionButton';
 import {GeneratedList} from './GeneratedList';
 import {Sorting} from './Sorting';
 
-import {Generator} from '../generator';
-import {Splitter} from '../splitter';
-import {VOWELS} from '../helpers';
-import {RepeatedLettersFilter} from '../filter';
-import {ConsonantsPatternsFilter} from '../filter';
-import {VowelsPatternsFilter} from '../filter';
-import {UniquenessFilter} from '../filter';
-import {NameLengthFilter} from '../filter';
-import {CapitalizeFilter} from '../filter';
-
 import './App.css';
 
 export class App extends React.Component {
@@ -34,15 +24,13 @@ export class App extends React.Component {
             pathToLastSortMethod: [0, "ascending"]	    
 	};
 	this.namesets = {};
-	this.buildUrls = this.buildUrls.bind(this);
-	this.fetchNamesets = this.fetchNamesets.bind(this);
-	this.handleAction = this.handleAction.bind(this);
 	this.registerNameset = this.registerNameset.bind(this);
 	this.aftertToggleNamesetCheckbox = this.aftertToggleNamesetCheckbox.bind(this);
-        this.beforeFetchingNamesets = this.beforeFetchingNamesets.bind(this);
-        this.afterSorting = this.afterSorting.bind(this);
         this.afterChoosingHowManyNames = this.afterChoosingHowManyNames.bind(this);
+        this.beforeFetchingNamesets = this.beforeFetchingNamesets.bind(this);
+        this.afterFetchingNamesets = this.afterFetchingNamesets.bind(this);
         this.afterGeneratingNames = this.afterGeneratingNames.bind(this);
+        this.afterSorting = this.afterSorting.bind(this);
     }
 
     registerNameset(id, nameset) {
@@ -56,15 +44,10 @@ export class App extends React.Component {
 	});
     }
 
-    buildUrls(begin, ids, end) {
-	return ids.map(function(id){
-            return begin + id + end;
-	});
-    }
 
     beforeFetchingNamesets() {
 	this.setState(
-	    { isGenerating: true },
+	    { isGenerating: true }
 	);
     }
 
@@ -72,69 +55,6 @@ export class App extends React.Component {
 	this.setState(
 	    { fetchedNames: fetched }
 	);
-    }
-
-    fetchNamesets(urls) {
-	return urls.map(url => {
-	    return fetch(url)
-		.then(response => response.json())
-		.then(response => {
-			return [response.data, response.included];
-		})
-		.catch(error => console.log(error))	    
-	});
-    }
-
-    async handleAction(e) {
-	e.preventDefault();
-	this.beforeFetchingNamesets();
-	const namesetIds = Array.from(this.state.selectedNamesets);
-	const urlPart1 = "http://" + this.props.API_SERVER + "/api/v1/namesets/";
-	const urls = this.buildUrls(urlPart1, namesetIds, "?include=names");
-	const promisedFetched = this.fetchNamesets(urls);
-	const fetched = await Promise.all(promisedFetched);
-	this.afterFetchingNamesets(fetched);
-	const namesetsForGenerator = this.buildNamesetsForGenerator();
-	const generated = this.generate(namesetsForGenerator);
-	this.afterGeneratingNames(generated);
-    }
-
-    buildNamesetsForGenerator() {
-	const splitterAfter = new Splitter(VOWELS, true, "after")
-	const splitterBefore = new Splitter(VOWELS, true, "before")
-	const standardFilters = [
-            RepeatedLettersFilter,
-            ConsonantsPatternsFilter,
-            VowelsPatternsFilter,
-            UniquenessFilter,
-            NameLengthFilter,
-            CapitalizeFilter,
-	]
-	const namesetsForGenerator = this.state.fetchedNames.map(nameset => {
-            const namesetForGenerator = {
-    		label: nameset[0].attributes.label,
-    		names: [],
-    		splitters: [splitterAfter, splitterBefore],
-    		filters: standardFilters,
-            }
-            nameset[1].forEach(name => {
-    		if (this.namesets[nameset[0].id]) {
-    		    namesetForGenerator.names.push(this.namesets[nameset[0].id]);
-    		}
-    		else {
-    		    namesetForGenerator.names.push(name.attributes.variants);
-    		}
-            });
-            return namesetForGenerator;
-	});
-	return namesetsForGenerator;
-    }
-
-    generate(namesetsForGenerator) {
-    	if (namesetsForGenerator.length > 0) {
-	    const generator = new Generator(namesetsForGenerator);
-	    return generator.generate(this.state.howManyNames);
-	}
     }
 
     afterChoosingHowManyNames(howManyNames, selectedOption) {
@@ -152,7 +72,9 @@ export class App extends React.Component {
    		generated: generated,
                 sorted: generated
    	    },
-   	    () => {this.setState( { isGenerating: false } );}
+   	    () => {
+		this.setState({isGenerating: false})
+	    }
 	);
     }
 
@@ -195,9 +117,15 @@ export class App extends React.Component {
 		    />
 		  <ActionButton
 		    isGenerating={this.state.isGenerating}
+		    API_SERVER={this.props.API_SERVER}
+		    namesets={this.namesets}
 		    howManyNamesetsSelected={this.state.selectedNamesets.size}
+		    selectedNamesets={this.state.selectedNamesets}
 		    howManyNames={this.state.howManyNames}
-		    onClick={this.handleAction}
+		    beforeFetchingNamesets={this.beforeFetchingNamesets}
+		    afterFetchingNamesets={this.afterFetchingNamesets}
+		    fetchedNames={this.state.fetchedNames}
+		    afterGeneratingNames={this.afterGeneratingNames}
 		    />
 		  <Sorting
 		    generated={this.state.generated}
