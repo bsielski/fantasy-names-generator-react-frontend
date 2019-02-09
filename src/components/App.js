@@ -27,6 +27,7 @@ export class App extends React.Component {
 	this.registerNameset = this.registerNameset.bind(this);
 	this.aftertToggleNamesetCheckbox = this.aftertToggleNamesetCheckbox.bind(this);
         this.afterChoosingHowManyNames = this.afterChoosingHowManyNames.bind(this);
+        this.afterClickingGenerateButton = this.afterClickingGenerateButton.bind(this);
         this.beforeFetchingNamesets = this.beforeFetchingNamesets.bind(this);
         this.afterFetchingNamesets = this.afterFetchingNamesets.bind(this);
         this.afterGeneratingNames = this.afterGeneratingNames.bind(this);
@@ -44,6 +45,17 @@ export class App extends React.Component {
 	});
     }
 
+    afterClickingGenerateButton() {
+	this.props.generate(
+	    this.beforeFetchingNamesets,
+	    this.state.selectedNamesets,
+	    this.props.API_SERVER,
+	    this.afterFetchingNamesets,
+	    this.afterGeneratingNames,
+	    this.state.howManyNames,
+	    this.namesets
+	)
+    }
 
     beforeFetchingNamesets() {
 	this.setState(
@@ -120,14 +132,9 @@ export class App extends React.Component {
 		  <ActionButton
 		    isGenerating={this.state.isGenerating}
 		    isLoading={this.state.isLoading}
-		    API_SERVER={this.props.API_SERVER}
-		    namesets={this.namesets}
 		    howManyNamesetsSelected={this.state.selectedNamesets.size}
-		    selectedNamesets={this.state.selectedNamesets}
 		    howManyNames={this.state.howManyNames}
-		    beforeFetchingNamesets={this.beforeFetchingNamesets}
-		    afterFetchingNamesets={this.afterFetchingNamesets}
-		    afterGeneratingNames={this.afterGeneratingNames}
+		    afterClickingGenerateButton={this.afterClickingGenerateButton}
 		    />
 		  <Sorting
 		    generated={this.state.generated}
