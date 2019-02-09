@@ -68,14 +68,10 @@ export class App extends React.Component {
 	);
     }
 
-    afterFetchingNamesets(promises, callback) {
-	Promise.all(promises)
-	    .then((fetched) => {
-		this.setState(
-		    { fetchedNames: fetched },
-		    callback
-		);
-	    })
+    afterFetchingNamesets(fetched) {
+	this.setState(
+	    { fetchedNames: fetched }
+	);
     }
 
     fetchEverything(urls) {
@@ -89,17 +85,21 @@ export class App extends React.Component {
 	});
     }
 
-    handleAction(e) {
+    async handleAction(e) {
 	e.preventDefault();
 	this.beforeFetchingNamesets();
 	const namesetIds = Array.from(this.state.selectedNamesets);
 	const urlPart1 = "http://" + this.props.API_SERVER + "/api/v1/namesets/";
 	const urls = this.buildUrls(urlPart1, namesetIds, "?include=names");
 	const promisedFetched = this.fetchEverything(urls);
-	this.afterFetchingNamesets(promisedFetched, this.generate);
+	const fetched = await Promise.all(promisedFetched);
+	this.afterFetchingNamesets(fetched);
+	const namesetsForGenerator = this.buildNamesetsForGenerator();
+	const generated = this.generate(namesetsForGenerator);
+	this.afterGeneratingNames(generated);
     }
 
-    generate() {
+    buildNamesetsForGenerator() {
 	const splitterAfter = new Splitter(VOWELS, true, "after")
 	const splitterBefore = new Splitter(VOWELS, true, "before")
 	const standardFilters = [
@@ -127,10 +127,13 @@ export class App extends React.Component {
             });
             return namesetForGenerator;
 	});
+	return namesetsForGenerator;
+    }
+
+    generate(namesetsForGenerator) {
     	if (namesetsForGenerator.length > 0) {
 	    const generator = new Generator(namesetsForGenerator);
-	    const generated = generator.generate(this.state.howManyNames);
-	    this.afterGeneratingNames(generated);
+	    return generator.generate(this.state.howManyNames);
 	}
     }
 
