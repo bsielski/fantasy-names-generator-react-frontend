@@ -1,4 +1,5 @@
 import React from 'react';
+import {ActionButtonText} from './ActionButtonText';
 
 import './ActionButton.css';
 
@@ -19,22 +20,6 @@ export function ActionButton(props) {
 	}
     };
 
-    const generateButtonText = () => {
-	if (props.isLoading) {
-	    return "Loading, please wait"
-	}
-	else if (props.isGenerating) {
-	    return "Generating, please wait"
-	}
-	else if (props.howManyNamesetsSelected === 0) {
-	    return "Select some nameset or namesets"
-	}
-	else {
-	    return "Generate " + props.howManyNames + " names"
-	}
-    };
-
-
     const handleClick = (e) => {
 	e.preventDefault();
 	props.afterClickingGenerateButton();
@@ -50,7 +35,12 @@ export function ActionButton(props) {
             disabled={ isDisabled() }
             onClick={handleClick}
             >
-            {generateButtonText()}
+            <ActionButtonText
+              isLoading={ props.isLoading }
+              isGenerating={ props.isGenerating }
+              howManyNamesetsSelected={ props.howManyNamesetsSelected }
+              howManyNames={ props.howManyNames }
+	      />
 	  </button>
 	</section>
     );

@@ -69,7 +69,7 @@ export class App extends React.Component {
 		isLoading: false,
 		isGenerating: true
 	    }
-	);
+	)
     }
 
     afterChoosingHowManyNames(howManyNames, selectedOption) {
