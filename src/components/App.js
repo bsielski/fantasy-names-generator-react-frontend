@@ -59,17 +59,11 @@ export class App extends React.Component {
 
     beforeFetchingNamesets() {
 	this.setState(
-	    { isLoading: true }
+	    { isGenerating: true }
 	);
     }
 
     afterFetchingNamesets() {
-	this.setState(
-	    {
-		isLoading: false,
-		isGenerating: true
-	    }
-	)
     }
 
     afterChoosingHowManyNames(howManyNames, selectedOption) {
