@@ -75,9 +75,7 @@ export class App extends React.Component {
 	);
     }
 
-    fetchEverything(ids) {
-	const urlPart1 = "http://" + this.props.API_SERVER + "/api/v1/namesets/";
-	const urls = this.buildUrls(urlPart1, ids, "?include=names");
+    fetchEverything(urls) {
 	const promises = urls.map(url => {
 	    return fetch(url)
 		.then(response => response.json())
@@ -92,7 +90,10 @@ export class App extends React.Component {
     handleAction(e) {
 	e.preventDefault();
 	this.beforeFetchingNamesets();
-	this.fetchEverything(Array.from(this.state.selectedNamesets));
+	const namesetIds = Array.from(this.state.selectedNamesets);
+	const urlPart1 = "http://" + this.props.API_SERVER + "/api/v1/namesets/";
+	const urls = this.buildUrls(urlPart1, namesetIds, "?include=names");
+	this.fetchEverything(urls);
     }
 
     generate() {
