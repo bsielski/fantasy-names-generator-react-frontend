@@ -74,7 +74,7 @@ export async function generate(beforeFetchingNamesets, selectedNamesets,
     const urls = buildUrls(urlPart1, namesetIds, "?include=names");
     const promisedFetched = fetchNamesets(urls);
     const fetched = await Promise.all(promisedFetched);
-    afterFetchingNamesets(fetched);
+    afterFetchingNamesets();
     const namesetsForGenerator = buildNamesetsForGenerator(fetched, namesets);
     const generated = generate(namesetsForGenerator);
     afterGeneratingNames(generated);

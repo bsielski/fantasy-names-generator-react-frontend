@@ -63,7 +63,7 @@ export class App extends React.Component {
 	);
     }
 
-    afterFetchingNamesets(fetched) {
+    afterFetchingNamesets() {
 	this.setState(
 	    {
 		isLoading: false,
