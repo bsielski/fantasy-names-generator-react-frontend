@@ -20,7 +20,6 @@ export class App extends React.Component {
 	    generated: [],
 	    sorted: [],
 	    isGenerating: false,
-	    fetchedNames: [],
             pathToLastSortMethod: [0, "ascending"]	    
 	};
 	this.namesets = {};
@@ -52,9 +51,6 @@ export class App extends React.Component {
     }
 
     afterFetchingNamesets(fetched) {
-	this.setState(
-	    { fetchedNames: fetched }
-	);
     }
 
     afterChoosingHowManyNames(howManyNames, selectedOption) {
@@ -124,7 +120,6 @@ export class App extends React.Component {
 		    howManyNames={this.state.howManyNames}
 		    beforeFetchingNamesets={this.beforeFetchingNamesets}
 		    afterFetchingNamesets={this.afterFetchingNamesets}
-		    fetchedNames={this.state.fetchedNames}
 		    afterGeneratingNames={this.afterGeneratingNames}
 		    />
 		  <Sorting

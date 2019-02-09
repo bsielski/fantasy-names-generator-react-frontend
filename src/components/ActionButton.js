@@ -54,7 +54,8 @@ export function ActionButton(props) {
 		.catch(error => console.log(error))	    
 	});
     };
-    const buildNamesetsForGenerator = () => {
+
+    const buildNamesetsForGenerator = (fetchedNames) => {
 	const splitterAfter = new Splitter(VOWELS, true, "after");
 	const splitterBefore = new Splitter(VOWELS, true, "before");
 	const standardFilters = [
@@ -65,7 +66,7 @@ export function ActionButton(props) {
             NameLengthFilter,
             CapitalizeFilter,
 	];
-	const namesetsForGenerator = props.fetchedNames.map(nameset => {
+	const namesetsForGenerator = fetchedNames.map(nameset => {
             const namesetForGenerator = {
     		label: nameset[0].attributes.label,
     		names: [],
@@ -101,7 +102,7 @@ export function ActionButton(props) {
 	const promisedFetched = fetchNamesets(urls);
 	const fetched = await Promise.all(promisedFetched);
 	props.afterFetchingNamesets(fetched);
-	const namesetsForGenerator = buildNamesetsForGenerator();
+	const namesetsForGenerator = buildNamesetsForGenerator(fetched);
 	const generated = generate(namesetsForGenerator);
 	props.afterGeneratingNames(generated);
     };
