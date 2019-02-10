@@ -22,9 +22,9 @@ export class HowManyNames extends React.Component {
 		<RadioButton key={index} name="options" buttonNumber={index} value={option.value}
 			     label={option.label} description={option.description}
 			     onChange={this.handleRadio} checked={this.props.selectedOption === index}
-			     />
+		/>
 	    );
-	}
+	};
 
 	const options = this.props.options.map(buildOption);
 	return (
@@ -34,7 +34,6 @@ export class HowManyNames extends React.Component {
 		{options}
               </div>
 	    </section>
-	)
+	);
     }
-
 }

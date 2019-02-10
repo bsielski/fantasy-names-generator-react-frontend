@@ -17,6 +17,6 @@ export class Footer extends React.Component {
 	        Dave Gandy
 	      </a>
 	    </footer>
-	)
+	);
     }
 }

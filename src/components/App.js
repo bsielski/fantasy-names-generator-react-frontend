@@ -46,15 +46,11 @@ export class App extends React.Component {
     }
 
     afterClickingGenerateButton() {
-	this.props.generate(
-	    this.beforeFetchingNamesets,
-	    this.state.selectedNamesets,
-	    this.props.API_SERVER,
-	    this.afterFetchingNamesets,
-	    this.afterGeneratingNames,
-	    this.state.howManyNames,
-	    this.namesets
-	)
+	this.props.generate(this.beforeFetchingNamesets, this.state.selectedNamesets,
+                            this.props.API_SERVER, this.afterFetchingNamesets,
+                            this.afterGeneratingNames, this.state.howManyNames,
+                            this.namesets
+                           );
     }
 
     beforeFetchingNamesets() {
@@ -104,7 +100,7 @@ export class App extends React.Component {
 	    <div>
 	      <Header
 		version={this.props.APP_VERSION}
-		/>
+	      />
 	      <main className="l-main-container">
 		<section className="l-section-container l-section-container--input">
 		  <GroupboxContainer
@@ -114,7 +110,7 @@ export class App extends React.Component {
 		    aftertToggleNamesetCheckbox={this.aftertToggleNamesetCheckbox}
 		    defaultCustomNames={this.state.defaultCustomNames}
 		    registerNameset={this.registerNameset}
-		    />
+		  />
 		</section>
 
 		<section className="l-section-container l-section-container--output">
@@ -122,24 +118,24 @@ export class App extends React.Component {
 		    options={this.props.numberOptions}
 		    selectedOption={this.state.selectedNumberOption}
 		    afterChoosingHowManyNames={this.afterChoosingHowManyNames}
-		    />
+		  />
 		  <ActionButton
 		    isGenerating={this.state.isGenerating}
 		    isLoading={this.state.isLoading}
 		    howManyNamesetsSelected={this.state.selectedNamesets.size}
 		    howManyNames={this.state.howManyNames}
 		    afterClickingGenerateButton={this.afterClickingGenerateButton}
-		    />
+		  />
 		  <Sorting
 		    generated={this.state.generated}
 		    sortingButtons={this.props.sortingButtons}
 		    afterSorting={this.afterSorting}
-		    />
+		  />
 		  <GeneratedList
 		    sorted={this.state.sorted}
 		    sortingButtons={this.props.sortingButtons}
 		    pathToLastSortMethod={this.state.pathToLastSortMethod}
-                    />
+                  />
    		</section>
 	      </main>
 	      <Footer />

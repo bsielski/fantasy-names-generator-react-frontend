@@ -34,13 +34,13 @@ export function ActionButton(props) {
             className="action_button__button"
             disabled={ isDisabled() }
             onClick={handleClick}
-            >
+          >
             <ActionButtonText
               isLoading={ props.isLoading }
               isGenerating={ props.isGenerating }
               howManyNamesetsSelected={ props.howManyNamesetsSelected }
               howManyNames={ props.howManyNames }
-	      />
+	    />
 	  </button>
 	</section>
     );

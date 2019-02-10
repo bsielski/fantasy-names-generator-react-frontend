@@ -13,7 +13,7 @@ export class Sorting extends React.Component {
 		  sortingButton={sortingButton}
 		  afterSorting={afterSorting}
 		  names={names}
-		  />
+		/>
 	    );
 	};
 
@@ -28,7 +28,6 @@ export class Sorting extends React.Component {
 		{sortButtons}
               </div>
 	    </section>
-	)
+	);
     }
-
 }
