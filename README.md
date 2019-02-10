@@ -13,3 +13,4 @@ It takes real names, analyse their patterns, and mixes them up to create new fic
 ## Changelog (major changes)
 
 - Version 1.1.0: Move "How many names do you want to generate?" radio buttons and "Generate names" button to the left section.
+- Version 1.2.0: Fix lack of reseting sorting names after generating new names. Fix missing space in the footer. Smaller font in the footer. Link to the source code in the footer.
