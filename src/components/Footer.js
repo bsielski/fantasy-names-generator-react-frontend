@@ -12,10 +12,7 @@ export class Footer extends React.Component {
 	      for education, worldbuilding and fun.
 	      <br />
 	      <br />
-	      Sorting icons made by
-	      <a className="credit_link" href="https://www.flaticon.com/authors/dave-gandy" target="blank">
-	        Dave Gandy
-	      </a>
+	      Sorting icons made by <a className="credit_link" href="https://www.flaticon.com/authors/dave-gandy" target="blank">Dave Gandy</a>
 	    </footer>
 	);
     }
