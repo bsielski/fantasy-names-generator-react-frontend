@@ -49,7 +49,7 @@ export class App extends React.Component {
 	this.props.generate(this.beforeFetchingNamesets, this.state.selectedNamesets,
                             this.props.API_SERVER, this.afterFetchingNamesets,
                             this.afterGeneratingNames, this.state.howManyNames,
-                            this.namesets
+                            this.namesets, this.props.fetchNamesets
                            );
     }
 
