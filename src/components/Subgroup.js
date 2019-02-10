@@ -3,27 +3,25 @@ import {Nameset} from './Nameset';
 
 import './Subgroup.css';
 
-export class Subgroup extends React.Component {
+export function Subgroup(props) {
 
-    render() {
-        const buildNameset = (nameset, index) => {
-            return (
-                <Nameset
-                  key={index}
-                  nameset={nameset}
-                  aftertToggleNamesetCheckbox={this.props.aftertToggleNamesetCheckbox}
-                  custom={this.props.custom}
-                  registerNameset={this.props.registerNameset}
-                />
-            );
-        };
-
-        const namesets = this.props.namesets.map(buildNameset);
-
+    const buildNameset = (nameset, index) => {
         return (
-            <div className="group-box__column">
-              {namesets}
-            </div>
+            <Nameset
+              key={index}
+              nameset={nameset}
+              aftertToggleNamesetCheckbox={props.aftertToggleNamesetCheckbox}
+              custom={props.custom}
+              registerNameset={props.registerNameset}
+            />
         );
-    }
+    };
+
+    const namesets = props.namesets.map(buildNameset);
+
+    return (
+        <div className="group-box__column">
+          {namesets}
+        </div>
+    );
 }
