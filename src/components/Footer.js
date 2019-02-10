@@ -11,6 +11,8 @@ export class Footer extends React.Component {
 	      <br />
 	      for education, worldbuilding and fun.
 	      <br />
+              <a className="credit_link" href="https://github.com/bsielski/fantasy-names-generator-react-frontend" target="blank">Source code</a>
+	      <br />
 	      <br />
 	      Sorting icons made by <a className="credit_link" href="https://www.flaticon.com/authors/dave-gandy" target="blank">Dave Gandy</a>
 	    </footer>
