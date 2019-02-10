@@ -46,7 +46,7 @@ export class App extends React.Component {
     }
 
     afterClickingGenerateButton() {
-	this.props.generate(this.props.API_SERVER, this.props.fetchNamesets, this.beforeFetchingNamesets, this.state.selectedNamesets,
+	this.props.generate(this.beforeFetchingNamesets, this.state.selectedNamesets,
                             this.afterFetchingNamesets,
                             this.afterGeneratingNames, this.state.howManyNames,
                             this.namesets

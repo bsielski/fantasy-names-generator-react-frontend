@@ -10,6 +10,9 @@ import {CapitalizeFilter} from './filter';
 
 import {curry} from 'ramda';
 
+import {API_SERVER} from './paths';
+import {fetchNamesets} from './fetchNamesets';
+
 export const generate = curry(
     async (API_SERVER, fetchNamesets, beforeFetchingNamesets, selectedNamesets, afterFetchingNamesets, afterGeneratingNames, howManyNames, namesets) => {
 	const buildUrls = (begin, ids, end) => {
@@ -67,4 +70,4 @@ export const generate = curry(
 	const generated = generate(namesetsForGenerator);
 	afterGeneratingNames(generated);
     }
-);
+)(API_SERVER, fetchNamesets);
