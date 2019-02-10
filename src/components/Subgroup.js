@@ -4,9 +4,6 @@ import {Nameset} from './Nameset';
 import './Subgroup.css';
 
 export class Subgroup extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         const buildNameset = (nameset, index) => {
