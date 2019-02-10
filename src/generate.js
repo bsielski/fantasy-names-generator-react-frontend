@@ -13,14 +13,15 @@ import {curry} from 'ramda';
 import {API_SERVER} from './paths';
 import {fetchNamesets} from './fetchNamesets';
 
+export const buildUrlsForNamesetIds = curry((API_SERVER, ids) => {
+    const urlPart1 = "http://" + API_SERVER + "/api/v1/namesets/";
+    return ids.map(id => {
+	return urlPart1 + id + "?include=names";
+    });
+})(API_SERVER);
+
 export const generate = curry(
-    async (API_SERVER, fetchNamesets, beforeFetchingNamesets, selectedNamesets, afterFetchingNamesets, afterGeneratingNames, howManyNames, namesets) => {
-	const buildUrls = (begin, ids, end) => {
-	    return ids.map(function(id){
-		return begin + id + end;
-	    });
-	};
-	
+    async (buildUrlsForNamesetIds, fetchNamesets, beforeFetchingNamesets, selectedNamesets, afterFetchingNamesets, afterGeneratingNames, howManyNames, namesets) => {
 	const buildNamesetsForGenerator = (fetchedNames, namesets) => {
 	    const splitterAfter = new Splitter(VOWELS, true, "after");
 	    const splitterBefore = new Splitter(VOWELS, true, "before");
@@ -61,8 +62,7 @@ export const generate = curry(
 
 	beforeFetchingNamesets();
 	const namesetIds = Array.from(selectedNamesets);
-	const urlPart1 = "http://" + API_SERVER + "/api/v1/namesets/";
-	const urls = buildUrls(urlPart1, namesetIds, "?include=names");
+	const urls = buildUrlsForNamesetIds(namesetIds);
 	const promisedFetched = fetchNamesets(urls);
 	const fetched = await Promise.all(promisedFetched);
 	afterFetchingNamesets();
@@ -70,4 +70,4 @@ export const generate = curry(
 	const generated = generate(namesetsForGenerator);
 	afterGeneratingNames(generated);
     }
-)(API_SERVER, fetchNamesets);
+)(buildUrlsForNamesetIds, fetchNamesets);
