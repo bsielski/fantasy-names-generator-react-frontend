@@ -6,9 +6,6 @@ import './Subgroup.css';
 export class Subgroup extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            custom: this.props.custom,
-        };
     }
 
     render() {
