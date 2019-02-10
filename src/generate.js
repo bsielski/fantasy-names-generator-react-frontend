@@ -11,7 +11,7 @@ import {CapitalizeFilter} from './filter';
 import {curry} from 'ramda';
 
 export const generate = curry(
-    async (beforeFetchingNamesets, selectedNamesets, API_SERVER, afterFetchingNamesets, afterGeneratingNames, howManyNames, namesets, fetchNamesets) => {
+    async (API_SERVER, fetchNamesets, beforeFetchingNamesets, selectedNamesets, afterFetchingNamesets, afterGeneratingNames, howManyNames, namesets) => {
 	const buildUrls = (begin, ids, end) => {
 	    return ids.map(function(id){
 		return begin + id + end;
