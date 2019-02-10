@@ -7,7 +7,6 @@ export class Subgroup extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: this.props.subgroup.id,
             custom: this.props.custom,
         };
     }
