@@ -110,6 +110,7 @@ export class App extends React.Component {
 		    aftertToggleNamesetCheckbox={this.aftertToggleNamesetCheckbox}
 		    defaultCustomNames={this.state.defaultCustomNames}
 		    registerNameset={this.registerNameset}
+                    fetchGroupsSubgroupsNamesets={this.props.fetchGroupsSubgroupsNamesets}
 		  />
 		</section>
 

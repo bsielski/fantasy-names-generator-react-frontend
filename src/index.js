@@ -8,6 +8,7 @@ import {sortingButtons} from './sorting-buttons';
 import {numberOptions} from './numberOptions';
 import {APP_VERSION} from './version';
 import {generate} from './generate';
+import {fetchGroupsSubgroupsNamesets} from './fetchGroupsSubgroupsNamesets';
 
 ReactDOM.render(
     <App
@@ -15,6 +16,7 @@ ReactDOM.render(
       numberOptions={numberOptions}
       APP_VERSION={APP_VERSION}
       generate={generate}
+      fetchGroupsSubgroupsNamesets={fetchGroupsSubgroupsNamesets}
       />,
     document.getElementById('root')
 )

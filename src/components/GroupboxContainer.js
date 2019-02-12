@@ -1,6 +1,5 @@
 import React from 'react';
 import {Groupbox} from './Groupbox';
-import {API_SERVER} from '../paths';
 
 import './GroupboxContainer.css';
 
@@ -15,31 +14,9 @@ export class GroupboxContainer extends React.Component {
     }
 
     componentDidMount() {
-        const segregatedByNested = (array, key1, key2) => {
-            const sorted = {};
-            array.forEach(element => {
-                if( sorted[element[key1][key2]] === undefined ){
-                    sorted[element[key1][key2]] = [];
-                }
-                sorted[element[key1][key2]].push(element);
-            });
-            return sorted;
-        };
-
-        fetch(`http://` + API_SERVER + `/api/v1/groups?include=subgroups.namesets`)
+        this.props.fetchGroupsSubgroupsNamesets()
             .then(response => {
-                return response.json();
-            })
-            .then(response => {
-                console.log(response);
-                console.log(response.included.filter(e => {return (e["type"] === "subgroups");}));
-                this.setState(
-                    {
-                        groups: response.data,
-                        subgroups: segregatedByNested(response.included.filter(e => {return (e["type"] === "subgroups");}), "attributes", "group-id"),
-                        namesets: segregatedByNested(response.included.filter(e => {return (e["type"] === "namesets");}), "attributes", "subgroup-id"),
-                    },
-                );
+                this.setState(response);
             })
             .catch(error => console.log(error));
     }
