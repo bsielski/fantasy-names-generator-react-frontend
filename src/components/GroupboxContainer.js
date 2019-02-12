@@ -31,6 +31,8 @@ export class GroupboxContainer extends React.Component {
                 return response.json();
             })
             .then(response => {
+                console.log(response);
+                console.log(response.included.filter(e => {return (e["type"] === "subgroups");}));
                 this.setState(
                     {
                         groups: response.data,
