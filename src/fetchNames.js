@@ -1,4 +1,4 @@
-export function fetchNamesets(urls) {
+export function fetchNames(urls) {
     return urls.map(url => {
 	return fetch(url)
 	    .then(response => response.json())
