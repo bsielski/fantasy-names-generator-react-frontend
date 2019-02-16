@@ -9,6 +9,7 @@ import {numberOptions} from './numberOptions';
 import {APP_VERSION} from './version';
 import {generate} from './generate';
 import {fetchGroupsSubgroupsNamesets} from './fetchGroupsSubgroupsNamesets';
+import {customNamesetsForGenerator} from './customNamesetsForGenerator';
 
 ReactDOM.render(
     <App
@@ -17,6 +18,7 @@ ReactDOM.render(
       APP_VERSION={APP_VERSION}
       generate={generate}
       fetchGroupsSubgroupsNamesets={fetchGroupsSubgroupsNamesets}
-      />,
+      customNamesetsForGenerator={customNamesetsForGenerator}
+    />,
     document.getElementById('root')
-)
+);
