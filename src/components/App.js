@@ -111,6 +111,7 @@ export class App extends React.Component {
 		    defaultCustomNames={this.state.defaultCustomNames}
 		    registerNameset={this.registerNameset}
                     fetchGroupsSubgroupsNamesets={this.props.fetchGroupsSubgroupsNamesets}
+                    customNamesetsForGenerator={this.props.customNamesetsForGenerator}
 		  />
 		</section>
 
