@@ -4,18 +4,9 @@ import {reject} from 'ramda';
 import {equals} from 'ramda';
 import {append} from 'ramda';
 
-// function intersection(setA, setB) {
-//     return new Set([...setA].filter(x => setB.has(x)))
-// }
-//
-
 export function sortByLengthDown(array) {
     return array.slice().sort((a, b) => b.length - a.length )
 }
-//
-// function sortByLengthUp(array) {
-//     return array.slice().sort((a, b) => a.length - b.length )
-// }
 
 const addOrRemove = (arr, val) => {
   return ifElse(
