@@ -1,3 +1,9 @@
+import {ifElse} from 'ramda';
+import {contains} from 'ramda';
+import {reject} from 'ramda';
+import {equals} from 'ramda';
+import {append} from 'ramda';
+
 // function intersection(setA, setB) {
 //     return new Set([...setA].filter(x => setB.has(x)))
 // }
@@ -10,6 +16,14 @@ export function sortByLengthDown(array) {
 // function sortByLengthUp(array) {
 //     return array.slice().sort((a, b) => a.length - b.length )
 // }
+
+const addOrRemove = (arr, val) => {
+  return ifElse(
+    contains(val),
+    reject(equals(val)),
+    append(val)
+  )(arr)
+};
 
 export function removeFromArray(array, element) {
   const index = array.indexOf(element);
