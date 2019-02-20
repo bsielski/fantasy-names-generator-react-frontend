@@ -9,7 +9,7 @@ export const generate = curry(
     async (buildUrlsFromNamesetIds, fetchNames, buildNamesetsForGenerator, buildRandomNames, beforeFetchingNamesets, selectedNamesets, afterFetchingNamesets, afterGeneratingNames, howManyNames, namesets) => {
 
 	beforeFetchingNamesets();
-	const namesetIds = Array.from(selectedNamesets);
+	const namesetIds = selectedNamesets;
 	const urls = buildUrlsFromNamesetIds(namesetIds);
 	const promisedFetched = fetchNames(urls);
 	const fetched = await Promise.all(promisedFetched);
