@@ -8,7 +8,7 @@ export function sortByLengthDown(array) {
     return array.slice().sort((a, b) => b.length - a.length )
 }
 
-const addOrRemove = (arr, val) => {
+export const addOrRemove = (arr, val) => {
   return ifElse(
     contains(val),
     reject(equals(val)),
