@@ -7,6 +7,8 @@ import {ActionButton} from './ActionButton';
 import {GeneratedList} from './GeneratedList';
 import {Sorting} from './Sorting';
 
+import {addOrRemove} from '../helpers';
+
 import './App.css';
 
 export class App extends React.Component {
@@ -14,7 +16,8 @@ export class App extends React.Component {
 	super(props);
 	this.state = {
 	    actionButtonText: 'placeholder',
-	    selectedNamesets: new Set(),
+	    selectedNamesets: [],
+	    selectedCustomNamesetIds: [],
 	    selectedNumberOption: 0,
 	    howManyNames: this.props.numberOptions[0].value,
 	    generated: [],
@@ -23,19 +26,17 @@ export class App extends React.Component {
 	    isGenerating: false,
             pathToLastSortMethod: [0, "ascending"]	    
 	};
-	this.namesets = {};
-	this.registerNameset = this.registerNameset.bind(this);
+	this.customNamesets = this.props.customNamesetsForGenerator;
 	this.aftertToggleNamesetCheckbox = this.aftertToggleNamesetCheckbox.bind(this);
+	this.aftertToggleCustomNamesetCheckbox = this.aftertToggleCustomNamesetCheckbox.bind(this);
+	this.aftertChangeCustomNamesetTextArea = this.aftertChangeCustomNamesetTextArea.bind(this);
+	this.updateCustomNames = this.updateCustomNames.bind(this);
         this.afterChoosingHowManyNames = this.afterChoosingHowManyNames.bind(this);
         this.afterClickingGenerateButton = this.afterClickingGenerateButton.bind(this);
         this.beforeFetchingNamesets = this.beforeFetchingNamesets.bind(this);
         this.afterFetchingNamesets = this.afterFetchingNamesets.bind(this);
         this.afterGeneratingNames = this.afterGeneratingNames.bind(this);
         this.afterSorting = this.afterSorting.bind(this);
-    }
-
-    registerNameset(id, nameset) {
-	this.namesets[id] = nameset;
     }
 
     afterSorting(sorted, pathToLastSortMethod) {
@@ -46,10 +47,11 @@ export class App extends React.Component {
     }
 
     afterClickingGenerateButton() {
+        const pickedCustomNamesets = this.state.selectedCustomNamesetIds.map(id => this.customNamesets[id]);
 	this.props.generate(this.beforeFetchingNamesets, this.state.selectedNamesets,
                             this.afterFetchingNamesets,
                             this.afterGeneratingNames, this.state.howManyNames,
-                            this.namesets
+                            pickedCustomNamesets
                            );
     }
 
@@ -83,16 +85,34 @@ export class App extends React.Component {
     }
 
     aftertToggleNamesetCheckbox(id) {
-	if (this.state.selectedNamesets.has(id)) {
-	    this.setState(previousState => {
-		previousState.selectedNamesets.delete(id);
-		return { selectedNamesets: previousState.selectedNamesets };
-	    });
-	} else {
-	    this.setState(previousState => {
-		return { selectedNamesets: previousState.selectedNamesets.add(id) };
-	    });
-	}
+	this.setState(previous => {
+	    return {
+                selectedNamesets: addOrRemove(previous.selectedNamesets, id)
+            };
+	});            
+    }
+
+    aftertToggleCustomNamesetCheckbox(id) {
+	this.setState(previous => {
+	    return {
+                selectedCustomNamesetIds: addOrRemove(previous.selectedCustomNamesetIds, id)
+            };
+	});            
+    }
+
+    aftertChangeCustomNamesetTextArea(id, text) {
+        let names = text.split("\n");
+        names = names.filter(v => v.trim() !== '');
+        this.customNamesets[id].names = names;
+    }
+
+    updateCustomNames(id, names) {
+	this.setState(previous => {
+	    return {
+                selectedCustomNamesetIds: addOrRemove(previous.selectedCustomNamesetIds, id)
+            };
+	});            
+
     }
 
     render() {
@@ -104,12 +124,9 @@ export class App extends React.Component {
 	      <main className="l-main-container">
 		<section className="l-section-container l-section-container--input">
 		  <GroupboxContainer
-		    groups={this.state.groups}
-		    subgroups={this.state.subgroups}
-		    namesets={this.state.namesets}
 		    aftertToggleNamesetCheckbox={this.aftertToggleNamesetCheckbox}
-		    defaultCustomNames={this.state.defaultCustomNames}
-		    registerNameset={this.registerNameset}
+		    aftertToggleCustomNamesetCheckbox={this.aftertToggleCustomNamesetCheckbox}
+                    aftertChangeCustomNamesetTextArea={this.aftertChangeCustomNamesetTextArea}
                     fetchGroupsSubgroupsNamesets={this.props.fetchGroupsSubgroupsNamesets}
                     customNamesetsForGenerator={this.props.customNamesetsForGenerator}
 		  />
@@ -124,7 +141,10 @@ export class App extends React.Component {
 		  <ActionButton
 		    isGenerating={this.state.isGenerating}
 		    isLoading={this.state.isLoading}
-		    howManyNamesetsSelected={this.state.selectedNamesets.size}
+		    howManyNamesetsSelected={
+                        this.state.selectedNamesets.length
+                        + this.state.selectedCustomNamesetIds.length
+                    }
 		    howManyNames={this.state.howManyNames}
 		    afterClickingGenerateButton={this.afterClickingGenerateButton}
 		  />
