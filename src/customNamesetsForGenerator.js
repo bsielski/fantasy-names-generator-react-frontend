@@ -5,6 +5,7 @@ import {UniquenessFilter} from './filter';
 import {NameLengthFilter} from './filter';
 import {CapitalizeFilter} from './filter';
 import {VOWELS} from './helpers';
+import {Splitter} from './splitter';
 
 const standardFilters = [
     RepeatedLettersFilter,
@@ -16,18 +17,8 @@ const standardFilters = [
 ];
 
 const standardSplitters = [
-    {
-	"_regex": {},
-	"_separators": VOWELS,
-	"_where": "after",
-	"_caseless": true
-    },
-    {
-	"_regex": {},
-	"_separators": VOWELS,
-	"_where": "before",
-	"_caseless": true
-    }
+    new Splitter(VOWELS, true, "after"),
+    new Splitter(VOWELS, true, "before")
 ];
 
 export const customNamesetsForGenerator = [
@@ -35,13 +26,15 @@ export const customNamesetsForGenerator = [
 	"label": "Type some names here",
 	"names": ["Some", "Example", "Words"],
 	"splitters": standardSplitters,
-	"filters": standardFilters
+	"filters": standardFilters,
+	"variantSeparator": ","
     },
 
     {
 	"label": "Type some names here",
 	"names": ["Another", "Custom", "Names"],
 	"splitters": standardSplitters,
-	"filters": standardFilters
+	"filters": standardFilters,
+	"variantSeparator": ","
     }
 ]
