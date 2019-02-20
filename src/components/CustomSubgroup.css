@@ -1,0 +1,6 @@
+.group-box__column {
+    background-color: #f2e4bb; /* yellow       */
+    padding: 2px;
+    margin: 2px;
+    flex: 1 0 140px;
+}
