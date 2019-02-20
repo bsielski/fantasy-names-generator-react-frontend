@@ -1,5 +1,4 @@
 import React from 'react';
-import {CustomNamesArea} from './CustomNamesArea';
 import {Namelist} from './Namelist';
 
 import {API_SERVER} from '../paths';
@@ -11,7 +10,6 @@ export class Nameset extends React.Component {
 	super(props);
 	this.state = {
 	    nameset: this.props.nameset,
-	    custom: this.props.custom,
 	    isChecked: false,
 	    isDisable: true,
 	    isNamelistOpen: false,
@@ -22,10 +20,6 @@ export class Nameset extends React.Component {
 	this.handleChange = this.handleChange.bind(this);
 	this.openNamelist = this.openNamelist.bind(this);
 	this.closeNamelist = this.closeNamelist.bind(this);
-    }
-
-    componentDidMount() {
-
     }
 
     openNamelist() {
@@ -108,12 +102,6 @@ export class Nameset extends React.Component {
 		  />
 		</label>
               </div>
-              <CustomNamesArea
-		namesetId={this.state.nameset.id}
-		custom={this.props.custom}
-		separator={this.state.nameset.attributes.variant_separator}
-		registerNameset={this.props.registerNameset}
-	      />
 	    </div>
 	);
     }
