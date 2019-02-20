@@ -9,7 +9,6 @@ export class Groupbox extends React.Component {
         this.state = {
             label: this.props.group.attributes.label,
             id: this.props.group.id,
-            custom: this.props.group.attributes.custom,
         };
     }
 
@@ -19,9 +18,7 @@ export class Groupbox extends React.Component {
                 <Subgroup
                   key={subgroup.id}
                   namesets={this.props.namesets[subgroup.id]}
-                  custom={this.state.custom}
                   aftertToggleNamesetCheckbox={this.props.aftertToggleNamesetCheckbox}
-                  registerNameset={this.props.registerNameset}
                 />
             );
         };

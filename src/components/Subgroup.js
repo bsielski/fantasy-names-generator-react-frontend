@@ -11,8 +11,6 @@ export function Subgroup(props) {
               key={index}
               nameset={nameset}
               aftertToggleNamesetCheckbox={props.aftertToggleNamesetCheckbox}
-              custom={props.custom}
-              registerNameset={props.registerNameset}
             />
         );
     };
