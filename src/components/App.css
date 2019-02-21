@@ -12,6 +12,8 @@
 
 .l-section-container--input {
     flex: 1 1 650px;
+    align-items: stretch;
+
 }
 
 .l-section-container--output {
