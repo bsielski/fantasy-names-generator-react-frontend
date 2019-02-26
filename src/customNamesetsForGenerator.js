@@ -23,7 +23,7 @@ const standardSplitters = [
 
 export const customNamesetsForGenerator = [
     {
-	"label": "Type some names here",
+	"label": "Use names typed below",
 	"names": ["Some", "Example", "Words"],
 	"splitters": standardSplitters,
 	"filters": standardFilters,
@@ -31,7 +31,7 @@ export const customNamesetsForGenerator = [
     },
 
     {
-	"label": "Type some names here",
+	"label": "Use names typed below",
 	"names": ["Another", "Custom", "Names"],
 	"splitters": standardSplitters,
 	"filters": standardFilters,
