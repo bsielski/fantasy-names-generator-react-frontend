@@ -5,9 +5,11 @@ import './CustomGroupbox.css';
 
 export function CustomGroupbox(props) {
 
+    const fixCountingBug = (id) => (parseInt(id, 10) + 1).toString();
+
     return (
         <section className="group-box">
-          <div className="group-box__header">New Custom {props.id}</div>
+          <div className="group-box__header">Custom {fixCountingBug(props.namesetId)}</div>
           <div className="group-box__body">
             <CustomSubgroup
               namesetId={props.namesetId}
