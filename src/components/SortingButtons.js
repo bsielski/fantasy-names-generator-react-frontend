@@ -28,9 +28,9 @@ export class SortingButtons extends React.Component {
 
 	const options = this.props.sortingOptions.map(buildOption);
 	return (
-	    <section className="how_many_names">
-              <h2 className="how_many_names__header">How many names do you want to generate?</h2>
-              <div className="how_many_names__options">
+	    <section className="sorting">
+              <h2 className="sorting__header">How many names do you want to generate?</h2>
+              <div className="sorting__options">
 		{options}
               </div>
 	    </section>

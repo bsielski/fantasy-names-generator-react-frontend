@@ -1,14 +1,14 @@
-.how_many_names {
+.sorting {
     margin: 0 0 6px 0;
 }
 
-.how_many_names__header {
+.sorting__header {
     margin: 0 0 4px 0;
     font-family: sans-serif;
     font-size: 15px;
 }
 
-.how_many_names__options {
+.sorting__options {
     margin: 0 0 4px 0;
     font-family: 'SeshatRegular', serif;
     font-size: 14px;
