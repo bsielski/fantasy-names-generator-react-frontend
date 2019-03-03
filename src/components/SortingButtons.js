@@ -17,7 +17,6 @@ export class SortingButtons extends React.Component {
 
     render() {
 	const buildOption = (option, index) => {
-            console.log(index, this.props.selectedOption, (this.props.selectedOption === index));
 	    return (
 		<RadioButton key={index} name="sortings" buttonNumber={index}
 			     label={option.label} description={""}
