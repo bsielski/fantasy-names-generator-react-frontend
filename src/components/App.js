@@ -5,7 +5,6 @@ import {Footer} from './Footer';
 import {GroupboxContainer} from './GroupboxContainer';
 import {ActionButton} from './ActionButton';
 import {GeneratedList} from './GeneratedList';
-//import {Sorting} from './Sorting';
 import {SortingButtons} from './SortingButtons';
 
 import {addOrRemove} from '../helpers';
