@@ -5,50 +5,42 @@ import {sortByLengthDesc} from './sorting';
 import {unsortAsc} from './sorting';
 import {unsortDesc} from './sorting';
 
+
 export const sortingOptions = [
     {
-	id: 0,
 	label: "Unsorted",
-	defaultSubbutton: "descending",
-	ascending: {
-	    alt: "from first to last generated",
-    	    icon: "002-sort-by-numeric-order.svg",
-    	    sort: unsortAsc,
-	},
-	descending: {
-	    alt: "from last to first generated",
-    	    icon: "001-sort-by-order.svg",
-    	    sort: unsortDesc,
-	}
+	alt: "from first to last generated",
+    	icon: "002-sort-by-numeric-order.svg",
+    	sort: unsortAsc,
     },
     {
-	id: 1,
+	label: "Unsorted",
+	alt: "from last to first generated",
+    	icon: "001-sort-by-order.svg",
+    	sort: unsortDesc,
+    },
+    {
 	label: "Alphabetically",
-	defaultSubbutton: "ascending",
-	ascending: {
-	    alt: "from A to Z",
-    	    icon: "006-sort-by-alphabet.svg",
-    	    sort: sortAlphabeticallyAsc,
-	},
-	descending: {
-	    alt: "from Z to A",
-    	    icon: "003-sort-reverse-alphabetical-order.svg",
-    	    sort: sortAlphabeticallyDesc,
-	}
+	alt: "from A to Z",
+    	icon: "006-sort-by-alphabet.svg",
+    	sort: sortAlphabeticallyAsc,
     },
     {
-	id: 2,
+	label: "Alphabetically",
+	alt: "from Z to A",
+    	icon: "003-sort-reverse-alphabetical-order.svg",
+    	sort: sortAlphabeticallyDesc,
+    },
+    {
 	label: "By name length",
-	defaultSubbutton: "ascending",
-	ascending: {
-	    alt: "from shortest to longest",
-    	    icon: "005-sort-by-attributes-interface-button-option.svg",
-    	    sort: sortByLengthAsc,
-	},
-	descending: {
-	    alt: "from longest to shortest",
-    	    icon: "004-sort-by-attributes.svg",
-    	    sort: sortByLengthDesc,
-	}
+	alt: "from shortest to longest",
+    	icon: "005-sort-by-attributes-interface-button-option.svg",
+    	sort: sortByLengthAsc,
+    },
+    {
+	label: "By name length",
+	alt: "from longest to shortest",
+    	icon: "004-sort-by-attributes.svg",
+    	sort: sortByLengthDesc,
     },
 ];

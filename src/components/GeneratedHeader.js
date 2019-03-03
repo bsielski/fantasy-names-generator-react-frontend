@@ -4,13 +4,10 @@ import './GeneratedHeader.css';
 
 export class GeneratedHeader extends React.Component {
     render() {
-	const buttonIndex = this.props.pathToLastSortMethod[0];
-	const subbuttonName = this.props.pathToLastSortMethod[1];
-	const button = this.props.sortingButtons[buttonIndex];
-	const subbuton = button[subbuttonName];
-	const label = button.label;
-	const alt = subbuton.alt;
-	const icon = subbuton.icon;
+	const option = this.props.sortingOptions[this.props.selectedSortingOption];
+	const label = option.label;
+	const alt = option.alt;
+	const icon = option.icon;
 	return (
 	    <p className="subsection-header">
 	      <span className="current_sort_method">
