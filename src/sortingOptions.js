@@ -5,7 +5,7 @@ import {sortByLengthDesc} from './sorting';
 import {unsortAsc} from './sorting';
 import {unsortDesc} from './sorting';
 
-export const sortingButtons = [
+export const sortingOptions = [
     {
 	id: 0,
 	label: "Unsorted",

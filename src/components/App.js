@@ -150,12 +150,12 @@ export class App extends React.Component {
 		  />
 		  <Sorting
 		    generated={this.state.generated}
-		    sortingButtons={this.props.sortingButtons}
+		    sortingOptions={this.props.sortingOptions}
 		    afterSorting={this.afterSorting}
 		  />
 		  <GeneratedList
 		    sorted={this.state.sorted}
-		    sortingButtons={this.props.sortingButtons}
+		    sortingButtons={this.props.sortingOptions}
 		    pathToLastSortMethod={this.state.pathToLastSortMethod}
                   />
    		</section>

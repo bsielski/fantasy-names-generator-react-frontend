@@ -16,7 +16,7 @@ export function Sorting(props) {
 	);
     };
 
-    const sortButtons = props.sortingButtons.map(sortingButton =>{
+    const sortButtons = props.sortingOptions.map(sortingButton =>{
 	return sortButton(sortingButton, props.generated, props.afterSorting);
     });
     

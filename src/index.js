@@ -4,7 +4,7 @@ import {App} from './components/App';
 
 import './index.css';
 
-import {sortingButtons} from './sorting-buttons';
+import {sortingOptions} from './sortingOptions';
 import {numberOptions} from './numberOptions';
 import {APP_VERSION} from './version';
 import {generate} from './generate';
@@ -13,7 +13,7 @@ import {customNamesetsForGenerator} from './customNamesetsForGenerator';
 
 ReactDOM.render(
     <App
-      sortingButtons={sortingButtons}
+      sortingOptions={sortingOptions}
       numberOptions={numberOptions}
       APP_VERSION={APP_VERSION}
       generate={generate}
