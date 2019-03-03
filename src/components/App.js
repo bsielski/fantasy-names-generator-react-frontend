@@ -95,11 +95,12 @@ export class App extends React.Component {
 	);
     }
 
-    afterGeneratingNames(generated) {
+    async afterGeneratingNames(generated) {
+        const sorted = await this.sortNames(this.props.sortingOptions, this.state.selectedSortingOption, generated);
 	this.setState(
    	    {
    		generated: generated,
-                sorted: generated,
+                sorted: sorted,
 		isGenerating: false,
 		pathToLastSortMethod: [0, "ascending"]
    	    }
