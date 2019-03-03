@@ -29,7 +29,7 @@ export class SortingButtons extends React.Component {
 	const options = this.props.sortingOptions.map(buildOption);
 	return (
 	    <section className="sorting">
-              <h2 className="sorting__header">How many names do you want to generate?</h2>
+              <h2 className="sorting__header">Sorting methods</h2>
               <div className="sorting__options">
 		{options}
               </div>
