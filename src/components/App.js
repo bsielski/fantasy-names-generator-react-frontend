@@ -5,7 +5,8 @@ import {Footer} from './Footer';
 import {GroupboxContainer} from './GroupboxContainer';
 import {ActionButton} from './ActionButton';
 import {GeneratedList} from './GeneratedList';
-import {Sorting} from './Sorting';
+//import {Sorting} from './Sorting';
+import {SortingButtons} from './SortingButtons';
 
 import {addOrRemove} from '../helpers';
 
@@ -19,6 +20,7 @@ export class App extends React.Component {
 	    selectedNamesets: [],
 	    selectedCustomNamesetIds: [],
 	    selectedNumberOption: 0,
+	    selectedSortingOption: 0,
 	    howManyNames: this.props.numberOptions[0].value,
 	    generated: [],
 	    sorted: [],
@@ -37,6 +39,7 @@ export class App extends React.Component {
         this.afterFetchingNamesets = this.afterFetchingNamesets.bind(this);
         this.afterGeneratingNames = this.afterGeneratingNames.bind(this);
         this.afterSorting = this.afterSorting.bind(this);
+        this.afterChoosingSorting = this.afterChoosingSorting.bind(this);
     }
 
     afterSorting(sorted, pathToLastSortMethod) {
@@ -44,6 +47,25 @@ export class App extends React.Component {
 	    sorted: sorted,
 	    pathToLastSortMethod: pathToLastSortMethod
 	});
+    }
+
+    async afterChoosingSorting(selectedOptionIndex) {
+	this.setState(
+            {
+	        selectedSortingOption: selectedOptionIndex
+	    }         
+        );
+        const sorted = await this.sortNames(this.props.sortingOptions, selectedOptionIndex, this.state.generated);
+	this.setState(
+            {
+	        sorted: sorted,
+	    }         
+        );
+    }
+
+    async sortNames(sortingOptions, selectedOptionIndex, names) {
+        const sort = sortingOptions[selectedOptionIndex].sort;
+        return sort(names);
     }
 
     afterClickingGenerateButton() {
@@ -148,14 +170,16 @@ export class App extends React.Component {
 		    howManyNames={this.state.howManyNames}
 		    afterClickingGenerateButton={this.afterClickingGenerateButton}
 		  />
-		  <Sorting
+		  <SortingButtons
 		    generated={this.state.generated}
+		    selectedOption={this.state.selectedSortingOption}
 		    sortingOptions={this.props.sortingOptions}
-		    afterSorting={this.afterSorting}
+		    afterChoosingSorting={this.afterChoosingSorting}
 		  />
 		  <GeneratedList
 		    sorted={this.state.sorted}
-		    sortingButtons={this.props.sortingOptions}
+		    selectedSortingOption={this.state.selectedSortingOption}
+		    sortingOptions={this.props.sortingOptions}
 		    pathToLastSortMethod={this.state.pathToLastSortMethod}
                   />
    		</section>
