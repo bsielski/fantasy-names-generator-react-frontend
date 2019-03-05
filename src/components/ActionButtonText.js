@@ -2,6 +2,8 @@ import React from 'react';
 
 import './ActionButtonText.css';
 
+import PropTypes from 'prop-types';
+
 export function ActionButtonText(props) {
 
     const generateButtonText = () => {
@@ -25,3 +27,10 @@ export function ActionButtonText(props) {
 	</span>
     );
 }
+
+ActionButtonText.propTypes = {
+    isLoading: PropTypes.bool.isRequired,
+    isGenerating: PropTypes.bool.isRequired,
+    howManyNamesetsSelected: PropTypes.number.isRequired,
+    howManyNames: PropTypes.number.isRequired,
+};
