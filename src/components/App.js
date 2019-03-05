@@ -11,6 +11,8 @@ import {addOrRemove} from '../helpers';
 
 import './App.css';
 
+import PropTypes from 'prop-types';
+
 export class App extends React.Component {
     constructor(props) {
 	super(props);
@@ -165,7 +167,7 @@ export class App extends React.Component {
 		    isLoading={this.state.isLoading}
 		    howManyNamesetsSelected={
                         this.state.selectedNamesets.length
-                        + this.state.selectedCustomNamesetIds.length
+                            + this.state.selectedCustomNamesetIds.length
                     }
 		    howManyNames={this.state.howManyNames}
 		    afterClickingGenerateButton={this.afterClickingGenerateButton}
@@ -189,3 +191,12 @@ export class App extends React.Component {
 	);
     }
 }
+
+App.propTypes = {
+    sortingOptions: PropTypes.arrayOf(PropTypes.object).isRequired,
+    numberOptions: PropTypes.arrayOf(PropTypes.object).isRequired,
+    APP_VERSION: PropTypes.string.isRequired,
+    generate: PropTypes.func.isRequired,
+    fetchGroupsSubgroupsNamesets: PropTypes.func.isRequired,
+    customNamesetsForGenerator: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
