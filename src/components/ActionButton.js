@@ -3,6 +3,8 @@ import {ActionButtonText} from './ActionButtonText';
 
 import './ActionButton.css';
 
+import PropTypes from 'prop-types';
+
 export function ActionButton(props) {
 
     const isDisabled = () => {
@@ -45,3 +47,11 @@ export function ActionButton(props) {
 	</section>
     );
 }
+
+ActionButton.propTypes = {
+    isGenerating: PropTypes.bool.isRequired,
+    isLoading: PropTypes.bool.isRequired,
+    howManyNamesetsSelected: PropTypes.number.isRequired,
+    howManyNames: PropTypes.number.isRequired,
+    afterClickingGenerateButton: PropTypes.func.isRequired,
+};
