@@ -2,6 +2,8 @@ import React from 'react';
 
 import './GeneratedHeader.css';
 
+import PropTypes from 'prop-types';
+
 export class GeneratedHeader extends React.Component {
     render() {
 	const option = this.props.sortingOptions[this.props.selectedSortingOption];
@@ -18,3 +20,8 @@ export class GeneratedHeader extends React.Component {
 	);
     }
 }
+
+GeneratedHeader.propTypes = {
+    selectedSortingOption: PropTypes.number.isRequired,
+    sortingOptions: PropTypes.arrayOf(PropTypes.object).isRequired
+};
