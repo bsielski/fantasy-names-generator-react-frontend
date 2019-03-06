@@ -4,6 +4,8 @@ import {CustomGroupbox} from './CustomGroupbox';
 
 import './GroupboxContainer.css';
 
+import PropTypes from 'prop-types';
+
 export class GroupboxContainer extends React.Component {
     constructor(props) {
         super(props);
@@ -61,3 +63,11 @@ export class GroupboxContainer extends React.Component {
         );
     }
 }
+
+GroupboxContainer.propTypes = {
+    afterToggleNamesetCheckbox: PropTypes.func.isRequired,
+    afterToggleCustomNamesetCheckbox: PropTypes.func.isRequired,
+    afterChangeCustomNamesetTextArea: PropTypes.func.isRequired,
+    fetchGroupsSubgroupsNamesets: PropTypes.func.isRequired,
+    customNamesetsForGenerator: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
