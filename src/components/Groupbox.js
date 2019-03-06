@@ -3,6 +3,8 @@ import {Subgroup} from './Subgroup';
 
 import './Groupbox.css';
 
+import PropTypes from 'prop-types';
+
 export class Groupbox extends React.Component {
     constructor(props) {
         super(props);
@@ -35,3 +37,16 @@ export class Groupbox extends React.Component {
         );
     }
 }
+
+Groupbox.propTypes = {
+    group: PropTypes.shape({
+        attributes: PropTypes.object.isRequired,
+        id: PropTypes.string.isRequired,
+        links: PropTypes.object.isRequired,
+        relationships: PropTypes.object.isRequired,
+        type: PropTypes.string.isRequired,
+    }),
+    subgroups: PropTypes.arrayOf(PropTypes.object),
+    namesets: PropTypes.object.isRequired,
+    afterToggleNamesetCheckbox: PropTypes.func.isRequired
+};
