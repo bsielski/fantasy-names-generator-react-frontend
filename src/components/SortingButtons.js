@@ -3,6 +3,8 @@ import {RadioButton} from './RadioButton';
 
 import './SortingButtons.css';
 
+import PropTypes from 'prop-types';
+
 export class SortingButtons extends React.Component {
 
     constructor(props) {
@@ -37,3 +39,10 @@ export class SortingButtons extends React.Component {
 	);
     }
 }
+
+SortingButtons.propTypes = {
+    generated: PropTypes.arrayOf(PropTypes.string).isRequired,
+    selectedOption: PropTypes.number.isRequired,
+    sortingOptions: PropTypes.arrayOf(PropTypes.object).isRequired,
+    afterChoosingSorting: PropTypes.func.isRequired
+};
