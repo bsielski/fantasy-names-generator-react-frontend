@@ -31,7 +31,7 @@ export class GroupboxContainer extends React.Component {
                   group={group}
                   subgroups={this.state.subgroups[group.id]}
                   namesets={this.state.namesets}
-                  aftertToggleNamesetCheckbox={this.props.aftertToggleNamesetCheckbox}
+                  afterToggleNamesetCheckbox={this.props.afterToggleNamesetCheckbox}
                 />
             );
         };
@@ -41,8 +41,8 @@ export class GroupboxContainer extends React.Component {
                   key={index}
                   namesetId={index.toString()}
                   defaultNameset={nameset}
-                  aftertToggleCustomNamesetCheckbox={this.props.aftertToggleCustomNamesetCheckbox}
-                  aftertChangeCustomNamesetTextArea={this.props.aftertChangeCustomNamesetTextArea}
+                  afterToggleCustomNamesetCheckbox={this.props.afterToggleCustomNamesetCheckbox}
+                  afterChangeCustomNamesetTextArea={this.props.afterChangeCustomNamesetTextArea}
                 />
             );
         };
