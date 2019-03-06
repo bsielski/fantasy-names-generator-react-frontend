@@ -30,9 +30,9 @@ export class App extends React.Component {
             pathToLastSortMethod: [0, "ascending"]	    
 	};
 	this.customNamesets = this.props.customNamesetsForGenerator;
-	this.aftertToggleNamesetCheckbox = this.aftertToggleNamesetCheckbox.bind(this);
-	this.aftertToggleCustomNamesetCheckbox = this.aftertToggleCustomNamesetCheckbox.bind(this);
-	this.aftertChangeCustomNamesetTextArea = this.aftertChangeCustomNamesetTextArea.bind(this);
+	this.afterToggleNamesetCheckbox = this.afterToggleNamesetCheckbox.bind(this);
+	this.afterToggleCustomNamesetCheckbox = this.afterToggleCustomNamesetCheckbox.bind(this);
+	this.afterChangeCustomNamesetTextArea = this.afterChangeCustomNamesetTextArea.bind(this);
 	this.updateCustomNames = this.updateCustomNames.bind(this);
         this.afterChoosingHowManyNames = this.afterChoosingHowManyNames.bind(this);
         this.afterClickingGenerateButton = this.afterClickingGenerateButton.bind(this);
@@ -108,7 +108,7 @@ export class App extends React.Component {
 	);
     }
 
-    aftertToggleNamesetCheckbox(id) {
+    afterToggleNamesetCheckbox(id) {
 	this.setState(previous => {
 	    return {
                 selectedNamesets: addOrRemove(previous.selectedNamesets, id)
@@ -116,7 +116,7 @@ export class App extends React.Component {
 	});            
     }
 
-    aftertToggleCustomNamesetCheckbox(id) {
+    afterToggleCustomNamesetCheckbox(id) {
 	this.setState(previous => {
 	    return {
                 selectedCustomNamesetIds: addOrRemove(previous.selectedCustomNamesetIds, id)
@@ -124,7 +124,7 @@ export class App extends React.Component {
 	});            
     }
 
-    aftertChangeCustomNamesetTextArea(id, text) {
+    afterChangeCustomNamesetTextArea(id, text) {
         let names = text.split("\n");
         names = names.filter(v => v.trim() !== '');
         this.customNamesets[id].names = names;
@@ -148,9 +148,9 @@ export class App extends React.Component {
 	      <main className="l-main-container">
 		<section className="l-section-container l-section-container--input">
 		  <GroupboxContainer
-		    aftertToggleNamesetCheckbox={this.aftertToggleNamesetCheckbox}
-		    aftertToggleCustomNamesetCheckbox={this.aftertToggleCustomNamesetCheckbox}
-                    aftertChangeCustomNamesetTextArea={this.aftertChangeCustomNamesetTextArea}
+		    afterToggleNamesetCheckbox={this.afterToggleNamesetCheckbox}
+		    afterToggleCustomNamesetCheckbox={this.afterToggleCustomNamesetCheckbox}
+                    afterChangeCustomNamesetTextArea={this.afterChangeCustomNamesetTextArea}
                     fetchGroupsSubgroupsNamesets={this.props.fetchGroupsSubgroupsNamesets}
                     customNamesetsForGenerator={this.props.customNamesetsForGenerator}
 		  />
