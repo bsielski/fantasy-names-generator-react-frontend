@@ -5,6 +5,8 @@ import {GeneratedItems} from './GeneratedItems';
 
 import './GeneratedList.css';
 
+import PropTypes from 'prop-types';
+
 export class GeneratedList extends React.Component {
 
     render() {
@@ -20,3 +22,10 @@ export class GeneratedList extends React.Component {
         );
     }
 }
+
+GeneratedList.propTypes = {
+    sorted: PropTypes.arrayOf(PropTypes.string).isRequired,
+    selectedSortingOption: PropTypes.number.isRequired,
+    sortingOptions: PropTypes.arrayOf(PropTypes.object).isRequired,
+    pathToLastSortMethod: PropTypes.array.isRequired
+};
