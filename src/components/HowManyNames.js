@@ -3,6 +3,8 @@ import {RadioButton} from './RadioButton';
 
 import './HowManyNames.css';
 
+import PropTypes from 'prop-types';
+
 export class HowManyNames extends React.Component {
 
     constructor(props) {
@@ -37,3 +39,9 @@ export class HowManyNames extends React.Component {
 	);
     }
 }
+
+HowManyNames.propTypes = {
+    options: PropTypes.arrayOf(PropTypes.object).isRequired,
+    selectedOption: PropTypes.number.isRequired,
+    afterChoosingHowManyNames: PropTypes.func.isRequired
+};
