@@ -10,7 +10,7 @@ export function Subgroup(props) {
             <Nameset
               key={index}
               nameset={nameset}
-              aftertToggleNamesetCheckbox={props.aftertToggleNamesetCheckbox}
+              afterToggleNamesetCheckbox={props.afterToggleNamesetCheckbox}
             />
         );
     };

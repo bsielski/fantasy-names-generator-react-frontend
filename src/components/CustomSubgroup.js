@@ -10,8 +10,8 @@ export function CustomSubgroup(props) {
           <CustomNameset
             namesetId={props.namesetId}
             defaultNameset={props.defaultNameset}
-            aftertToggleCustomNamesetCheckbox={props.aftertToggleCustomNamesetCheckbox}
-            aftertChangeCustomNamesetTextArea={props.aftertChangeCustomNamesetTextArea}
+            afterToggleCustomNamesetCheckbox={props.afterToggleCustomNamesetCheckbox}
+            afterChangeCustomNamesetTextArea={props.afterChangeCustomNamesetTextArea}
           />
         </div>
     );

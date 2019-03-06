@@ -64,7 +64,7 @@ export class Nameset extends React.Component {
 		isChecked: !isChecked,
 	    }
 	));
-	this.props.aftertToggleNamesetCheckbox(this.props.nameset.id);
+	this.props.afterToggleNamesetCheckbox(this.props.nameset.id);
 
     }
 

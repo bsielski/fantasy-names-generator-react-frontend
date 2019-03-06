@@ -21,10 +21,10 @@ export class CustomNameset extends React.Component {
 
     handleToggle() {
 	if (this.state.isChecked) {
-            this.props.aftertToggleCustomNamesetCheckbox(this.props.namesetId, []);
+            this.props.afterToggleCustomNamesetCheckbox(this.props.namesetId, []);
         }
         else {
-            this.props.aftertToggleCustomNamesetCheckbox(this.props.namesetId, this.state.names);
+            this.props.afterToggleCustomNamesetCheckbox(this.props.namesetId, this.state.names);
         }
 	this.setState(({ isChecked }) => (
 	    {
@@ -38,7 +38,7 @@ export class CustomNameset extends React.Component {
 	this.setState({
             text: text
         });
-        this.props.aftertChangeCustomNamesetTextArea(this.props.namesetId, text);
+        this.props.afterChangeCustomNamesetTextArea(this.props.namesetId, text);
     }
 
     render() {

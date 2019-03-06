@@ -18,7 +18,7 @@ export class Groupbox extends React.Component {
                 <Subgroup
                   key={subgroup.id}
                   namesets={this.props.namesets[subgroup.id]}
-                  aftertToggleNamesetCheckbox={this.props.aftertToggleNamesetCheckbox}
+                  afterToggleNamesetCheckbox={this.props.afterToggleNamesetCheckbox}
                 />
             );
         };
