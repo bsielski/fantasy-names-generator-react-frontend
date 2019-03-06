@@ -1,7 +1,8 @@
 import React from 'react';
 
-
 import './GeneratedItems.css';
+
+import PropTypes from 'prop-types';
 
 export class GeneratedItems extends React.Component {
 
@@ -26,3 +27,7 @@ export class GeneratedItems extends React.Component {
         );
     }
 }
+
+GeneratedItems.propTypes = {
+    items: PropTypes.arrayOf(PropTypes.string).isRequired
+};
