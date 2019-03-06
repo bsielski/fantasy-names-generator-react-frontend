@@ -3,6 +3,8 @@ import {CustomSubgroup} from './CustomSubgroup';
 
 import './CustomGroupbox.css';
 
+import PropTypes from 'prop-types';
+
 export function CustomGroupbox(props) {
 
     const fixCountingBug = (id) => (parseInt(id, 10) + 1).toString();
@@ -21,3 +23,16 @@ export function CustomGroupbox(props) {
         </section>
     );
 }
+
+CustomGroupbox.propTypes = {
+    namesetId: PropTypes.string.isRequired,
+    defaultNameset: PropTypes.shape({
+        filters: PropTypes.array,
+        label: PropTypes.string.isRequired,
+        names: PropTypes.array.isRequired,
+        splitters: PropTypes.array,
+        variantSeparator: PropTypes.string.isRequired,
+    }),
+    afterToggleCustomNamesetCheckbox: PropTypes.func.isRequired,
+    afterChangeCustomNamesetTextArea: PropTypes.func.isRequired
+};
