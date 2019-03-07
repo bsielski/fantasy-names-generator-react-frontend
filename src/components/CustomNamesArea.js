@@ -2,6 +2,8 @@ import React from 'react';
 
 import './CustomNamesArea.css';
 
+import PropTypes from 'prop-types';
+
 export function CustomNamesArea(props) {
 
     return (
@@ -15,3 +17,10 @@ export function CustomNamesArea(props) {
         </textarea>
     );
 }
+
+CustomNamesArea.propTypes = {
+    namesetId: PropTypes.string.isRequired,
+    variantSeparator: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    afterChangeTextArea: PropTypes.func.isRequired,
+};
