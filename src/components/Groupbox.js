@@ -45,7 +45,7 @@ Groupbox.propTypes = {
         links: PropTypes.object.isRequired,
         relationships: PropTypes.object.isRequired,
         type: PropTypes.string.isRequired,
-    }),
+    }).isRequired,
     subgroups: PropTypes.arrayOf(PropTypes.object),
     namesets: PropTypes.object.isRequired,
     afterToggleNamesetCheckbox: PropTypes.func.isRequired
