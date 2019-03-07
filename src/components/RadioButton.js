@@ -1,5 +1,7 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 function Icon(props) {
   if (!props.icon) {
     return null;
@@ -22,3 +24,15 @@ export function RadioButton(props) {
         </div>
     );
 }
+
+RadioButton.propTypes = {
+    name: PropTypes.string.isRequired,
+    buttonNumber: PropTypes.number.isRequired,
+    label: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    checked: PropTypes.bool.isRequired,
+    alt: PropTypes.string,
+    icon: PropTypes.string,
+    value: PropTypes.number
+};
