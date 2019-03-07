@@ -110,12 +110,12 @@ export class Nameset extends React.Component {
 }
 
 Nameset.propTypes = {
-    namesets: PropTypes.shape({
+    nameset: PropTypes.shape({
         attributes: PropTypes.object.isRequired,
         id: PropTypes.string.isRequired,
         links: PropTypes.object.isRequired,
         relationships: PropTypes.object.isRequired,
         type: PropTypes.string.isRequired,
-    }),
+    }).isRequired,
     afterToggleNamesetCheckbox: PropTypes.func.isRequired
 };

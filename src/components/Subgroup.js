@@ -35,6 +35,6 @@ Subgroup.propTypes = {
             relationships: PropTypes.object.isRequired,
             type: PropTypes.string.isRequired,
         })
-    ),
+    ).isRequired,
     afterToggleNamesetCheckbox: PropTypes.func.isRequired
 };
