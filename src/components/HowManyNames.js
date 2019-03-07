@@ -21,9 +21,14 @@ export class HowManyNames extends React.Component {
     render() {
 	const buildOption = (option, index) => {
 	    return (
-		<RadioButton key={index} name="options" buttonNumber={index} value={option.value}
-			     label={option.label} description={option.description}
-			     onChange={this.handleRadio} checked={this.props.selectedOption === index}
+		<RadioButton key={index}
+                             name="options"
+                             buttonNumber={index}
+                             value={option.value}
+			     label={option.label}
+                             description={option.description}
+			     onChange={this.handleRadio}
+                             checked={this.props.selectedOption === index}
 		/>
 	    );
 	};
