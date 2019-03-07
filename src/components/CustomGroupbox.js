@@ -32,7 +32,7 @@ CustomGroupbox.propTypes = {
         names: PropTypes.array.isRequired,
         splitters: PropTypes.array,
         variantSeparator: PropTypes.string.isRequired,
-    }),
+    }).isRequired,
     afterToggleCustomNamesetCheckbox: PropTypes.func.isRequired,
     afterChangeCustomNamesetTextArea: PropTypes.func.isRequired
 };
