@@ -3,6 +3,8 @@ import {CustomNameset} from './CustomNameset';
 
 import './CustomSubgroup.css';
 
+import PropTypes from 'prop-types';
+
 export function CustomSubgroup(props) {
 
     return (
@@ -16,3 +18,16 @@ export function CustomSubgroup(props) {
         </div>
     );
 }
+
+CustomSubgroup.propTypes = {
+    namesetId: PropTypes.string.isRequired,
+    defaultNameset: PropTypes.shape({
+        filters: PropTypes.array,
+        label: PropTypes.string.isRequired,
+        names: PropTypes.array.isRequired,
+        splitters: PropTypes.array,
+        variantSeparator: PropTypes.string.isRequired,
+    }).isRequired,
+    afterToggleCustomNamesetCheckbox: PropTypes.func.isRequired,
+    afterChangeCustomNamesetTextArea: PropTypes.func.isRequired
+};
