@@ -2,6 +2,8 @@ import React from 'react';
 
 import './Namelist.css';
 
+import PropTypes from 'prop-types';
+
 export class Namelist extends React.Component {
     constructor(props) {
         super(props);
@@ -72,3 +74,24 @@ export class Namelist extends React.Component {
         }
     }
 }
+
+Namelist.propTypes = {
+    isOpen: PropTypes.bool.isRequired,
+    onClose: PropTypes.func.isRequired,
+    namesLoading: PropTypes.bool.isRequired,
+    nameset: PropTypes.shape({
+        attributes: PropTypes.object.isRequired,
+        id: PropTypes.string.isRequired,
+        links: PropTypes.object.isRequired,
+        relationships: PropTypes.object.isRequired,
+        type: PropTypes.string.isRequired,
+    }).isRequired,
+    names: PropTypes.arrayOf(
+        PropTypes.shape({
+            attributes: PropTypes.object.isRequired,
+            id: PropTypes.string.isRequired,
+            links: PropTypes.object.isRequired,
+            type: PropTypes.string.isRequired,
+        })
+    ).isRequired,
+};
