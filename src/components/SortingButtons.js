@@ -20,10 +20,17 @@ export class SortingButtons extends React.Component {
     render() {
 	const buildOption = (option, index) => {
 	    return (
-		<RadioButton className={"sorting_buttons"} key={index} name="sortings" buttonNumber={index}
-			     label={option.label} description={""}
-			     onChange={this.handleRadio} checked={this.props.selectedOption === index}
-                             alt={option.alt} icon={option.icon}
+		<RadioButton
+                  className={"sorting_buttons"}
+                  key={index}
+                  name="sortings"
+                  buttonNumber={index}
+                  label={option.label}
+                  description={""}
+                  onChange={this.handleRadio}
+                  checked={this.props.selectedOption === index}
+                  alt={option.alt}
+                  icon={option.icon}
 		/>
 	    );
 	};
