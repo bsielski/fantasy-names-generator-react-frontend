@@ -3,6 +3,8 @@ import {Nameset} from './Nameset';
 
 import './Subgroup.css';
 
+import PropTypes from 'prop-types';
+
 export function Subgroup(props) {
 
     const buildNameset = (nameset, index) => {
@@ -23,3 +25,16 @@ export function Subgroup(props) {
         </div>
     );
 }
+
+Subgroup.propTypes = {
+    namesets: PropTypes.arrayOf(
+        PropTypes.shape({
+            attributes: PropTypes.object.isRequired,
+            id: PropTypes.string.isRequired,
+            links: PropTypes.object.isRequired,
+            relationships: PropTypes.object.isRequired,
+            type: PropTypes.string.isRequired,
+        })
+    ),
+    afterToggleNamesetCheckbox: PropTypes.func.isRequired
+};

@@ -5,6 +5,8 @@ import {API_SERVER} from '../paths';
 
 import './Nameset.css';
 
+import PropTypes from 'prop-types';
+
 export class Nameset extends React.Component {
     constructor(props) {
 	super(props);
@@ -106,3 +108,14 @@ export class Nameset extends React.Component {
 	);
     }
 }
+
+Nameset.propTypes = {
+    namesets: PropTypes.shape({
+        attributes: PropTypes.object.isRequired,
+        id: PropTypes.string.isRequired,
+        links: PropTypes.object.isRequired,
+        relationships: PropTypes.object.isRequired,
+        type: PropTypes.string.isRequired,
+    }),
+    afterToggleNamesetCheckbox: PropTypes.func.isRequired
+};
