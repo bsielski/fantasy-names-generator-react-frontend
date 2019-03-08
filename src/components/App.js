@@ -56,17 +56,12 @@ export class App extends React.Component {
 	        selectedSortingOption: selectedOptionIndex
 	    }         
         );
-        const sorted = await this.sortNames(this.props.sortingOptions, selectedOptionIndex, this.state.generated);
+        const sorted = await this.props.sortNames(this.props.sortingOptions, selectedOptionIndex, this.state.generated);
 	this.setState(
             {
 	        sorted: sorted,
 	    }         
         );
-    }
-
-    async sortNames(sortingOptions, selectedOptionIndex, names) {
-        const sort = sortingOptions[selectedOptionIndex].sort;
-        return sort(names);
     }
 
     afterClickingGenerateButton() {
@@ -97,7 +92,7 @@ export class App extends React.Component {
     }
 
     async afterGeneratingNames(generated) {
-        const sorted = await this.sortNames(this.props.sortingOptions, this.state.selectedSortingOption, generated);
+        const sorted = await this.props.sortNames(this.props.sortingOptions, this.state.selectedSortingOption, generated);
 	this.setState(
    	    {
    		generated: generated,
@@ -197,6 +192,7 @@ App.propTypes = {
     numberOptions: PropTypes.arrayOf(PropTypes.object).isRequired,
     APP_VERSION: PropTypes.string.isRequired,
     generate: PropTypes.func.isRequired,
+    sortNames: PropTypes.func.isRequired,
     fetchGroupsSubgroupsNamesets: PropTypes.func.isRequired,
     customNamesetsForGenerator: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

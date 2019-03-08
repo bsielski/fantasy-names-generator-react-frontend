@@ -10,6 +10,7 @@ import {APP_VERSION} from './version';
 import {generate} from './generate';
 import {fetchGroupsSubgroupsNamesets} from './fetchGroupsSubgroupsNamesets';
 import {customNamesetsForGenerator} from './customNamesetsForGenerator';
+import {sortNames} from "./sortNames";
 
 ReactDOM.render(
     <App
@@ -19,6 +20,7 @@ ReactDOM.render(
       generate={generate}
       fetchGroupsSubgroupsNamesets={fetchGroupsSubgroupsNamesets}
       customNamesetsForGenerator={customNamesetsForGenerator}
+      sortNames={sortNames}
     />,
     document.getElementById('root')
 );
