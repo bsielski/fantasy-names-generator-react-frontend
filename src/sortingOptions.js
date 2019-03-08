@@ -1,9 +1,9 @@
-import {sortAlphabeticallyAsc} from './sorting';
-import {sortAlphabeticallyDesc} from './sorting';
-import {sortByLengthAsc} from './sorting';
-import {sortByLengthDesc} from './sorting';
-import {unsortAsc} from './sorting';
-import {unsortDesc} from './sorting';
+import {sortAlphabeticallyAsc} from './sortings';
+import {sortAlphabeticallyDesc} from './sortings';
+import {sortByLengthAsc} from './sortings';
+import {sortByLengthDesc} from './sortings';
+import {unsortAsc} from './sortings';
+import {unsortDesc} from './sortings';
 
 
 export const sortingOptions = [
