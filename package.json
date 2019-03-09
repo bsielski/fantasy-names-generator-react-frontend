@@ -1,6 +1,6 @@
 {
     "name": "fantasy-names-generator-react-frontend",
-    "version": "1.4.1",
+    "version": "1.4.2",
     "private": true,
     "dependencies": {
 	"ramda": "0.26.1",
