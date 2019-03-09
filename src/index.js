@@ -11,6 +11,7 @@ import {generate} from './generate';
 import {fetchGroupsSubgroupsNamesets} from './fetchGroupsSubgroupsNamesets';
 import {customNamesetsForGenerator} from './customNamesetsForGenerator';
 import {sortNames} from "./sortNames";
+import {optimizedSortNames} from "./optimizedSortNames";
 
 ReactDOM.render(
     <App
@@ -21,6 +22,7 @@ ReactDOM.render(
       fetchGroupsSubgroupsNamesets={fetchGroupsSubgroupsNamesets}
       customNamesetsForGenerator={customNamesetsForGenerator}
       sortNames={sortNames}
+      optimizedSortNames={optimizedSortNames}
     />,
     document.getElementById('root')
 );

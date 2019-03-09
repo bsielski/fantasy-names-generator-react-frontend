@@ -51,12 +51,19 @@ export class App extends React.Component {
     }
 
     async afterChoosingSorting(selectedOptionIndex) {
-	this.setState(
+        const prevOptionIndex = this.state.selectedSortingOption;
+        this.setState(
             {
 	        selectedSortingOption: selectedOptionIndex
 	    }         
         );
-        const sorted = await this.props.sortNames(this.props.sortingOptions, selectedOptionIndex, this.state.generated);
+        const sorted = await this.props.optimizedSortNames(
+            this.props.sortingOptions,
+            selectedOptionIndex,
+            prevOptionIndex,
+            this.state.generated,
+            this.state.sorted
+        );
 	this.setState(
             {
 	        sorted: sorted,
@@ -193,6 +200,7 @@ App.propTypes = {
     APP_VERSION: PropTypes.string.isRequired,
     generate: PropTypes.func.isRequired,
     sortNames: PropTypes.func.isRequired,
+    optimizedSortNames: PropTypes.func.isRequired,
     fetchGroupsSubgroupsNamesets: PropTypes.func.isRequired,
     customNamesetsForGenerator: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
