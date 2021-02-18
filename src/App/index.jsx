@@ -6,7 +6,7 @@ import Output from './Output';
 
 import {addOrRemove} from '../helpers';
 
-import './App.css';
+import './styles.css';
 
 import PropTypes from 'prop-types';
 
