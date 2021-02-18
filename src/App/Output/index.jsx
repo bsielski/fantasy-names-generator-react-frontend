@@ -7,8 +7,6 @@ import {GeneratedList} from './GeneratedList';
 
 import './styles.css';
 
-import PropTypes from 'prop-types';
-
 function Output (props) {
 
 	  return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Header} from './Header';
 import {Footer} from './Footer';
-import {GroupboxContainer} from './GroupboxContainer';
+import Input from './Input';
 import Output from './Output';
 
 import {addOrRemove} from '../helpers';
@@ -157,23 +157,19 @@ class App extends React.Component {
 		              howManyNames={this.state.howManyNames}
 		              afterClickingGenerateButton={this.afterClickingGenerateButton}
 		              generated={this.state.generated}
-		              selectedOption={this.state.selectedSortingOption}
 		              sortingOptions={this.props.sortingOptions}
 		              afterChoosingSorting={this.afterChoosingSorting}
 		              sorted={this.state.sorted}
 		              selectedSortingOption={this.state.selectedSortingOption}
-		              sortingOptions={this.props.sortingOptions}
 		              pathToLastSortMethod={this.state.pathToLastSortMethod}
               />
-		          <section className="l-section-container l-section-container--input input">
-		            <GroupboxContainer
-		              afterToggleNamesetCheckbox={this.afterToggleNamesetCheckbox}
-		              afterToggleCustomNamesetCheckbox={this.afterToggleCustomNamesetCheckbox}
-                  afterChangeCustomNamesetTextArea={this.afterChangeCustomNamesetTextArea}
-                  fetchGroupsSubgroupsNamesets={this.props.fetchGroupsSubgroupsNamesets}
-                  customNamesetsForGenerator={this.props.customNamesetsForGenerator}
-		            />
-		          </section>
+              <Input
+		            afterToggleNamesetCheckbox={this.afterToggleNamesetCheckbox}
+		            afterToggleCustomNamesetCheckbox={this.afterToggleCustomNamesetCheckbox}
+                afterChangeCustomNamesetTextArea={this.afterChangeCustomNamesetTextArea}
+                fetchGroupsSubgroupsNamesets={this.props.fetchGroupsSubgroupsNamesets}
+                customNamesetsForGenerator={this.props.customNamesetsForGenerator}
+              />
 	            <Footer />
 	          </div>
 	      );

@@ -1,0 +1,17 @@
+.input {
+    border: 1px solid #a67d65; /* brown        */
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    padding: 10px;
+    margin: 10px;
+    background-color: #f2e4bb; /* yellow       */
+    flex: 1 1 650px;
+    align-items: stretch;
+
+    grid-area: input;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, auto);
+}

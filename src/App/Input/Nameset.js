@@ -1,7 +1,7 @@
 import React from 'react';
 import {Namelist} from './Namelist';
 
-import {API_SERVER} from '../paths';
+import {API_SERVER} from '../../paths';
 
 import './Nameset.css';
 
