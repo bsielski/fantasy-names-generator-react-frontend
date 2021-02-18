@@ -1,11 +1,11 @@
 import React from 'react';
 import {Subgroup} from './Subgroup';
 
-import './Groupbox.css';
+import './styles.css';
 
 import PropTypes from 'prop-types';
 
-export class Groupbox extends React.Component {
+class Groupbox extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -50,3 +50,5 @@ Groupbox.propTypes = {
     namesets: PropTypes.object.isRequired,
     afterToggleNamesetCheckbox: PropTypes.func.isRequired
 };
+
+export default Groupbox;
