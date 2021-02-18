@@ -14,7 +14,7 @@ export function ActionButtonText(props) {
 	    return "Generating, please wait";
 	}
 	else if (props.howManyNamesetsSelected === 0) {
-	    return "Select some nameset or namesets";
+	    return "Select some nameset or namesets!";
 	}
 	else {
 	    return "Generate " + props.howManyNames + " names";

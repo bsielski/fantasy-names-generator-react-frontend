@@ -2,7 +2,6 @@
     font-family: SeshatRegular;
     src: url('Seshat.otf');
 }
-
 .l-window-container {
     background-color: #402a22;
     display: flex;
@@ -18,10 +17,7 @@
     margin: 0;
 }
 
-.l-main-container {
-    background-color: #f2e4bb;
-    display: flex;
-    flex-flow: row-reverse wrap;
-    margin: 0;
-    padding: 2px;
+#root {
+    margin: 0 0;
+    padding: 0 0;
 }

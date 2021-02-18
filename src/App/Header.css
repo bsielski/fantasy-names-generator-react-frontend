@@ -4,6 +4,11 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+
+    //border: 1px solid #111;
+    //background-color: #777;
+    grid-area: header;
+    //text-align: center;
 }
 
 .logo-img {
