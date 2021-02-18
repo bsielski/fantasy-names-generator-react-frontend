@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {GroupboxContainer} from './GroupboxContainer';
+import GroupboxContainer from './GroupboxContainer';
 
 import './styles.css';
 

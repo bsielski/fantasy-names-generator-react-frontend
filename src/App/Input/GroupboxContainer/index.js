@@ -2,11 +2,11 @@ import React from 'react';
 import {Groupbox} from './Groupbox';
 import {CustomGroupbox} from './CustomGroupbox';
 
-import './GroupboxContainer.css';
+import './styles.css';
 
 import PropTypes from 'prop-types';
 
-export class GroupboxContainer extends React.Component {
+class GroupboxContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -71,3 +71,5 @@ GroupboxContainer.propTypes = {
     fetchGroupsSubgroupsNamesets: PropTypes.func.isRequired,
     customNamesetsForGenerator: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
+
+export default GroupboxContainer;
