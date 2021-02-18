@@ -3,6 +3,11 @@
 # dependencies
 /node_modules
 
+# yarn cache
+/.yarn
+/.pnp.js
+/.yarnrc.yml
+
 # .env
 /docker/build/.env
 .env
