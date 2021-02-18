@@ -1,11 +1,11 @@
 import React from 'react';
-import {Nameset} from './Nameset';
+import Nameset from './Nameset';
 
 import './Subgroup.css';
 
 import PropTypes from 'prop-types';
 
-export function Subgroup(props) {
+export default function Subgroup(props) {
 
     const buildNameset = (nameset, index) => {
         return (

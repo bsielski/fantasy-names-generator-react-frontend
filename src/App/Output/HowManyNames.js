@@ -1,11 +1,11 @@
 import React from 'react';
-import {RadioButton} from './RadioButton';
+import RadioButton from './RadioButton';
 
 import './HowManyNames.css';
 
 import PropTypes from 'prop-types';
 
-export class HowManyNames extends React.Component {
+export default class HowManyNames extends React.Component {
 
     constructor(props) {
 	super(props);

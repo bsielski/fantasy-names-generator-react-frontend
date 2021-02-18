@@ -4,7 +4,7 @@ import GroupboxContainer from './GroupboxContainer';
 
 import './styles.css';
 
-function Input (props) {
+export default function Input (props) {
 
 	  return (
 		    <section className="input">
@@ -19,5 +19,3 @@ function Input (props) {
 	  );
 
 }
-
-export default Input;

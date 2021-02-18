@@ -4,7 +4,7 @@ import './ActionButtonText.css';
 
 import PropTypes from 'prop-types';
 
-export function ActionButtonText(props) {
+export default function ActionButtonText(props) {
 
     const generateButtonText = () => {
 	if (props.isLoading) {	    

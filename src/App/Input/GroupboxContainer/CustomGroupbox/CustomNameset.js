@@ -1,11 +1,11 @@
 import React from 'react';
-import {CustomNamesArea} from './CustomNamesArea';
+import CustomNamesArea from './CustomNamesArea';
 
 import './CustomNameset.css';
 
 import PropTypes from 'prop-types';
 
-export class CustomNameset extends React.Component {
+export default class CustomNameset extends React.Component {
     constructor(props) {
 	super(props);
 	this.state = {

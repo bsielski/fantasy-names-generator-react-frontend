@@ -1,5 +1,5 @@
 import React from 'react';
-import {Namelist} from './Namelist';
+import Namelist from './Namelist';
 
 import {API_SERVER} from '../../../../paths';
 
@@ -7,7 +7,7 @@ import './Nameset.css';
 
 import PropTypes from 'prop-types';
 
-export class Nameset extends React.Component {
+export default class Nameset extends React.Component {
     constructor(props) {
 	super(props);
 	this.state = {

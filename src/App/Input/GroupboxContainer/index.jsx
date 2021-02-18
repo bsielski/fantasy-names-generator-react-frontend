@@ -6,7 +6,7 @@ import './styles.css';
 
 import PropTypes from 'prop-types';
 
-class GroupboxContainer extends React.Component {
+export default class GroupboxContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -71,5 +71,3 @@ GroupboxContainer.propTypes = {
     fetchGroupsSubgroupsNamesets: PropTypes.func.isRequired,
     customNamesetsForGenerator: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
-
-export default GroupboxContainer;

@@ -4,7 +4,7 @@ import './Header.css';
 
 import PropTypes from 'prop-types';
 
-export class Header extends React.Component {
+export default class Header extends React.Component {
 
     render() {
         return (

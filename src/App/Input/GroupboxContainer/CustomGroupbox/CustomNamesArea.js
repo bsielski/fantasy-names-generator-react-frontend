@@ -4,7 +4,7 @@ import './CustomNamesArea.css';
 
 import PropTypes from 'prop-types';
 
-export function CustomNamesArea(props) {
+export default function CustomNamesArea(props) {
 
     return (
         <textarea

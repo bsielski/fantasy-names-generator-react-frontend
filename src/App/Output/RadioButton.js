@@ -12,7 +12,7 @@ function Icon(props) {
   );
 }
 
-export function RadioButton(props) {
+export default function RadioButton(props) {
     return (
         <div>
           <label>

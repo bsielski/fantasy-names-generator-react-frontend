@@ -1,13 +1,13 @@
 import React from 'react';
 
-import {HowManyNames} from './HowManyNames';
-import {ActionButton} from './ActionButton';
-import {SortingButtons} from './SortingButtons';
-import {GeneratedList} from './GeneratedList';
+import HowManyNames from './HowManyNames';
+import ActionButton from './ActionButton';
+import SortingButtons from './SortingButtons';
+import GeneratedList from './GeneratedList';
 
 import './styles.css';
 
-function Output (props) {
+export default function Output (props) {
 
 	  return (
 		    <section className="output">
@@ -37,7 +37,4 @@ function Output (props) {
           />
    		  </section>
 	  );
-
 }
-
-export default Output;

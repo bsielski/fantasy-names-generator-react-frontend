@@ -4,7 +4,7 @@ import './GeneratedItems.css';
 
 import PropTypes from 'prop-types';
 
-export class GeneratedItems extends React.Component {
+export default class GeneratedItems extends React.Component {
 
     constructor(props) {
         super(props);

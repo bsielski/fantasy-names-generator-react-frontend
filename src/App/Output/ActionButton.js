@@ -1,11 +1,12 @@
 import React from 'react';
-import {ActionButtonText} from './ActionButtonText';
+
+import ActionButtonText from './ActionButtonText';
 
 import './ActionButton.css';
 
 import PropTypes from 'prop-types';
 
-export function ActionButton(props) {
+export default function ActionButton(props) {
 
     const isDisabled = () => {
 	if (props.isLoading) {

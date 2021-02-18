@@ -1,11 +1,12 @@
 import React from 'react';
-import {RadioButton} from './RadioButton';
+
+import RadioButton from './RadioButton';
 
 import './SortingButtons.css';
 
 import PropTypes from 'prop-types';
 
-export class SortingButtons extends React.Component {
+export default class SortingButtons extends React.Component {
 
     constructor(props) {
 	super(props);

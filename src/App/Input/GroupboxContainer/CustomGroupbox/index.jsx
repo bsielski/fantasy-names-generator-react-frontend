@@ -1,11 +1,11 @@
 import React from 'react';
-import {CustomSubgroup} from './CustomSubgroup';
+import CustomSubgroup from './CustomSubgroup';
 
 import './styles.css';
 
 import PropTypes from 'prop-types';
 
-function CustomGroupbox(props) {
+export default function CustomGroupbox(props) {
 
     const fixCountingBug = (id) => (parseInt(id, 10) + 1).toString();
 
@@ -36,5 +36,3 @@ CustomGroupbox.propTypes = {
     afterToggleCustomNamesetCheckbox: PropTypes.func.isRequired,
     afterChangeCustomNamesetTextArea: PropTypes.func.isRequired
 };
-
-export default CustomGroupbox;

@@ -1,13 +1,13 @@
 import React from 'react';
 
-import {GeneratedHeader} from './GeneratedHeader';
-import {GeneratedItems} from './GeneratedItems';
+import GeneratedHeader from './GeneratedHeader';
+import GeneratedItems from './GeneratedItems';
 
 import './GeneratedList.css';
 
 import PropTypes from 'prop-types';
 
-export class GeneratedList extends React.Component {
+export default class GeneratedList extends React.Component {
 
     render() {
         return (

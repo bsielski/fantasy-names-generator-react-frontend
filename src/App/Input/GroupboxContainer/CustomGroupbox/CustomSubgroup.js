@@ -1,11 +1,11 @@
 import React from 'react';
-import {CustomNameset} from './CustomNameset';
+import CustomNameset from './CustomNameset';
 
 import './CustomSubgroup.css';
 
 import PropTypes from 'prop-types';
 
-export function CustomSubgroup(props) {
+export default function CustomSubgroup(props) {
 
     return (
         <div className="group-box__column">

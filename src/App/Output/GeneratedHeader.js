@@ -4,7 +4,7 @@ import './GeneratedHeader.css';
 
 import PropTypes from 'prop-types';
 
-export class GeneratedHeader extends React.Component {
+export default class GeneratedHeader extends React.Component {
     render() {
 	const option = this.props.sortingOptions[this.props.selectedSortingOption];
 	const label = option.label;

@@ -1,6 +1,6 @@
 import React from 'react';
-import {Header} from './Header';
-import {Footer} from './Footer';
+import Header from './Header';
+import Footer from './Footer';
 import Input from './Input';
 import Output from './Output';
 
@@ -10,7 +10,7 @@ import './styles.css';
 
 import PropTypes from 'prop-types';
 
-class App extends React.Component {
+export default class App extends React.Component {
     constructor(props) {
 	      super(props);
 	      this.state = {
@@ -186,5 +186,3 @@ App.propTypes = {
     fetchGroupsSubgroupsNamesets: PropTypes.func.isRequired,
     customNamesetsForGenerator: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
-
-export default App;
