@@ -1,9 +1,7 @@
 import React from 'react';
 import Namelist from './Namelist';
 
-import {API_SERVER} from '../../../../paths';
-
-import './Nameset.css';
+import './styles.css';
 
 import PropTypes from 'prop-types';
 
@@ -27,7 +25,7 @@ export default class Nameset extends React.Component {
     openNamelist() {
 	      if (this.state.namesLoaded === false) {
 	          this.setState({namesLoading: true});
-	          fetch('http://' + API_SERVER + '/api/v1/namesets/' + this.props.nameset.id + '/names')
+	          fetch('http://' + this.props.API_SERVER + '/api/v1/namesets/' + this.props.nameset.id + '/names')
 		            .then(response => {
 		                return response.json();
 		            })

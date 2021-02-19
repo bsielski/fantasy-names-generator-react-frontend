@@ -1,7 +1,7 @@
 import React from 'react';
 import Nameset from './Nameset';
 
-import './Subgroup.css';
+import './styles.css';
 
 import PropTypes from 'prop-types';
 
@@ -10,6 +10,7 @@ export default function Subgroup(props) {
     const buildNameset = (nameset, index) => {
         return (
             <Nameset
+              API_SERVER={props.API_SERVER}
               key={index}
               nameset={nameset}
               afterToggleNamesetCheckbox={props.afterToggleNamesetCheckbox}

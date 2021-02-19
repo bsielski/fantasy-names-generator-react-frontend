@@ -9,6 +9,7 @@ export default function Input (props) {
 	  return (
 		    <section className="input">
 		      <GroupboxContainer
+            API_SERVER={props.API_SERVER}
 		        afterToggleNamesetCheckbox={props.afterToggleNamesetCheckbox}
 		        afterToggleCustomNamesetCheckbox={props.afterToggleCustomNamesetCheckbox}
             afterChangeCustomNamesetTextArea={props.afterChangeCustomNamesetTextArea}

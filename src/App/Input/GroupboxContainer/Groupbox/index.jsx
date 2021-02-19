@@ -19,6 +19,7 @@ export default class Groupbox extends React.Component {
         const buildSubgroup = (subgroup) => {
             return (
                 <Subgroup
+                  API_SERVER={this.props.API_SERVER}
                   key={subgroup.id}
                   namesets={this.props.namesets[subgroup.id]}
                   afterToggleNamesetCheckbox={this.props.afterToggleNamesetCheckbox}

@@ -29,6 +29,7 @@ export default class GroupboxContainer extends React.Component {
         const buildGroupbox = (group) => {
             return (
                 <Groupbox
+                  API_SERVER={this.props.API_SERVER}
                   key={group.id}
                   group={group}
                   subgroups={this.state.subgroups[group.id]}

@@ -1,7 +1,7 @@
 import React from 'react';
 import CustomNamesArea from './CustomNamesArea';
 
-import './CustomNameset.css';
+import './styles.css';
 
 import PropTypes from 'prop-types';
 

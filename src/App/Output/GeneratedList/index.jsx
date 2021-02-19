@@ -3,7 +3,7 @@ import React from 'react';
 import GeneratedHeader from './GeneratedHeader';
 import GeneratedItems from './GeneratedItems';
 
-import './GeneratedList.css';
+import './styles.css';
 
 import PropTypes from 'prop-types';
 

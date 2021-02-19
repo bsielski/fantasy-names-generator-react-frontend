@@ -2,7 +2,7 @@ import React from 'react';
 
 import ActionButtonText from './ActionButtonText';
 
-import './ActionButton.css';
+import './styles.css';
 
 import PropTypes from 'prop-types';
 

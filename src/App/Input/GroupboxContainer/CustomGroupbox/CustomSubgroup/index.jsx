@@ -1,7 +1,7 @@
 import React from 'react';
 import CustomNameset from './CustomNameset';
 
-import './CustomSubgroup.css';
+import './styles.css';
 
 import PropTypes from 'prop-types';
 

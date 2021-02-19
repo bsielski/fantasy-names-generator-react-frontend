@@ -5,6 +5,7 @@ import App from './App';
 import {sortingOptions} from './sortingOptions';
 import {numberOptions} from './numberOptions';
 import {APP_VERSION} from './version';
+import {API_SERVER} from './paths';
 import {generate} from './generate';
 import {fetchGroupsSubgroupsNamesets} from './fetchGroupsSubgroupsNamesets';
 import {customNamesetsForGenerator} from './customNamesetsForGenerator';
@@ -16,6 +17,7 @@ ReactDOM.render(
       sortingOptions={sortingOptions}
       numberOptions={numberOptions}
       APP_VERSION={APP_VERSION}
+      API_SERVER={API_SERVER}
       generate={generate}
       fetchGroupsSubgroupsNamesets={fetchGroupsSubgroupsNamesets}
       customNamesetsForGenerator={customNamesetsForGenerator}

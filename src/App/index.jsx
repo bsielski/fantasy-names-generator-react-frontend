@@ -164,6 +164,7 @@ export default class App extends React.Component {
 		              pathToLastSortMethod={this.state.pathToLastSortMethod}
               />
               <Input
+                API_SERVER={this.props.API_SERVER}
 		            afterToggleNamesetCheckbox={this.afterToggleNamesetCheckbox}
 		            afterToggleCustomNamesetCheckbox={this.afterToggleCustomNamesetCheckbox}
                 afterChangeCustomNamesetTextArea={this.afterChangeCustomNamesetTextArea}
@@ -180,6 +181,7 @@ App.propTypes = {
     sortingOptions: PropTypes.arrayOf(PropTypes.object).isRequired,
     numberOptions: PropTypes.arrayOf(PropTypes.object).isRequired,
     APP_VERSION: PropTypes.string.isRequired,
+    API_SERVER: PropTypes.string.isRequired,
     generate: PropTypes.func.isRequired,
     sortNames: PropTypes.func.isRequired,
     optimizedSortNames: PropTypes.func.isRequired,
