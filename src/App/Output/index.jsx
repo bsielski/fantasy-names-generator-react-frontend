@@ -4,6 +4,7 @@ import HowManyNames from './HowManyNames';
 import ActionButton from './ActionButton';
 import SortingButtons from './SortingButtons';
 import GeneratedList from './GeneratedList';
+import RadioButton from './RadioButton';
 
 import './styles.css';
 
@@ -12,6 +13,7 @@ export default function Output (props) {
 	  return (
 		    <section className="output">
 		      <HowManyNames
+		        RadioButton={RadioButton}
 		        options={props.options}
 		        selectedOption={props.selectedOption}
 		        afterChoosingHowManyNames={props.afterChoosingHowManyNames}
@@ -24,6 +26,7 @@ export default function Output (props) {
 		        afterClickingGenerateButton={props.afterClickingGenerateButton}
 		      />
 		      <SortingButtons
+		        RadioButton={RadioButton}
 		        generated={props.generated}
 		        selectedOption={props.selectedOption}
 		        sortingOptions={props.sortingOptions}
