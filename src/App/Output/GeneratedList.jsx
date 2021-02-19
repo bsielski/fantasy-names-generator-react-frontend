@@ -14,9 +14,9 @@ export default class GeneratedList extends React.Component {
             <div>
               <h2 className="subsection-header">Generated names</h2>
               <GeneratedHeader
-	        sortingOptions={this.props.sortingOptions}
-	        selectedSortingOption={this.props.selectedSortingOption}
-	      />
+	              sortingOptions={this.props.sortingOptions}
+	              selectedSortingOption={this.props.selectedSortingOption}
+	            />
               <GeneratedItems items={this.props.sorted}/>
             </div>
         );
