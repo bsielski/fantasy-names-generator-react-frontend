@@ -145,23 +145,24 @@ export default class App extends React.Component {
 		            version={this.props.APP_VERSION}
 	            />
               <Output
-		              options={this.props.numberOptions}
-		              selectedOption={this.state.selectedNumberOption}
-		              afterChoosingHowManyNames={this.afterChoosingHowManyNames}
-		              isGenerating={this.state.isGenerating}
-		              isLoading={this.state.isLoading}
-		              howManyNamesetsSelected={
-                      this.state.selectedNamesets.length
-                          + this.state.selectedCustomNamesetIds.length
-                  }
-		              howManyNames={this.state.howManyNames}
-		              afterClickingGenerateButton={this.afterClickingGenerateButton}
-		              generated={this.state.generated}
-		              sortingOptions={this.props.sortingOptions}
-		              afterChoosingSorting={this.afterChoosingSorting}
-		              sorted={this.state.sorted}
-		              selectedSortingOption={this.state.selectedSortingOption}
-		              pathToLastSortMethod={this.state.pathToLastSortMethod}
+		            options={this.props.numberOptions}
+		            selectedNumberOption={this.state.selectedNumberOption}
+		            selectedSortingOption={this.state.selectedSortingOption}
+		            afterChoosingHowManyNames={this.afterChoosingHowManyNames}
+		            isGenerating={this.state.isGenerating}
+		            isLoading={this.state.isLoading}
+		            howManyNamesetsSelected={
+                    this.state.selectedNamesets.length
+                        + this.state.selectedCustomNamesetIds.length
+                }
+		            howManyNames={this.state.howManyNames}
+		            afterClickingGenerateButton={this.afterClickingGenerateButton}
+		            generated={this.state.generated}
+		            sortingOptions={this.props.sortingOptions}
+		            afterChoosingSorting={this.afterChoosingSorting}
+		            sorted={this.state.sorted}
+		            selectedSortingOption={this.state.selectedSortingOption}
+		            pathToLastSortMethod={this.state.pathToLastSortMethod}
               />
               <Input
                 API_SERVER={this.props.API_SERVER}

@@ -15,7 +15,7 @@ export default function Output (props) {
 		      <HowManyNames
 		        RadioButton={RadioButton}
 		        options={props.options}
-		        selectedOption={props.selectedOption}
+		        selectedOption={props.selectedNumberOption}
 		        afterChoosingHowManyNames={props.afterChoosingHowManyNames}
 		      />
 		      <ActionButton
@@ -28,7 +28,7 @@ export default function Output (props) {
 		      <SortingButtons
 		        RadioButton={RadioButton}
 		        generated={props.generated}
-		        selectedOption={props.selectedOption}
+		        selectedOption={props.selectedSortingOption}
 		        sortingOptions={props.sortingOptions}
 		        afterChoosingSorting={props.afterChoosingSorting}
 		      />
