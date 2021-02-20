@@ -34,7 +34,7 @@ export default class SortingButtons extends React.Component {
 	          );
 	      };
 
-	      const options = this.props.sortingOptions.map(buildOption);
+	      const options = this.props.options.map(buildOption);
 	      return (
 	          <section className="sorting">
               <h2 className="sorting__header">Sorting methods</h2>

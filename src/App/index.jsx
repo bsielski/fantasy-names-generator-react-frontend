@@ -145,7 +145,7 @@ export default class App extends React.Component {
 		            version={this.props.APP_VERSION}
 	            />
               <Output
-		            options={this.props.numberOptions}
+		            numberOptions={this.props.numberOptions}
 		            selectedNumberOption={this.state.selectedNumberOption}
 		            selectedSortingOption={this.state.selectedSortingOption}
 		            afterChoosingHowManyNames={this.afterChoosingHowManyNames}
@@ -161,7 +161,6 @@ export default class App extends React.Component {
 		            sortingOptions={this.props.sortingOptions}
 		            afterChoosingSorting={this.afterChoosingSorting}
 		            sorted={this.state.sorted}
-		            selectedSortingOption={this.state.selectedSortingOption}
 		            pathToLastSortMethod={this.state.pathToLastSortMethod}
               />
               <Input

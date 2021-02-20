@@ -14,7 +14,7 @@ export default function Output (props) {
 		    <section className="output">
 		      <HowManyNames
 		        RadioButton={RadioButton}
-		        options={props.options}
+		        options={props.numberOptions}
 		        selectedOption={props.selectedNumberOption}
 		        afterChoosingHowManyNames={props.afterChoosingHowManyNames}
 		      />
@@ -29,7 +29,7 @@ export default function Output (props) {
 		        RadioButton={RadioButton}
 		        generated={props.generated}
 		        selectedOption={props.selectedSortingOption}
-		        sortingOptions={props.sortingOptions}
+		        options={props.sortingOptions}
 		        afterChoosingSorting={props.afterChoosingSorting}
 		      />
 		      <GeneratedList
