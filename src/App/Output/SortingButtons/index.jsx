@@ -13,7 +13,7 @@ export default class SortingButtons extends React.Component {
 
     handleRadio(e) {
 	      const selectedOptionIndex = parseInt(e.target.dataset.buttonNumber, 10);
-	      this.props.afterChoosingSorting(selectedOptionIndex);
+        this.props.afterChoosingSorting(selectedOptionIndex);
     }
 
     render() {
