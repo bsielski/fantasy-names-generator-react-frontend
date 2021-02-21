@@ -8,7 +8,8 @@ function Icon(props) {
     }
 
     return (
-        <img className="sort_icon" alt={props.alt} src={props.icon} width="15" height="15"/>
+        <img className="sort_icon" alt={props.alt}
+             src={props.icon} width="15" height="15"/>
     );
 }
 
@@ -16,8 +17,11 @@ export default function RadioButton(props) {
     return (
         <div>
           <label>
-            <input type="radio" name={props.name} value={props.value}
-                   onChange={props.onChange} checked={props.checked} data-button-number={props.buttonNumber}/>
+            <input type="radio" name={props.name}
+                   value={props.value} onChange={props.onChange}
+                   checked={props.checked}
+                   data-button-number={props.buttonNumber}
+            />
             {props.label + " " + props.description}
             <Icon icon={props.icon} alt={props.alt}/>
           </label>
