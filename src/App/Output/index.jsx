@@ -36,7 +36,6 @@ export default function Output (props) {
 		        sorted={props.sorted}
 		        selectedSortingOption={props.selectedSortingOption}
 		        sortingOptions={props.sortingOptions}
-		        pathToLastSortMethod={props.pathToLastSortMethod}
           />
    		  </section>
 	  );

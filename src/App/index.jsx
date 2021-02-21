@@ -160,7 +160,6 @@ export default class App extends React.Component {
 		            sortingOptions={this.props.sortingOptions}
 		            afterChoosingSorting={this.afterChoosingSorting}
 		            sorted={this.state.sorted}
-		            pathToLastSortMethod={this.state.pathToLastSortMethod}
               />
               <Input
                 API_SERVER={this.props.API_SERVER}
