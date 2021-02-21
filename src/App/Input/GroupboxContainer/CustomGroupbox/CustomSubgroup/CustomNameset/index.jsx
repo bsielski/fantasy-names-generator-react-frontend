@@ -7,14 +7,14 @@ import PropTypes from 'prop-types';
 
 export default class CustomNameset extends React.Component {
     constructor(props) {
-	super(props);
-	this.state = {
-	    text: this._arrayToText(this.props.defaultNameset.names),
-	    isChecked: false
-	};
+	      super(props);
+	      this.state = {
+	          text: this._arrayToText(this.props.defaultNameset.names),
+	          isChecked: false
+	      };
         this.inputId = "custom-nameset-" + this.props.namesetId;
-	this.handleToggle = this.handleToggle.bind(this);
-	this.afterChangeTextArea = this.afterChangeTextArea.bind(this);
+	      this.handleToggle = this.handleToggle.bind(this);
+	      this.afterChangeTextArea = this.afterChangeTextArea.bind(this);
     }
 
     _arrayToText(array) {
@@ -22,22 +22,22 @@ export default class CustomNameset extends React.Component {
     }
 
     handleToggle() {
-	if (this.state.isChecked) {
+	      if (this.state.isChecked) {
             this.props.afterToggleCustomNamesetCheckbox(this.props.namesetId, []);
         }
         else {
             this.props.afterToggleCustomNamesetCheckbox(this.props.namesetId, this.state.names);
         }
-	this.setState(({ isChecked }) => (
-	    {
-		isChecked: !isChecked,
-	    }
-	));
+	      this.setState(({ isChecked }) => (
+	          {
+		            isChecked: !isChecked,
+	          }
+	      ));
     }
 
     afterChangeTextArea(event) {
         const text = event.target.value;
-	this.setState({
+	      this.setState({
             text: text
         });
         this.props.afterChangeCustomNamesetTextArea(this.props.namesetId, text);
@@ -45,29 +45,29 @@ export default class CustomNameset extends React.Component {
 
     render() {
 
-	return (
-	    <div>
+	      return (
+	          <div>
               <div className="group-box__item">
-		<input
+		            <input
                   className="group-box__checkbox"
                   id={this.inputId}
                   type="checkbox"
-		  onChange={this.handleToggle}
+		              onChange={this.handleToggle}
                   checked={this.state.isChecked}
-		/>
-		<label
+		            />
+		            <label
                   className="group-box__label"
                   htmlFor={this.inputId}>{this.props.defaultNameset.label}
-		</label>
+		            </label>
               </div>
               <CustomNamesArea
                 namesetId={this.props.namesetId}
-		variantSeparator={this.props.defaultNameset.variantSeparator}
+		            variantSeparator={this.props.defaultNameset.variantSeparator}
                 text={this.state.text}
-		afterChangeTextArea={this.afterChangeTextArea}
-	      />
-	    </div>
-	);
+		            afterChangeTextArea={this.afterChangeTextArea}
+	            />
+	          </div>
+	      );
     }
 }
 
