@@ -142,7 +142,7 @@ export default class App extends React.Component {
 	          <div className="app-container">
 	            <Header
                 className="header"
-		            version={this.props.APP_VERSION}
+		            APP_VERSION={this.props.APP_VERSION}
 	            />
               <Output
 		            numberOptions={this.props.numberOptions}
