@@ -63,34 +63,602 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="2" RULE="ON_BRANCH_CREATION"/>
-<node TEXT="App" POSITION="right" ID="ID_1278846551" CREATED="1613838768574" MODIFIED="1613838770407">
-<edge COLOR="#ff0000"/>
-<node TEXT="Header" ID="ID_874342696" CREATED="1613838777314" MODIFIED="1613838780019"/>
-<node TEXT="Output" ID="ID_1544559916" CREATED="1613838785682" MODIFIED="1613838789123">
-<node TEXT="ActionButton" ID="ID_1821596375" CREATED="1613838816433" MODIFIED="1613838821619">
-<node TEXT="ActionButtonText" ID="ID_338095239" CREATED="1613838996714" MODIFIED="1613839010115"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="3" RULE="ON_BRANCH_CREATION"/>
+<node POSITION="right" ID="ID_1278257643" CREATED="1613839043346" MODIFIED="1613857827602"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Index
+    </p>
+    <p>
+      <font size="1" color="#660066">Index: sortingOptions </font>
+    </p>
+    <p>
+      <font size="1" color="#660066">Index: numberOptions </font>
+    </p>
+    <p>
+      <font size="1" color="#660066">Index: APP_VERSION </font>
+    </p>
+    <p>
+      <font size="1" color="#660066">Index: API_SERVER </font>
+    </p>
+    <p>
+      <font size="1" color="#660066">Index: generate </font>
+    </p>
+    <p>
+      <font size="1" color="#660066">Index: fetchGroupsSubgroupsNamesets </font>
+    </p>
+    <p>
+      <font size="1" color="#660066">Index: customNamesetsForGenerator </font>
+    </p>
+    <p>
+      <font size="1" color="#660066">Index: sortNames </font>
+    </p>
+    <p>
+      <font size="1" color="#660066">Index: optimizedSortNames</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<edge COLOR="#00ff00"/>
+<node ID="ID_1278846551" CREATED="1613838768574" MODIFIED="1613902231144"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      App
+    </p>
+    <p>
+      <font color="#660066" size="1">Index: sortingOptions </font>
+    </p>
+    <p>
+      <font color="#660066" size="1">Index: numberOptions </font>
+    </p>
+    <p>
+      <font color="#660066" size="1">Index: APP_VERSION </font>
+    </p>
+    <p>
+      <font color="#660066" size="1">Index: API_SERVER </font>
+    </p>
+    <p>
+      <font color="#660066" size="1">Index: generate </font>
+    </p>
+    <p>
+      <font color="#660066" size="1">Index: fetchGroupsSubgroupsNamesets </font>
+    </p>
+    <p>
+      <font color="#660066" size="1">Index: customNamesetsForGenerator </font>
+    </p>
+    <p>
+      <font color="#660066" size="1">Index: sortNames </font>
+    </p>
+    <p>
+      <font color="#660066" size="1">Index: optimizedSortNames</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: selectedNamesets </font>
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: selectedNumberOption </font>
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: selectedSortingOption</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App <i>f</i>: afterChoosingHowManyNames</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: isGenerating </font>
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: isLoading</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App: howManyNamesetsSelected</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: howManyNames </font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App <i>f</i>: afterClickingGenerateButton </font>
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: generated </font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App <i>f</i>: afterChoosingSorting</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: sorted</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: pathToLastSortMethod</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App <i>f</i>: afterToggleNamesetCheckbox</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App f: afterToggleCustomNamesetCheckbox</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App <i>f</i>: afterChangeCustomNamesetTextArea</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node ID="ID_874342696" CREATED="1613838777314" MODIFIED="1613899826622"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Header<br/>
+    </p>
+    <p>
+      <font color="#660066" size="1">Index: APP_VERSION </font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
 </node>
-<node TEXT="GeneratedList" ID="ID_409769036" CREATED="1613838822185" MODIFIED="1613838828139">
-<node TEXT="GeneratedHeader" ID="ID_256114707" CREATED="1613839023899" MODIFIED="1613839035932"/>
-<node TEXT="GeneratedItems" ID="ID_1209631481" CREATED="1613839043346" MODIFIED="1613839051963"/>
+<node ID="ID_1544559916" CREATED="1613838785682" MODIFIED="1613906733129"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Output
+    </p>
+    <p>
+      <font color="#660000" size="1">Output imp: RadioButton</font>
+    </p>
+    <p>
+      <font color="#660066" size="1">Index: numberOptions </font>
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: selectedNumberOption </font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App <i>f</i>: afterChoosingHowManyNames</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: isGenerating </font>
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: isLoading</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App: howManyNamesetsSelected</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: howManyNames </font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App <i>f</i>: afterClickingGenerateButton </font>
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: generated </font>
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: selectedSortingOption</font>
+    </p>
+    <p>
+      <font color="#660066" size="1">Index: sortingOptions </font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App <i>f</i>: afterChoosingSorting</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: sorted</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node ID="ID_1821596375" CREATED="1613838816433" MODIFIED="1613902982695"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      ActionButton
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: isGenerating </font>
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: isLoading</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App: howManyNamesetsSelected</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: howManyNames </font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App <i>f</i>: afterClickingGenerateButton </font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node ID="ID_338095239" CREATED="1613838996714" MODIFIED="1613904555723"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      ActionButtonText
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: isGenerating </font>
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: isLoading</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App: howManyNamesetsSelected</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: howManyNames </font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
 </node>
-<node TEXT="HowManyNames" ID="ID_1590106779" CREATED="1613838828681" MODIFIED="1613838833891"/>
-<node TEXT="SortingButtons" ID="ID_1719421532" CREATED="1613838834186" MODIFIED="1613838840971"/>
+</node>
+<node ID="ID_409769036" CREATED="1613838822185" MODIFIED="1613906672149"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      GeneratedList
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: sorted</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: selectedSortingOption</font>
+    </p>
+    <p>
+      <font color="#660066" size="1">Index: sortingOptions</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node ID="ID_256114707" CREATED="1613839023899" MODIFIED="1613906009427"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      GeneratedHeader
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: selectedSortingOption</font>
+    </p>
+    <p>
+      <font color="#660066" size="1">Index: sortingOptions</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+<node ID="ID_1209631481" CREATED="1613839043346" MODIFIED="1613906121836"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      GeneratedItems
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: sorted (items)</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+</node>
+<node ID="ID_1590106779" CREATED="1613838828681" MODIFIED="1613902926975"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      HowManyNames
+    </p>
+    <p>
+      <font color="#660000" size="1">Output imp: RadioButton</font>
+    </p>
+    <p>
+      <font color="#660066" size="1">Index: numberOptions </font>
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: selectedNumberOption </font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App <i>f</i>: afterChoosingHowManyNames</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node TEXT="RadioButton" ID="ID_1599742521" CREATED="1613838828681" MODIFIED="1613907571930"/>
+</node>
+<node ID="ID_1719421532" CREATED="1613838834186" MODIFIED="1613903034520"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      SortingButtons
+    </p>
+    <p>
+      <font color="#660000" size="1">Output imp: RadioButton</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: generated </font>
+    </p>
+    <p>
+      <font color="#003475" size="1">APP: selectedSortingOption</font>
+    </p>
+    <p>
+      <font color="#660066" size="1">Index: sortingOptions </font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App <i>f</i>: afterChoosingSorting</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node TEXT="RadioButton" ID="ID_1528861133" CREATED="1613838828681" MODIFIED="1613907571930"/>
+</node>
 <node TEXT="RadioButton" ID="ID_1360520145" CREATED="1613839145833" MODIFIED="1613839150964"/>
 </node>
-<node TEXT="Input" ID="ID_1328223428" CREATED="1613838782801" MODIFIED="1613838784915">
-<node TEXT="GroupboxContainer" ID="ID_100839474" CREATED="1613838851890" MODIFIED="1613838861971">
-<node TEXT="CustomGroupbox" ID="ID_1413210873" CREATED="1613838872058" MODIFIED="1613838880163">
-<node TEXT="CustomSubgroup" ID="ID_1032188107" CREATED="1613838936274" MODIFIED="1613838942228">
-<node TEXT="CustomNameset" ID="ID_1837499803" CREATED="1613838953803" MODIFIED="1613838969419">
+<node ID="ID_1328223428" CREATED="1613838782801" MODIFIED="1613902329153"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Input
+    </p>
+    <p>
+      <font color="#660066" size="1">Index: API_SERVER </font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App <i>f</i>: afterToggleNamesetCheckbox</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App f: afterToggleCustomNamesetCheckbox</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App <i>f</i>: afterChangeCustomNamesetTextArea</font>
+    </p>
+    <p>
+      <font color="#660066" size="1">Index: fetchGroupsSubgroupsNamesets </font>
+    </p>
+    <p>
+      <font color="#660066" size="1">Index: customNamesetsForGenerator </font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node ID="ID_100839474" CREATED="1613838851890" MODIFIED="1613909526105"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      GroupboxContainer
+    </p>
+    <p>
+      <font color="#660066" size="1">Index: API_SERVER</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App <i>f</i>: afterToggleNamesetCheckbox</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App f: afterToggleCustomNamesetCheckbox</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App <i>f</i>: afterChangeCustomNamesetTextArea</font>
+    </p>
+    <p>
+      <font color="#660066" size="1">Index: fetchGroupsSubgroupsNamesets</font>
+    </p>
+    <p>
+      <font color="#660066" size="1">Index: customNamesetsForGenerator </font>
+    </p>
+    <p>
+      <font color="#660066" size="1">GROUPBOX_CONTAINER: groups</font>
+    </p>
+    <p>
+      <font color="#660066" size="1">GROUPBOX_CONTAINER: subgroups </font>
+    </p>
+    <p>
+      <font color="#660066" size="1">GROUPBOX_CONTAINER: namesets</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node ID="ID_1413210873" CREATED="1613838872058" MODIFIED="1613909931352"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      CustomGroupbox
+    </p>
+    <p>
+      <font color="#003475" size="1">App f: afterToggleCustomNamesetCheckbox</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App <i>f</i>: afterChangeCustomNamesetTextArea</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node ID="ID_1032188107" CREATED="1613838936274" MODIFIED="1613909995222"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      CustomSubgroup
+    </p>
+    <p>
+      <font color="#003475" size="1">App f: afterToggleCustomNamesetCheckbox</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App <i>f</i>: afterChangeCustomNamesetTextArea</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node ID="ID_1837499803" CREATED="1613838953803" MODIFIED="1613910067403"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      CustomNameset
+    </p>
+    <p>
+      <font color="#003475" size="1">App f: afterToggleCustomNamesetCheckbox</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App <i>f</i>: afterChangeCustomNamesetTextArea</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
 <node TEXT="CustomNamesArea" ID="ID_1004763579" CREATED="1613838971435" MODIFIED="1613838982187"/>
 </node>
 </node>
 </node>
-<node TEXT="Groupbox" ID="ID_1910338486" CREATED="1613838884082" MODIFIED="1613838888275">
-<node TEXT="Subgroup" ID="ID_846109728" CREATED="1613838898722" MODIFIED="1613838905053">
-<node TEXT="Nameset" ID="ID_1348428130" CREATED="1613838911066" MODIFIED="1613838915363">
+<node ID="ID_1910338486" CREATED="1613838884082" MODIFIED="1613910823316"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Groupbox
+    </p>
+    <p>
+      <font color="#660066" size="1">Index: API_SERVER</font>
+    </p>
+    <p>
+      <font color="#660066" size="1">GROUPBOX_CONTAINER: group </font>
+    </p>
+    <p>
+      <font color="#660066" size="1">GROUPBOX_CONTAINER: group.id (key)</font>
+    </p>
+    <p>
+      <font color="#660066" size="1">GROUPBOX_CONTAINER: subgroups </font>
+    </p>
+    <p>
+      <font color="#660066" size="1">GROUPBOX_CONTAINER: namesets </font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App <i>f</i>: afterToggleNamesetCheckbox</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node ID="ID_846109728" CREATED="1613838898722" MODIFIED="1613910834035"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Subgroup
+    </p>
+    <p>
+      <font color="#660066" size="1">Index: API_SERVER</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App <i>f</i>: afterToggleNamesetCheckbox</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node ID="ID_1348428130" CREATED="1613838911066" MODIFIED="1613910866746"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Nameset
+    </p>
+    <p>
+      <font color="#660066" size="1">Index: API_SERVER</font>
+    </p>
+    <p>
+      <font color="#003475" size="1">App <i>f</i>: afterToggleNamesetCheckbox</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
 <node TEXT="Namelist" ID="ID_216411003" CREATED="1613838919612" MODIFIED="1613838923987"/>
 </node>
 </node>
@@ -98,6 +666,7 @@
 </node>
 </node>
 <node TEXT="Footer" ID="ID_1768169353" CREATED="1613838780297" MODIFIED="1613838782403"/>
+</node>
 </node>
 </node>
 </map>
