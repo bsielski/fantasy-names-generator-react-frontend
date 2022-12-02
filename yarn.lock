@@ -2,7 +2,7 @@
 # Manual changes might be lost - proceed with caution!
 
 __metadata:
-  version: 4
+  version: 6
   cacheKey: 7
 
 "@babel/code-frame@npm:7.0.0":
@@ -1914,6 +1914,15 @@ __metadata:
   bin:
     acorn: bin/acorn
   checksum: 2bde98c28c1be9a08e41e581179b776b43396c9486ce52b2b9848d73c53df38c516b7edba4bacdc84cabc9d7a3299f3b46ef240ae261c38dbf8ddd89f635bd32
+  languageName: node
+  linkType: hard
+
+"acorn@npm:^8.5.0":
+  version: 8.8.1
+  resolution: "acorn@npm:8.8.1"
+  bin:
+    acorn: bin/acorn
+  checksum: 8/4079b67283b94935157698831967642f24a075c52ce3feaaaafe095776dfbe15d86a1b33b1e53860fc0d062ed6c83f4284a5c87c85b9ad51853a01173da6097f
   languageName: node
   linkType: hard
 
@@ -4214,9 +4223,9 @@ __metadata:
   linkType: hard
 
 "decode-uri-component@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "decode-uri-component@npm:0.2.0"
-  checksum: d8cb28c33f7b0a70b159b5fa126aee821ba090396689bd46ad2c423c3a658c504d2743ab18060fd5ed1cae5377bdd3632760a8e98ba920ff49637d43dc6a9687
+  version: 0.2.2
+  resolution: "decode-uri-component@npm:0.2.2"
+  checksum: 8/95476a7d28f267292ce745eac3524a9079058bbb35767b76e3ee87d42e34cd0275d2eb19d9d08c3e167f97556e8a2872747f5e65cbebcac8b0c98d83e285f139
   languageName: node
   linkType: hard
 
@@ -4255,6 +4264,7 @@ __metadata:
     execa: ^0.10.0
     ip-regex: ^2.1.0
   checksum: 12b7dbdadf94ff7353dbc8ca1c758e4801ef5e94c148151d2f7a24334d3bfe176ba67eb9f47b939b912ff8f11fbe9a6be09c1f909035ef2ed9d46b1981bf6d51
+  conditions: (os=android | os=darwin | os=freebsd | os=linux | os=openbsd | os=sunos | os=win32)
   languageName: node
   linkType: hard
 
@@ -5816,6 +5826,7 @@ fsevents@1.2.4:
     nan: ^2.9.2
     node-pre-gyp: ^0.10.0
   checksum: dfda0904966b77b6a98fe2f3f1435f6cb55666ead883b8e99adb726f2dbe7803eae2600bf9e4a6e7f8562542fcea74c487aa47db1cc919c7fe63051b41ff6605
+  conditions: os=darwin
   languageName: node
   linkType: hard
 
@@ -5826,35 +5837,36 @@ fsevents@1.2.4:
     bindings: ^1.5.0
     nan: ^2.12.1
   checksum: e70509558b5f49ce9dfacb8f9e2848c6e6751a61966027789561145a9c4ae9ba4c6b28b531bc8b4ae52fdd2d4c90a3bf314e6794717e51838b27910bb41ce588
+  conditions: os=darwin
   languageName: node
   linkType: hard
 
-"fsevents@patch:fsevents@1.2.4#builtin<compat/fsevents>":
+"fsevents@patch:fsevents@1.2.4#~builtin<compat/fsevents>":
   version: 1.2.4
-  resolution: "fsevents@patch:fsevents@npm%3A1.2.4#builtin<compat/fsevents>::version=1.2.4&hash=11e9ea"
+  resolution: "fsevents@patch:fsevents@npm%3A1.2.4#~builtin<compat/fsevents>::version=1.2.4&hash=18f3a7"
   dependencies:
     nan: ^2.9.2
     node-pre-gyp: ^0.10.0
-  checksum: f5c6dc4de6f7dcdbbf5c25654e18c0668bb52bf46f6b6eaa66a2c80ef9821ebc29627564af4b43c666d65476df5b4a608ae63d4b3934636bef82381c8f46d678
+  conditions: os=darwin
   languageName: node
   linkType: hard
 
-"fsevents@patch:fsevents@^1.2.3#builtin<compat/fsevents>, fsevents@patch:fsevents@^1.2.7#builtin<compat/fsevents>":
+"fsevents@patch:fsevents@^1.2.3#~builtin<compat/fsevents>, fsevents@patch:fsevents@^1.2.7#~builtin<compat/fsevents>":
   version: 1.2.13
-  resolution: "fsevents@patch:fsevents@npm%3A1.2.13#builtin<compat/fsevents>::version=1.2.13&hash=11e9ea"
+  resolution: "fsevents@patch:fsevents@npm%3A1.2.13#~builtin<compat/fsevents>::version=1.2.13&hash=18f3a7"
   dependencies:
     bindings: ^1.5.0
     nan: ^2.12.1
-  checksum: 7bc048c164eb72f91b18ba7cd2ba30679a0afe57e9cd6352eac4bdbc4ddd4ca2ea98674d0bd3a80e96427469adc433c13532494b36aea40fceab36e198982182
+  conditions: os=darwin
   languageName: node
   linkType: hard
 
-"fsevents@patch:fsevents@~2.3.1#builtin<compat/fsevents>":
+"fsevents@patch:fsevents@~2.3.1#~builtin<compat/fsevents>":
   version: 2.3.2
-  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#builtin<compat/fsevents>::version=2.3.2&hash=11e9ea"
+  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=18f3a7"
   dependencies:
     node-gyp: latest
-  checksum: 7b25d9251aefe433d508a0eb614217f0495ae05a9e8af15f7dbf9998e08c4e675acd1cf32361e0fcf71d917d9e8c4b76301fdc72a1ec1105a3ea0994f5e15a8d
+  conditions: os=darwin
   languageName: node
   linkType: hard
 
@@ -5864,6 +5876,7 @@ fsevents@~2.3.1:
   dependencies:
     node-gyp: latest
   checksum: a1883f4ca12b8b403ec528f1a4cb312b0877eacd24719da535cabea78d6fdd78530e3538bdba590a1c0f6c295128f964a89182621885296353a44dcfa4f9db53
+  conditions: os=darwin
   languageName: node
   linkType: hard
 
@@ -6804,6 +6817,7 @@ fsevents@~2.3.1:
     default-gateway: ^2.6.0
     ipaddr.js: ^1.5.2
   checksum: f6a9be5d8b4d1bed7c3ba262cc4a8642b3cfde139f3cfc530524fe3febece374a8eaf8837b7971115bbea128cbd607996c21b7fefbc73eb6fa652cb857c5a0e5
+  conditions: (os=android | os=darwin | os=freebsd | os=linux | os=openbsd | os=sunos | os=win32)
   languageName: node
   linkType: hard
 
@@ -11598,29 +11612,29 @@ resolve@1.8.1:
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@1.1.7#builtin<compat/resolve>":
+"resolve@patch:resolve@1.1.7#~builtin<compat/resolve>":
   version: 1.1.7
-  resolution: "resolve@patch:resolve@npm%3A1.1.7#builtin<compat/resolve>::version=1.1.7&hash=3388aa"
-  checksum: ca4e21815c78134fdb248d2175d98c2ead024c680a3a9c7b8ee13fc8a7f5157e061b13ae29ee07a60e1b9faea33c3740cb88d48d94966d7e94479add70d3f544
+  resolution: "resolve@patch:resolve@npm%3A1.1.7#~builtin<compat/resolve>::version=1.1.7&hash=07638b"
+  checksum: 8/e9dbca78600ae56835c43a09f1276876c883e4b4bbd43e2683fa140671519d2bdebeb1c1576ca87c8c508ae2987b3ec481645ac5d3054b0f23254cfc1ce49942
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@1.8.1#builtin<compat/resolve>":
+"resolve@patch:resolve@1.8.1#~builtin<compat/resolve>":
   version: 1.8.1
-  resolution: "resolve@patch:resolve@npm%3A1.8.1#builtin<compat/resolve>::version=1.8.1&hash=3388aa"
+  resolution: "resolve@patch:resolve@npm%3A1.8.1#~builtin<compat/resolve>::version=1.8.1&hash=07638b"
   dependencies:
     path-parse: ^1.0.5
-  checksum: 37e06de431cc7c5c53623ec68a08f487c36395d1536acfc77d0e7f45f59babd8fa05a44268500ce07b42e2b9bc06925994f9c2852f7f13d2d8f71e89a430370e
+  checksum: 8/b7e0748492c5c5a3bacd94b8ef8f52b529dbfea264ed560f352cb5c93ebc92bd8ab072843ff3af775133bdfa3d4b80d3b5a49382ff7457d026e97e2925410fc3
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@^1.10.0#builtin<compat/resolve>, resolve@patch:resolve@^1.13.1#builtin<compat/resolve>, resolve@patch:resolve@^1.3.2#builtin<compat/resolve>, resolve@patch:resolve@^1.5.0#builtin<compat/resolve>, resolve@patch:resolve@^1.6.0#builtin<compat/resolve>, resolve@patch:resolve@^1.8.1#builtin<compat/resolve>":
+"resolve@patch:resolve@^1.10.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.13.1#~builtin<compat/resolve>, resolve@patch:resolve@^1.3.2#~builtin<compat/resolve>, resolve@patch:resolve@^1.5.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.6.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.8.1#~builtin<compat/resolve>":
   version: 1.20.0
-  resolution: "resolve@patch:resolve@npm%3A1.20.0#builtin<compat/resolve>::version=1.20.0&hash=3388aa"
+  resolution: "resolve@patch:resolve@npm%3A1.20.0#~builtin<compat/resolve>::version=1.20.0&hash=07638b"
   dependencies:
     is-core-module: ^2.2.0
     path-parse: ^1.0.6
-  checksum: c4a515b76026806b5b26513fc7bdb80458c532bc91c02ef45ac928d1025585f93bec0b904be39c02131118a37ff7e3f9258f1526850b025d2ec0948bb5fd03d0
+  checksum: 8/a0dd7d16a8e47af23afa9386df2dff10e3e0debb2c7299a42e581d9d9b04d7ad5d2c53f24f1e043f7b3c250cbdc71150063e53d0b6559683d37f790b7c8c3cd5
   languageName: node
   linkType: hard
 
