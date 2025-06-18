@@ -1,0 +1,32 @@
+services:
+  react-dev:
+    profiles:
+      - development
+    build:
+      context: .
+      args:
+        REACT_APP_API_HOST: ${REACT_APP_API_HOST}
+    image: fng-frontend-image:latest
+    container_name: fng-front_react_dev
+    ports:
+      - "${DEV_PORT:-3000}:80"
+    restart: always
+
+  react-prod:
+    profiles:
+      - production
+    image: fng-frontend-image:latest
+    container_name: fng-front_react
+    networks:
+      - webproxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.fng-front-react.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.fng-front-react.entrypoints=websecure"
+      - "traefik.http.routers.fng-front-react.tls.certresolver=myresolver"
+      - "traefik.http.services.fng-front-react.loadbalancer.server.port=80"
+    restart: always
+
+networks:
+  webproxy:
+    external: true
