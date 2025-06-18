@@ -15,6 +15,10 @@ services:
   react-prod:
     profiles:
       - production
+    build:
+      context: .
+      args:
+        REACT_APP_API_HOST: ${REACT_APP_API_HOST}
     image: fng-frontend-image:latest
     container_name: fng-front_react
     networks:
