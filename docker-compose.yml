@@ -1,16 +1,37 @@
 services:
+
+  installer:
+    image: node:18-alpine
+    container_name: fng-front_react_installer
+    # user: "${UID:-1000}:${GID:-1000}"
+    working_dir: /app
+    volumes:
+      - ./package.json:/app/package.json
+      - ./package-lock.json:/app/package-lock.json
+      - fng-front_node-modules_dev:/app/node_modules
+    command: npm install ${NPM_INSTALL_ARGS}
   react-dev:
     profiles:
       - development
-    build:
-      context: .
-      args:
-        REACT_APP_API_HOST: ${REACT_APP_API_HOST}
-    image: fng-frontend-image:latest
+    image: node:18-alpine
     container_name: fng-front_react_dev
+    user: "${UID:-1000}:${GID:-1000}"
+    working_dir: /app
+    environment:
+      - HOST=0.0.0.0
+      - REACT_APP_API_HOST=${REACT_APP_API_HOST}
+      - WATCHPACK_POLLING=true
+      - NODE_OPTIONS=--openssl-legacy-provider
     ports:
-      - "${DEV_PORT:-3000}:80"
-    restart: always
+      - "${DEV_PORT:-3000}:3000"
+    volumes:
+      - .:/app
+      - fng-front_node-modules_dev:/app/node_modules
+    command: npm start
+    depends_on:
+      installer:
+        condition: service_completed_successfully
+    restart: "no"
 
   react-prod:
     profiles:
@@ -30,6 +51,10 @@ services:
       - "traefik.http.routers.fng-front-react.tls.certresolver=myresolver"
       - "traefik.http.services.fng-front-react.loadbalancer.server.port=80"
     restart: always
+
+volumes:
+  fng-front_node-modules_dev:
+    name: fng-front_node-modules_dev
 
 networks:
   webproxy:
