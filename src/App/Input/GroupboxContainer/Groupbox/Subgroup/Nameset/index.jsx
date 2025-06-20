@@ -1,5 +1,6 @@
 import React from 'react';
 import Namelist from './Namelist';
+import {mockFetch} from '../../../../../../mockFetch';
 
 import './styles.css';
 
@@ -25,7 +26,7 @@ export default class Nameset extends React.Component {
     openNamelist() {
 	      if (this.state.namesLoaded === false) {
 	          this.setState({namesLoading: true});
-	          fetch(this.props.API_SERVER + '/api/v1/namesets/' + this.props.nameset.id + '/names')
+	          mockFetch(this.props.API_SERVER + '/api/v1/namesets/' + this.props.nameset.id + '/names')
 		            .then(response => {
 		                return response.json();
 		            })

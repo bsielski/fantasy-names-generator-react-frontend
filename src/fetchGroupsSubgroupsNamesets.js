@@ -1,4 +1,5 @@
 import {buildUrlForGroupsSubgroupsNamesets} from './buildUrlForGroupsSubgroupsNamesets';
+import {mockFetch} from './mockFetch';
 
 export function fetchGroupsSubgroupsNamesets(buildUrl = buildUrlForGroupsSubgroupsNamesets) {
     const segregatedByNested = (array, key1, key2) => {
@@ -11,7 +12,7 @@ export function fetchGroupsSubgroupsNamesets(buildUrl = buildUrlForGroupsSubgrou
 	});
 	return sorted;
     };
-    return fetch(buildUrl())
+    return mockFetch(buildUrl())
         .then(response => {
             return response.json();
         })
