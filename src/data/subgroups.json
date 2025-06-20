@@ -1,0 +1,13 @@
+[
+	{"id":1,"group_id":1,"position":1,"namesets_count":3}, 
+	{"id":2,"group_id":1,"position":2,"namesets_count":3}, 
+	{"id":3,"group_id":2,"position":1,"namesets_count":4}, 
+	{"id":4,"group_id":2,"position":2,"namesets_count":4}, 
+	{"id":5,"group_id":3,"position":1,"namesets_count":3}, 
+	{"id":6,"group_id":3,"position":2,"namesets_count":3}, 
+	{"id":7,"group_id":4,"position":1,"namesets_count":3}, 
+	{"id":8,"group_id":4,"position":2,"namesets_count":2}, 
+	{"id":9,"group_id":5,"position":1,"namesets_count":1}, 
+	{"id":10,"group_id":5,"position":2,"namesets_count":1}, 
+	{"id":11,"group_id":6,"position":1,"namesets_count":1}
+]

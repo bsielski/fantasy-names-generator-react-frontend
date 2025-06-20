@@ -1,0 +1,8 @@
+[
+	{"id":1,"label":"Traditional Celtic names","position":1,"subgroups_count":2}, 
+	{"id":2,"label":"Traditional Germanic names","position":2,"subgroups_count":2}, 
+	{"id":3,"label":"Other traditional names","position":3,"subgroups_count":2}, 
+	{"id":4,"label":"Myths","position":4,"subgroups_count":2}, 
+	{"id":5,"label":"Geographical names","position":5,"subgroups_count":2}, 
+	{"id":6,"label":"Dictionary words","position":6,"subgroups_count":1}
+]
